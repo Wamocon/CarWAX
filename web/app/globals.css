@@ -100,6 +100,9 @@
     overflow-x: clip;
     -webkit-text-size-adjust: 100%;
     color-scheme: dark;
+    /* Erlaubt Übergänge nach `auto` — die Grundlage dafür, dass die
+       Aufklapper ohne Höhenmessung in JavaScript weich laufen. */
+    interpolate-size: allow-keywords;
   }
 
   html[data-theme='light'] {
@@ -308,6 +311,31 @@
     background: linear-gradient(90deg, var(--color-brand), var(--color-ember));
   }
 
+  /* Kapitelnummern.
+     Neun Sektionen mit identischem Aufbau lesen sich als Vorlage, egal wie
+     sauber die Typografie ist. Eine durchlaufende Nummer macht daraus ein
+     Inhaltsverzeichnis: die Seite wirkt gesetzt statt zusammengesteckt, und
+     der Besucher weiß jederzeit, wo er ist.
+
+     Gezählt wird per CSS-Zähler statt per Prop. Damit stimmt die Reihenfolge
+     automatisch, auch wenn später eine Sektion dazwischenrutscht — niemand
+     muss neun Dateien nachziehen und dabei eine vergessen. */
+  main {
+    counter-reset: chapter;
+  }
+
+  .chapter {
+    flex: none;
+    margin-left: auto;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-fg-faint);
+  }
+
+  .chapter::before {
+    counter-increment: chapter;
+    content: counter(chapter, decimal-leading-zero);
+  }
+
   .display {
     font-size: clamp(3.2rem, 9vw, 8rem);
     line-height: 0.94;
@@ -459,6 +487,24 @@
     );
   }
 
+  /* Inhalt, der auf einem dunklen Foto liegt.
+     Die Fotos sind in beiden Modi dunkel gegradet, also muss die Schrift
+     darauf in beiden Modi hell bleiben. Statt in jeder Komponente Farben
+     hart zu setzen, werden hier die Tokens lokal umdefiniert: alles darin
+     — .display, .lead, .eyebrow, Buttons, Ränder — zieht automatisch nach.
+     Ohne das stand die Hero-Headline im hellen Modus dunkelblau auf einem
+     schwarzen Foto und war schlicht nicht lesbar. */
+  .on-dark {
+    --color-fg: #f4f7fb;
+    --color-fg-muted: rgb(244 247 251 / 0.74);
+    --color-fg-faint: rgb(244 247 251 / 0.55);
+    --color-hairline: rgb(255 255 255 / 0.18);
+    --color-hairline-strong: rgb(255 255 255 / 0.36);
+    --color-brand: #ff2f37;
+    --color-glass: rgb(255 255 255 / 0.08);
+    color: var(--color-fg);
+  }
+
   /* Modusabhängige Sichtbarkeit.
      Gebraucht für das Logo: die Wortmarke hat schwarze Bildteile. Auf der
      dunklen Bühne läuft die aufgehellte Variante, auf Weiß muss das Original
@@ -475,6 +521,32 @@
 
   :root[data-theme='light'] .only-light {
     display: revert-layer;
+  }
+
+  /* Aufklappen ohne JavaScript und ohne Höhenmessung.
+     `interpolate-size` erlaubt dem Browser, von 0 auf `auto` zu animieren —
+     genau das, wofür es sonst eine Höhenmessung in JS braucht. Wo der Browser
+     `::details-content` noch nicht kennt, springt der Block auf. Das ist die
+     richtige Rückfallebene: der Inhalt ist da, nur ohne Bewegung. */
+  .faq::details-content {
+    block-size: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition:
+      block-size 320ms var(--ease-out),
+      content-visibility 320ms var(--ease-out) allow-discrete,
+      opacity 220ms var(--ease-out);
+  }
+
+  .faq[open]::details-content {
+    block-size: auto;
+    opacity: 1;
+  }
+
+  /* Der native Marker steht sonst links vor dem Text und bricht die Zeile. */
+  .faq > summary::-webkit-details-marker,
+  details > summary::-webkit-details-marker {
+    display: none;
   }
 }
 

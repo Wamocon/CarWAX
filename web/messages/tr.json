@@ -13,7 +13,12 @@
     "about": "Hakkımızda",
     "packages": "Paketler",
     "whatsapp": "WhatsApp",
-    "map": "Konum"
+    "map": "Konum",
+    "menuLabel": "Ana menü",
+    "openMenu": "Menüyü aç",
+    "closeMenu": "Menüyü kapat",
+    "reviews": "Yorumlar",
+    "faq": "Sorular"
   },
   "hero": {
     "eyebrow": "Antalya · 1989'dan beri",
@@ -35,7 +40,7 @@
     },
     "stations": {
       "label": "Yaygınlık",
-      "value": "Türkiye genelinde 50'den fazla nokta"
+      "value": "Türkiye ve yurt dışında 122 istasyon"
     },
     "languages": {
       "label": "Diller",
@@ -125,7 +130,13 @@
     "tik": "Tik Güverte Bakımı",
     "pervane": "Pervane Temizliği",
     "kevlar": "Kevlar Onarımı",
-    "boya": "Boya Uygulaması"
+    "boya": "Boya Uygulaması",
+    "camPastasi": "Cam Pastası",
+    "kromKoruma": "Krom Koruma",
+    "zehirliBoya": "Zehirli Boya Uygulaması",
+    "kumlama": "Kumlama Uygulaması",
+    "fiber": "Fiber Bakımı",
+    "genelTemizlik": "Genel Temizlik ve Bakım"
   },
   "branches": {
     "eyebrow": "Antalya",
@@ -171,36 +182,62 @@
   "packages": {
     "eyebrow": "Uygulama Paketleri",
     "title": "Tek tek seçmek zorunda değilsiniz.",
-    "lead": "CarWAX paketleri, birlikte anlamlı olan işlemleri bir araya getirir. Emin değilseniz şubeyi arayın; aracınıza bakıp doğru olanı söyleriz.",
-    "featured": "En çok tercih edilen",
+    "lead": "Üç aile, iki kademe. Shine boyayla, Deep iç mekânla, Full ikisiyle birden ilgilenir. Emin değilseniz şubeyi arayın; aracınıza bakıp doğru olanı söyleriz.",
+    "featured": "En kapsamlı",
     "askPrice": "Fiyat için arayın",
-    "note": "Fiyatlar aracınızın durumuna ve seçilen pakete göre değişir. Bu yüzden burada fiyat yazmıyoruz. Telefonda net konuşmayı tercih ediyoruz.",
-    "shine": {
-      "title": "Shine",
-      "text": "Dış görünüme önem verenler için klasik boya koruma."
+    "duration": "Uygulama süresi {hours} saat",
+    "more": "{count} işlem daha",
+    "note": "Fiyatlar aracınızın durumuna ve seçilen pakete göre değişir. Bu yüzden burada fiyat yazmıyoruz, telefonda net konuşmayı tercih ediyoruz. Süreler ortalamadır.",
+    "tier": {
+      "plus": "Plus",
+      "eko": "Eko"
     },
-    "ceramicPremium": {
-      "title": "Ceramic Premium",
-      "text": "Boya koruma teknolojisinin geldiği son nokta. 9H sertliğinde seramik kaplama."
+    "shineEko": {
+      "title": "Shine Eko",
+      "text": "Boyanın parlaklığını en üst noktaya çıkarmaya yönelik paket."
     },
-    "full": {
-      "title": "Full",
-      "text": "Nano boya koruma ve antibakteriyel iç temizlik bir arada."
+    "shinePlus": {
+      "title": "Shine Plus",
+      "text": "En derin çizikler gider, parlaklık en üst noktaya çıkar, koruma en uzun süre kalır."
     },
-    "deep": {
-      "title": "Deep",
-      "text": "Önce sağlık diyenler için derinlemesine antibakteriyel iç temizlik."
+    "deepEko": {
+      "title": "Deep Eko",
+      "text": "Elin değdiği yerler önce gelir. İç yüzeyler temizlenir ve sterilize edilir."
+    },
+    "deepPlus": {
+      "title": "Deep Plus",
+      "text": "En kapsamlı temizlik paketi. İç mekânın yanında motor ve klima kanalları da temizlenir."
+    },
+    "fullEko": {
+      "title": "Full Eko",
+      "text": "İç temizlik ve dış çizik giderme bir arada, standart boya parlatma ve koruma ile."
+    },
+    "fullPlus": {
+      "title": "Full Plus",
+      "text": "Aracın A’dan Z’ye her noktası. Pasta cila, seramik wax ve ULV ile sterilizasyon."
     },
     "includes": {
+      "standartYikama": "CarWAX standart yıkama",
+      "detayliYikama": "CarWAX detaylı yıkama",
+      "islakCila": "Islak cila (Nano Express Shine)",
+      "kilUygulamasi": "Boya yüzeyi temizliği (kil uygulaması)",
+      "demirTozu": "Demir tozu, reçine ve zift temizliği",
+      "derinCizik": "Derin çizik giderme",
+      "ortaAsinma": "Orta aşınma ve hologram giderme",
       "boyaKoruma": "Boya koruma",
-      "pastaCila": "Pasta & cila",
-      "disYikama": "Detaylı dış yıkama",
-      "seramik9h": "9H seramik kaplama",
-      "jantKrom": "Jant ve krom koruma",
-      "nanoBoyaKoruma": "Nano boya koruma",
-      "antibakteriyel": "Antibakteriyel temizlik",
-      "icTemizlik": "Detaylı iç temizlik",
-      "doseme": "Koltuk ve döşeme bakımı"
+      "seramikWax": "Seramik wax uygulaması",
+      "teflonCila": "Teflon cila",
+      "motorTemizligi": "Motor temizliği ve koruması",
+      "farTemizligi": "Far temizliği ve çizik giderme",
+      "koltuk": "Koltuk temizliği ve koruması",
+      "doseme": "Kapı, tavan ve taban döşeme temizliği",
+      "bagaj": "Bagaj ve stepne temizliği",
+      "antibakteriyel": "Antibakteriyel temizlik ve koruma",
+      "deriPlastik": "Deri, plastik ve vinil bakımı",
+      "klimaKanallari": "Havalandırma ve klima kanalı temizliği",
+      "ulv": "ULV ile sterilizasyon",
+      "ozon": "Ozonla dezenfeksiyon",
+      "nanoAntibakteriyel": "Nano antibakteriyel iç temizlik"
     }
   },
   "products": {
@@ -235,7 +272,7 @@
   "story": {
     "eyebrow": "Hakkımızda",
     "title": "Bu iş bizde babadan geliyor.",
-    "lead": "CarWAX, Mumcu ailesinin işi. Babaları Hayrettin Mumcu’nun otomobil tutkusuyla başladı; bugün Türkiye genelinde 50’den fazla noktada aynı standart uygulanıyor.",
+    "lead": "CarWAX, Mumcu ailesinin işi. Babaları Hayrettin Mumcu’nun otomobil tutkusuyla başladı; bugün 122 istasyonda aynı standart uygulanıyor.",
     "teamTitle": "Ekibimiz",
     "milestones": {
       "start": "İstanbul Erenköy’de 700 m² alanda ilk oto yıkama ve bakım servisi açıldı.",
@@ -282,5 +319,51 @@
     "toLight": "Aydınlık moda geç",
     "toDark": "Karanlık moda geç",
     "toggle": "Görünüm modunu değiştir"
+  },
+  "testimonials": {
+    "eyebrow": "Müşteri Yorumları",
+    "title": "Bizim hakkımızda ne diyorlar.",
+    "lead": "Bu yorumlar CarWAX’ın kendi yayınladığı müşteri görüşleridir. Hemen aşağıda Google puanımızı olduğu gibi bulacaksınız.",
+    "source": "Kaynak: carwax.com.tr, Müşteri Yorumları",
+    "items": {
+      "emre": "Yurt dışındaki şubelerinde de aynı kaliteli hizmeti bulmak çok sevindirici. Boya koruma sistemleri ve cam filmi uygulamaları sayesinde aracım hem estetik açıdan hem de koruma anlamında mükemmel durumda.",
+      "osman": "Carwax’ın ses yalıtım sistemleri gerçekten aracımda fark yarattı. Artık daha sessiz ve konforlu bir sürüş yaşıyorum. Müşteri memnuniyetine verdikleri önemle herkese tavsiye ediyorum.",
+      "yusufg": "Küçük alan boya tamiri için başvurdum ve sonuçtan çok memnun kaldım. Boyadaki ufak çizikler tamamen yok oldu. Franchise sistemi sayesinde şehir dışında bile aynı kaliteyi buluyorum.",
+      "yasemin": "Detaylı iç temizlikten çok memnun kaldım. Araç içindeki halılar ve döşemeler adeta yenilenmiş gibi oldu. Ürünlerin insan sağlığına zararlı olmaması da ayrı bir tercih sebebim.",
+      "turgut": "Carwax sayesinde aracımın boyası her zaman yeni gibi görünüyor. Özellikle su itici cam kaplaması çok başarılı. Hem şehir içinde hem uzun yolda camlarım temiz kalıyor.",
+      "zeynep": "AVM’nin park alanında aracımı temizlettim ve sonuç muhteşem. Boya cilası arabama yeni bir parlaklık kattı. Kesinlikle tekrar geleceğim.",
+      "ahmet": "Aracımın boya korumasını ve detaylı temizliğini Carwax’a yaptırdım. Sonuç gerçekten harikaydı, araç neredeyse sıfır gibi görünüyor.",
+      "ebru": "Hem iç hem dış temizlik hizmetleri mükemmel. Ayrıca kullandıkları kimyasalların doğa dostu olması büyük bir artı.",
+      "mehmet": "Cam filmi ve kaput koruyucu filmi için gittim. İşçilikleri çok kaliteli ve personel oldukça ilgili. Aracımın görünümü şimdi çok daha şık.",
+      "cenk": "Uzun zamandır Carwax’tan hizmet alıyorum. Özellikle oto pas önleme çok başarılı. Araç koruma konusunda Carwax’ın üzerine tanımam.",
+      "ayse": "Franchise istasyonlarından birinde su itici cam kaplaması yaptırdım. Hem hizmet kalitesi hem kullanılan malzemeler üst düzeydeydi."
+    }
+  },
+  "faq": {
+    "eyebrow": "Sık Sorulanlar",
+    "title": "Merak edilenler.",
+    "lead": "En çok sorulan beş soruyu kısaca cevapladık. Aklınıza başka bir şey takılırsa şubeyi arayın ya da aşağıdaki asistana yazın.",
+    "items": {
+      "nedir": {
+        "q": "CarWAX Car Care nedir?",
+        "a": "CarWAX, yurt içinde ve yurt dışındaki uygulama istasyonlarında boya yüzeyi bakım, koruma ve temizlik sistemleri alanında çalışıyor. Amerikan ve Türk mühendislerin ortak çalışmasıyla geliştirilen formülasyonlarla kendi ürünlerini üretiyor."
+      },
+      "hizmetler": {
+        "q": "Hangi hizmetleri sunuyorsunuz?",
+        "a": "Kara, deniz ve hava araçlarında nano boya koruma, seramik kaplama, detaylı iç ve dış temizlik, döşeme, halı ve vinil koruma, pas önleme, ses yalıtımı, boyasız göçük onarımı, küçük alan boya tamiri, PPF kaplama, cam filmi, renk değişimi ve su itici cam kaplaması."
+      },
+      "nerede": {
+        "q": "Nerelerde hizmet veriyorsunuz?",
+        "a": "Türkiye’de İstanbul, Ankara, Antalya, Bursa, Nevşehir, Tokat, Batman, Muğla, Çanakkale, Çorum, Gebze, Kocaeli, Kırıkkale, Mersin, Amasya, Afyon, Adana, Fethiye, Yalova ve Yozgat. Yurt dışında Dubai, Kazakistan, Kuzey Kıbrıs, Irak, Kosova, Bulgaristan ve Nijerya."
+      },
+      "franchise": {
+        "q": "Franchise sistemi nasıl çalışıyor?",
+        "a": "CarWAX; C, CC ve CCC istasyon tipleriyle franchise sahiplerine eğitim, teknik yardım, reklam ve tanıtım desteği veriyor. 2030 sonunda istasyon sayısını 190’a çıkarmayı hedefliyor."
+      },
+      "teknoloji": {
+        "q": "Hangi teknolojileri kullanıyorsunuz?",
+        "a": "İstasyonlarda markaya ait patentli kimyasallar kullanılıyor ve istasyon yönetimi yine markaya ait bir yazılımla yürütülüyor."
+      }
+    }
   }
 }

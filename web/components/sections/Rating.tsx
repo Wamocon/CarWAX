@@ -1,7 +1,7 @@
 import { useTranslations } from 'next-intl';
 import { Star, ArrowUpRight } from 'lucide-react';
 import { Reveal } from '@/components/ui/Reveal';
-import { branches, rating, reviewUrl } from '@/lib/data/site';
+import { aggregateRating, branches, reviewUrl } from '@/lib/data/site';
 
 /**
  * Google-Bewertung mit Sternen.
@@ -17,7 +17,9 @@ import { branches, rating, reviewUrl } from '@/lib/data/site';
  */
 export function Rating() {
   const t = useTranslations('rating');
-  const branch = branches.find((b) => b.id === rating.branchId) ?? branches[0];
+  const rating = aggregateRating();
+  const branch = branches[0];
+  if (!rating) return null;
   const proud = rating.value >= rating.proudFrom;
   const pct = (rating.value / rating.scale) * 100;
 
@@ -74,7 +76,13 @@ export function Rating() {
           </Reveal>
 
           <Reveal delay={0.08}>
-            <p className="eyebrow mb-5">{t('eyebrow')}</p>
+            {/* Diese Sektion baut ihre Überschrift selbst, braucht die
+                Kapitelnummer aber trotzdem: sonst reißt die Zählung genau
+                hier eine Lücke. */}
+            <p className="eyebrow mb-5">
+              {t('eyebrow')}
+              <span aria-hidden className="chapter" />
+            </p>
             <h2 id="degerlendirme-h" className="h2 mb-5">
               {proud ? t('proudTitle') : t('honestTitle')}
             </h2>
@@ -87,7 +95,7 @@ export function Rating() {
                 href={reviewUrl(branch.address)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="sheen inline-flex min-h-[52px] items-center gap-3 rounded-[2px] bg-brand px-8 font-mono text-[0.6875rem] uppercase tracking-[0.22em] text-white transition-[transform,background-color] duration-140 ease-out hover:bg-brand-hot active:scale-[0.97]"
+                className="sheen inline-flex min-h-13 items-center gap-3 rounded-[2px] bg-brand px-8 font-mono text-[0.6875rem] uppercase tracking-[0.22em] text-white transition-[transform,background-color] duration-140 ease-out hover:bg-brand-hot active:scale-[0.97]"
               >
                 {t('cta')}
                 <ArrowUpRight aria-hidden size={15} />

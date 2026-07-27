@@ -43,23 +43,25 @@ export function Hero() {
       />
 
       {/*
-        Textschleier. Der Hero bleibt in beiden Modi dunkel — das Motiv ist
-        ein dunkel gegradetes Foto, weiße Schrift darauf funktioniert immer.
-        Nur der untere Abschluss läuft in die aktuelle Bühnenfarbe aus, damit
-        der Übergang zur Seite im Hellen nicht als schwarze Kante steht.
+        Textschleier. Der Hero bleibt in beiden Modi dunkel: das Motiv ist ein
+        dunkel gegradetes Foto, und weiße Schrift darauf funktioniert immer.
+        Der Schleier ist deshalb bewusst NICHT an die Modusfarbe gekoppelt.
+        Nur die letzten Prozent laufen in die Bühnenfarbe aus, damit im hellen
+        Modus keine harte schwarze Kante zur nächsten Sektion steht.
       */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 z-10"
         style={{
           background: [
-            'linear-gradient(90deg, rgba(8,8,10,.82) 0%, rgba(8,8,10,.42) 38%, transparent 66%)',
-            'linear-gradient(180deg, rgba(8,8,10,.86) 0%, rgba(8,8,10,.2) 34%, rgba(8,8,10,.5) 66%, var(--color-bg) 100%)',
+            'linear-gradient(90deg, rgba(8,10,14,.86) 0%, rgba(8,10,14,.5) 40%, transparent 68%)',
+            'linear-gradient(180deg, rgba(8,10,14,.84) 0%, rgba(8,10,14,.22) 30%, rgba(8,10,14,.72) 72%, rgba(8,10,14,.82) 88%, var(--color-bg) 100%)',
           ].join(','),
         }}
       />
 
-      <div className="wrap relative z-20 pb-[clamp(46px,8vh,104px)]">
+      {/* on-dark definiert die Farbtokens lokal um: hell auf Foto, in beiden Modi. */}
+      <div className="on-dark wrap relative z-20 pb-[clamp(46px,8vh,104px)]">
         <motion.p
           className="eyebrow mb-6"
           variants={fade}

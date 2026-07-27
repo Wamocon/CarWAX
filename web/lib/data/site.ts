@@ -15,6 +15,14 @@ export const brand = {
   foundedTrade: 1989, // Öğretmenler Oto Yıkama, İstanbul-Erenköy
   foundedBrand: 1995, // Marke CARWAX
   firstFranchise: 2002,
+  /**
+   * „Carwax 122 istasyonuyla …" — wörtlich von der Startseite des Kunden
+   * (Abschnitt „Biz Kimiz?"). Eine frühere Fassung schrieb hier „50+", das
+   * war eine Zählung aus der Stationsliste und lag deutlich zu niedrig.
+   */
+  stations: 122,
+  /** Erklärtes Ziel des Franchisesystems, ebenfalls von der Startseite. */
+  stationsTarget2030: 190,
 } as const;
 
 /** Konzernzentrale — Quelle: carwax.com.tr/iletisim */
@@ -22,7 +30,14 @@ export const hq = {
   address:
     'Yukarı Dudullu Mah. Necip Fazıl Blv., Keyap Sitesi H Blok No: 44-132, Ümraniye / İstanbul',
   phone: '+90 216 540 03 48',
+  /** Zweite Zentralnummer, steht im Fußbereich der Kundenseite gleichberechtigt. */
+  phone2: '+90 216 540 03 49',
   mobile: '+90 554 494 15 83',
+  /**
+   * Auf carwax.com.tr durch Cloudflare verschleiert (`data-cfemail`).
+   * Aus dem Hex-Token dekodiert, nicht geraten.
+   */
+  email: 'info@carwax.com.tr',
 } as const;
 
 /**
@@ -125,15 +140,49 @@ export function reviewUrl(address: string) {
  * und mit Datum, statt geschönt. Sobald die Sanierung greift: `value` und
  * `count` hier aktualisieren — die Sektion rechnet den Rest selbst.
  */
-export const rating = {
-  value: 2.6,
-  count: 704,
+/**
+ * Bewertungen je Filiale.
+ *
+ * Nur TerraCity hat einen Google-Eintrag, der eine Bewertung ausliefert
+ * (2,6 aus 704, abgelesen am 27.07.2026 aus der eingebetteten Karte). Die
+ * anderen drei Adressen liefern in Google Maps nur eine Stecknadel ohne
+ * Bewertungskarte. Sobald ihre Werte vorliegen, hier eintragen: die Sektion
+ * bildet daraus automatisch den gewichteten Gesamtschnitt.
+ */
+export const branchRatings = [
+  { branchId: 'terracity', value: 2.6, count: 704 },
+  // { branchId: 'mark-antalya', value: ?, count: ? },
+  // { branchId: 'erasta',       value: ?, count: ? },
+  // { branchId: 'ozdilek',      value: ?, count: ? },
+] as const;
+
+export const ratingMeta = {
   scale: 5,
-  branchId: 'terracity',
-  /** Alles darunter zeigt die Sektion als Bitte um Bewertungen, nicht als Auszeichnung. */
+  /** Darunter tritt die Sektion als Bitte um Bewertungen auf, nicht als Auszeichnung. */
   proudFrom: 4.5,
   verifiedAt: '2026-07-27',
 } as const;
+
+/**
+ * Gesamtschnitt über alle erfassten Filialen.
+ *
+ * Gewichtet nach Bewertungsanzahl, nicht als Mittel der Mittelwerte: eine
+ * Filiale mit 12 Bewertungen darf eine mit 704 nicht gleich stark ziehen.
+ * Bei nur einer erfassten Filiale ist das Ergebnis schlicht deren Wert.
+ */
+export function aggregateRating() {
+  const total = branchRatings.reduce((n, r) => n + r.count, 0);
+  if (total === 0) return null;
+  const weighted = branchRatings.reduce((n, r) => n + r.value * r.count, 0) / total;
+  return {
+    value: Math.round(weighted * 10) / 10,
+    count: total,
+    branches: branchRatings.length,
+    scale: ratingMeta.scale,
+    proudFrom: ratingMeta.proudFrom,
+    verifiedAt: ratingMeta.verifiedAt,
+  };
+}
 
 /** Routenlink ohne Koordinaten — Google löst die Adresse selbst auf. */
 export function directionsUrl(address: string) {
@@ -155,21 +204,50 @@ export const social = [
     id: 'youtube',
     href: 'https://www.youtube.com/channel/UCTV5r4xf-YtNa1B6WCGOxrQ',
     label: 'YouTube',
+    scope: 'brand',
     verified: true,
   },
   {
     id: 'instagram',
     href: 'https://www.instagram.com/carwax_antalya/',
     label: 'Instagram',
+    scope: 'antalya',
     // Handle kam vom Kunden über das Ticket. Inhalt konnte nicht gelesen
     // werden (Meta blockt jeden automatisierten Zugriff), die Quelle ist aber
     // der Kunde selbst — deshalb sichtbar.
     verified: true,
   },
   {
+    id: 'instagram-tr',
+    // Aus dem Footer-Icon der Kundenseite gezogen: der Login-Redirect trägt
+    // `?next=/carwax.turkiye/` — das ist der Landeskanal der Marke.
+    href: 'https://www.instagram.com/carwax.turkiye/',
+    label: 'Instagram Türkiye',
+    scope: 'brand',
+    verified: true,
+  },
+  {
     id: 'facebook',
-    href: 'https://www.facebook.com/terracitycarwax/',
+    // Ebenso aus dem Checkpoint-Redirect: `?next=…/carwaxcarcaresystems/`.
+    // Das offizielle Markenprofil, nicht das lose Filialprofil.
+    href: 'https://www.facebook.com/carwaxcarcaresystems/',
     label: 'Facebook',
+    scope: 'brand',
+    verified: true,
+  },
+  {
+    id: 'x',
+    // `redirect_after_login=/carwax_pcw` — bis hierher schlicht übersehen.
+    href: 'https://x.com/carwax_pcw',
+    label: 'X',
+    scope: 'brand',
+    verified: true,
+  },
+  {
+    id: 'facebook-terracity',
+    href: 'https://www.facebook.com/terracitycarwax/',
+    label: 'Facebook TerraCity',
+    scope: 'antalya',
     verified: false, // über Suche gefunden, nicht vom Kunden bestätigt
   },
 ] as const;
@@ -201,29 +279,130 @@ export const services = [
 ] as const;
 
 /**
- * Uygulama Paketleri — exakt die Pakete aus dem Konzernmenü.
- * Keine erfundenen Bündel, keine erfundenen Preise.
+ * Uygulama Paketleri — alle sechs, exakt wie im Konzernmenü.
+ *
+ * Eine frühere Fassung führte nur vier und mischte „Ceramic Premium" (eine
+ * Leistung, kein Paket) darunter. Der Kunde verkauft in Wahrheit drei Familien
+ * in je zwei Stufen: Shine (Lack), Deep (Innenraum), Full (beides).
+ *
+ * `includes` und `hours` sind wörtlich von den sechs Paketseiten übernommen.
+ * Die Anwendungsdauer ist der stärkste Inhalt der ganzen Sektion: sie ist
+ * konkret, nachprüfbar, und kein Wettbewerber in Antalya nennt sie. Deep Eko
+ * gibt auf der Kundenseite keine Dauer an, steht deshalb auf `null` und wird
+ * im UI weggelassen statt geschätzt.
  */
 export const packages = [
   {
-    id: 'shine',
+    id: 'shineEko',
+    family: 'shine',
+    tier: 'eko',
     featured: false,
-    includes: ['boyaKoruma', 'pastaCila', 'disYikama'],
+    hours: '5',
+    includes: [
+      'standartYikama',
+      'kilUygulamasi',
+      'demirTozu',
+      'teflonCila',
+      'islakCila',
+    ],
   },
   {
-    id: 'ceramicPremium',
+    id: 'shinePlus',
+    family: 'shine',
+    tier: 'plus',
+    featured: false,
+    hours: '6',
+    includes: [
+      'standartYikama',
+      'kilUygulamasi',
+      'demirTozu',
+      'derinCizik',
+      'ortaAsinma',
+      'boyaKoruma',
+      'seramikWax',
+      'motorTemizligi',
+      'islakCila',
+    ],
+  },
+  {
+    id: 'deepEko',
+    family: 'deep',
+    tier: 'eko',
+    featured: false,
+    hours: null,
+    includes: [
+      'standartYikama',
+      'islakCila',
+      'koltuk',
+      'doseme',
+      'bagaj',
+      'antibakteriyel',
+    ],
+  },
+  {
+    id: 'deepPlus',
+    family: 'deep',
+    tier: 'plus',
+    featured: false,
+    hours: '3–4',
+    includes: [
+      'standartYikama',
+      'islakCila',
+      'motorTemizligi',
+      'koltuk',
+      'doseme',
+      'bagaj',
+      'antibakteriyel',
+      'deriPlastik',
+      'klimaKanallari',
+      'ozon',
+      'nanoAntibakteriyel',
+    ],
+  },
+  {
+    id: 'fullEko',
+    family: 'full',
+    tier: 'eko',
+    featured: false,
+    hours: '6',
+    includes: [
+      'kilUygulamasi',
+      'derinCizik',
+      'ortaAsinma',
+      'boyaKoruma',
+      'motorTemizligi',
+      'koltuk',
+      'doseme',
+      'bagaj',
+      'antibakteriyel',
+      'deriPlastik',
+      'klimaKanallari',
+    ],
+  },
+  {
+    id: 'fullPlus',
+    family: 'full',
+    tier: 'plus',
     featured: true,
-    includes: ['seramik9h', 'boyaKoruma', 'pastaCila', 'jantKrom'],
-  },
-  {
-    id: 'full',
-    featured: false,
-    includes: ['nanoBoyaKoruma', 'antibakteriyel', 'icTemizlik'],
-  },
-  {
-    id: 'deep',
-    featured: false,
-    includes: ['antibakteriyel', 'icTemizlik', 'doseme'],
+    hours: '10–12',
+    includes: [
+      'detayliYikama',
+      'demirTozu',
+      'kilUygulamasi',
+      'derinCizik',
+      'ortaAsinma',
+      'boyaKoruma',
+      'seramikWax',
+      'motorTemizligi',
+      'farTemizligi',
+      'koltuk',
+      'doseme',
+      'bagaj',
+      'antibakteriyel',
+      'deriPlastik',
+      'klimaKanallari',
+      'ulv',
+    ],
   },
 ] as const;
 
@@ -247,15 +426,62 @@ export const team = [
   { id: 'yusuf', name: 'Yusuf Kaya', img: '/img/team-yusuf-kaya.jpg' },
 ] as const;
 
-/** C-Marine Care — in Antalya der Hebel, den kein lokaler Wettbewerber hat. */
+/**
+ * C-Marine Care — in Antalya der Hebel, den kein lokaler Wettbewerber hat.
+ *
+ * Jetzt vollständig: alle zwölf Punkte des C-Marine-Menüs. Die vier zuletzt
+ * ergänzten Motive wurden vorher einzeln angesehen — alle zeigen tatsächlich
+ * ein Boot (roter Runabout, Chromreling, Decksklampen) und nicht wie manche
+ * andere Marine-Seite des Kunden ein Auto.
+ */
 export const marine = [
   { id: 'jelcoat', img: '/img/marine-jelcoat.jpg' },
   { id: 'pastaCila', img: '/img/marine-pasta-cila.jpg' },
+  { id: 'camPastasi', img: '/img/marine-cam.jpg' },
   { id: 'tik', img: '/img/marine-tik.jpg' },
   { id: 'pervane', img: '/img/marine-pervane.jpg' },
-  { id: 'kevlar', img: '/img/marine-kevlar.jpg' },
+  { id: 'kromKoruma', img: '/img/marine-krom.jpg' },
   { id: 'boya', img: '/img/marine-boya.jpg' },
+  { id: 'zehirliBoya', img: '/img/marine-zehirli.jpg' },
+  { id: 'kumlama', img: '/img/marine-kumlama.jpg' },
+  { id: 'fiber', img: '/img/marine-fiber.jpg' },
+  { id: 'kevlar', img: '/img/marine-kevlar.jpg' },
+  { id: 'genelTemizlik', img: '/img/marine-genel.jpg' },
 ] as const;
+
+/**
+ * Kundenstimmen.
+ *
+ * ⚠️ HERKUNFT: Das sind die elf Zitate, die der Kunde selbst auf
+ * carwax.com.tr unter „Müşteri Yorumları" veröffentlicht. Es sind **keine**
+ * Google-Rezensionen und werden auf der Seite auch nicht als solche
+ * ausgegeben — die Sektion nennt die Quelle sichtbar. Echte Google-Kommentare
+ * ließen sich ohne Places-API-Schlüssel nicht auslesen, und erfinden ist
+ * ausgeschlossen.
+ *
+ * Bewusst direkt VOR der Bewertungssektion platziert: erst die Stimmen, dann
+ * die ungeschönte 2,6. Andersherum läse sich die Reihenfolge wie Schönfärberei.
+ */
+export const testimonials = [
+  { id: 'emre', name: 'Emre Koç' },
+  { id: 'osman', name: 'Osman Aslan' },
+  { id: 'yusufg', name: 'Yusuf Gün' },
+  { id: 'yasemin', name: 'Yasemin Ergen' },
+  { id: 'turgut', name: 'Turgut Kara' },
+  { id: 'zeynep', name: 'Zeynep Kırmızı' },
+  { id: 'ahmet', name: 'Ahmet Yılmaz' },
+  { id: 'ebru', name: 'Ebru Kaya' },
+  { id: 'mehmet', name: 'Mehmet Aksoy' },
+  { id: 'cenk', name: 'Cenk Kılıç' },
+  { id: 'ayse', name: 'Ayşe Güler' },
+] as const;
+
+/**
+ * Die fünf Fragen, die der Kunde auf seiner Startseite selbst beantwortet.
+ * Inhaltlich übernommen, sprachlich geglättet. Gute Substanz, die bisher
+ * schlicht fehlte.
+ */
+export const faq = ['nedir', 'hizmetler', 'nerede', 'franchise', 'teknoloji'] as const;
 
 /**
  * NOCH OFFEN — vom Kunden zu liefern, bis dahin nirgends im UI:

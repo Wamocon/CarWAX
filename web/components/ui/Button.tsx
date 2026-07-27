@@ -21,7 +21,7 @@ export function Button({
     <a
       {...props}
       className={clsx(
-        'inline-flex min-h-[52px] items-center gap-3 rounded-[2px] px-8',
+        'inline-flex min-h-13 items-center gap-3 rounded-[2px] px-8',
         'font-mono text-[0.6875rem] font-medium uppercase tracking-[0.22em]',
         'transition-[transform,background-color,border-color,color]',
         'duration-140 ease-out',

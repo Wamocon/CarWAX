@@ -17,6 +17,8 @@ import { Products } from '@/components/sections/Products';
 import { Story } from '@/components/sections/Story';
 import { Branches } from '@/components/sections/Branches';
 import { MapSection } from '@/components/sections/MapSection';
+import { Testimonials } from '@/components/sections/Testimonials';
+import { Faq } from '@/components/sections/Faq';
 import { Rating } from '@/components/sections/Rating';
 import { WhatsApp } from '@/components/sections/WhatsApp';
 import { Contact } from '@/components/sections/Contact';
@@ -61,14 +63,18 @@ export default async function HomePage({
             />
             <Reveal>
               {/* Bewusst ein Auto: die Sektion erklärt Seramik Kaplama am
-                  Fahrzeug. `svc-genel-temizlik` zeigt einen Bootsrumpf und
-                  gehört deshalb in die Marine-Sektion, nicht hierher. */}
+                  Fahrzeug. Das Motiv „Genel Temizlik" zeigt einen Bootsrumpf
+                  und steht deshalb als `marine-genel` in der Marine-Sektion. */}
               <GlossCompare src="/img/svc-seramik-nano.jpg" />
             </Reveal>
           </div>
         </section>
 
         <Packages />
+        {/* Erst die Stimmen, die der Kunde selbst veröffentlicht, dann direkt
+            darunter die ungeschönte Google-Zahl. Andersherum läse sich die
+            Reihenfolge wie Schönfärberei. */}
+        <Testimonials />
         <Rating />
         <Counters />
         <Marine />
@@ -76,6 +82,7 @@ export default async function HomePage({
         <Story />
         <Branches />
         <MapSection />
+        <Faq />
         <WhatsApp />
         <Contact />
       </main>

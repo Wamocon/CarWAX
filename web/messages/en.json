@@ -13,7 +13,12 @@
     "about": "About",
     "packages": "Packages",
     "whatsapp": "WhatsApp",
-    "map": "Find us"
+    "map": "Find us",
+    "menuLabel": "Main menu",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "reviews": "Reviews",
+    "faq": "Questions"
   },
   "hero": {
     "eyebrow": "Antalya · Since 1989",
@@ -35,7 +40,7 @@
     },
     "stations": {
       "label": "Network",
-      "value": "More than 50 locations across Turkey"
+      "value": "122 stations in Turkey and abroad"
     },
     "languages": {
       "label": "Languages",
@@ -125,7 +130,13 @@
     "tik": "Teak Deck Care",
     "pervane": "Propeller Cleaning",
     "kevlar": "Kevlar Repair",
-    "boya": "Paint Application"
+    "boya": "Paint Application",
+    "camPastasi": "Glass Compound",
+    "kromKoruma": "Chrome Protection",
+    "zehirliBoya": "Antifouling Paint",
+    "kumlama": "Sandblasting",
+    "fiber": "Fibreglass Care",
+    "genelTemizlik": "General Cleaning and Care"
   },
   "branches": {
     "eyebrow": "Antalya",
@@ -169,38 +180,64 @@
     "disclaimer": "For prices and appointments please call the branch: {phone}"
   },
   "packages": {
-    "eyebrow": "Packages",
-    "title": "You don’t have to pick treatments one by one.",
-    "lead": "CarWAX packages bundle the treatments that make sense together. Not sure which fits? Call the branch and we'll look at the car.",
-    "featured": "Most chosen",
+    "eyebrow": "Care packages",
+    "title": "You do not have to pick line by line.",
+    "lead": "Three families, two levels. Shine looks after the paint, Deep after the cabin, Full after both. If you are unsure, call the branch. We look at your car and tell you which one fits.",
+    "featured": "Most complete",
     "askPrice": "Call for a price",
-    "note": "Prices depend on the condition of your car and the package you choose. That's why we don't print them here. We'd rather be straight with you on the phone.",
-    "shine": {
-      "title": "Shine",
-      "text": "Classic paint protection for people who care how the car looks."
+    "duration": "Takes about {hours} hours",
+    "more": "{count} more steps",
+    "note": "Prices depend on the condition of your car and the package you choose, so we do not print them here. We would rather be straight with you on the phone. Times are averages.",
+    "tier": {
+      "plus": "Plus",
+      "eko": "Eko"
     },
-    "ceramicPremium": {
-      "title": "Ceramic Premium",
-      "text": "The furthest paint protection technology goes. 9H ceramic coating."
+    "shineEko": {
+      "title": "Shine Eko",
+      "text": "Built to bring the paint back to its brightest."
     },
-    "full": {
-      "title": "Full",
-      "text": "Nano paint protection and antibacterial interior cleaning together."
+    "shinePlus": {
+      "title": "Shine Plus",
+      "text": "The deepest scratches go, the gloss peaks, and the protection lasts longest."
     },
-    "deep": {
-      "title": "Deep",
-      "text": "Deep antibacterial interior cleaning, for people who put health first."
+    "deepEko": {
+      "title": "Deep Eko",
+      "text": "Everything your hands touch comes first. The cabin is cleaned and sterilised."
+    },
+    "deepPlus": {
+      "title": "Deep Plus",
+      "text": "The most thorough clean we do. Engine bay and air conditioning ducts included."
+    },
+    "fullEko": {
+      "title": "Full Eko",
+      "text": "Interior clean and scratch removal together, with standard paint polish and protection."
+    },
+    "fullPlus": {
+      "title": "Full Plus",
+      "text": "Every point of the car, front to back. Compound polish, ceramic wax and ULV sterilisation."
     },
     "includes": {
+      "standartYikama": "CarWAX standard wash",
+      "detayliYikama": "CarWAX detailed wash",
+      "islakCila": "Wet polish (Nano Express Shine)",
+      "kilUygulamasi": "Paint surface cleaning (clay bar)",
+      "demirTozu": "Iron dust, resin and tar removal",
+      "derinCizik": "Deep scratch removal",
+      "ortaAsinma": "Medium wear and hologram removal",
       "boyaKoruma": "Paint protection",
-      "pastaCila": "Compound & polish",
-      "disYikama": "Detailed exterior wash",
-      "seramik9h": "9H ceramic coating",
-      "jantKrom": "Wheel and chrome protection",
-      "nanoBoyaKoruma": "Nano paint protection",
-      "antibakteriyel": "Antibacterial cleaning",
-      "icTemizlik": "Deep interior cleaning",
-      "doseme": "Seat and upholstery care"
+      "seramikWax": "Ceramic wax application",
+      "teflonCila": "Teflon polish",
+      "motorTemizligi": "Engine bay cleaning and protection",
+      "farTemizligi": "Headlight cleaning and scratch removal",
+      "koltuk": "Seat cleaning and protection",
+      "doseme": "Door, roof and floor trim cleaning",
+      "bagaj": "Boot and spare wheel well cleaning",
+      "antibakteriyel": "Antibacterial cleaning and protection",
+      "deriPlastik": "Leather, plastic and vinyl care",
+      "klimaKanallari": "Ventilation and air conditioning duct cleaning",
+      "ulv": "ULV sterilisation",
+      "ozon": "Ozone disinfection",
+      "nanoAntibakteriyel": "Nano antibacterial interior clean"
     }
   },
   "products": {
@@ -235,7 +272,7 @@
   "story": {
     "eyebrow": "About us",
     "title": "This trade came to us from our father.",
-    "lead": "CarWAX is the Mumcu family’s business. It started with their father Hayrettin Mumcu’s passion for cars; today the same standard runs across more than 50 locations in Turkey.",
+    "lead": "CarWAX is the Mumcu family’s business. It started with their father Hayrettin Mumcu’s passion for cars, and today the same standard runs across 122 stations.",
     "teamTitle": "Our team",
     "milestones": {
       "start": "The first wash and care service opened on 700 m² in Erenköy, Istanbul.",
@@ -282,5 +319,51 @@
     "toLight": "Switch to light mode",
     "toDark": "Switch to dark mode",
     "toggle": "Switch appearance"
+  },
+  "testimonials": {
+    "eyebrow": "Customer voices",
+    "title": "What people say about us.",
+    "lead": "These are the customer comments CarWAX publishes itself. Directly below you will find our Google score exactly as it stands.",
+    "source": "Source: carwax.com.tr, customer comments",
+    "items": {
+      "emre": "Finding the same quality at their branches abroad is a real pleasure. Thanks to the paint protection and window film, my car is in excellent shape both to look at and to keep.",
+      "osman": "The sound insulation genuinely changed my car. The drive is quieter and more comfortable now. I recommend them for how seriously they take customer satisfaction.",
+      "yusufg": "I came in for a small paint repair and was very happy with the result. The little scratches disappeared completely. Thanks to the franchise system I find the same quality out of town too.",
+      "yasemin": "I was very happy with the detailed interior clean. The carpets and trim came out looking renewed. That the products are not harmful to health is another reason I choose them.",
+      "turgut": "My paint always looks new thanks to Carwax. The water repellent glass coating in particular works well. My windows stay clear in town and on long drives alike.",
+      "zeynep": "I had my car cleaned in the mall car park and the result was superb. The polish gave it a fresh shine. I will definitely be back.",
+      "ahmet": "I had paint protection and a detailed clean done here. The result was genuinely excellent, the car looks almost new.",
+      "ebru": "Both the interior and exterior work are excellent. That the chemicals they use are environmentally friendly is a big plus.",
+      "mehmet": "I went in for window film and a bonnet protection film. The workmanship is high quality and the staff are attentive. My car looks far smarter now.",
+      "cenk": "I have been a customer for a long time. The rust prevention in particular works very well. For protecting a car I do not know anyone better.",
+      "ayse": "I had the water repellent glass coating done at one of the franchise stations. Both the service and the materials were top level."
+    }
+  },
+  "faq": {
+    "eyebrow": "Common questions",
+    "title": "Things people ask.",
+    "lead": "Five short answers to the questions we hear most. If something else is on your mind, call the branch or write to the assistant below.",
+    "items": {
+      "nedir": {
+        "q": "What is CarWAX Car Care?",
+        "a": "CarWAX works in paint surface care, protection and cleaning systems at its application stations in Turkey and abroad. It makes its own products from formulations developed jointly by American and Turkish engineers."
+      },
+      "hizmetler": {
+        "q": "Which services do you offer?",
+        "a": "For road, sea and air vehicles: nano paint protection, ceramic coating, detailed interior and exterior cleaning, trim, carpet and vinyl protection, rust prevention, sound insulation, paintless dent repair, small area paint repair, PPF film, window film, colour change and water repellent glass coating."
+      },
+      "nerede": {
+        "q": "Where do you operate?",
+        "a": "In Turkey: Istanbul, Ankara, Antalya, Bursa, Nevşehir, Tokat, Batman, Muğla, Çanakkale, Çorum, Gebze, Kocaeli, Kırıkkale, Mersin, Amasya, Afyon, Adana, Fethiye, Yalova and Yozgat. Abroad: Dubai, Kazakhstan, Northern Cyprus, Iraq, Kosovo, Bulgaria and Nigeria."
+      },
+      "franchise": {
+        "q": "How does the franchise system work?",
+        "a": "CarWAX supports franchise holders with training, technical help, advertising and promotion across its C, CC and CCC station types. The aim is 190 stations by the end of 2030."
+      },
+      "teknoloji": {
+        "q": "What technology do you use?",
+        "a": "The stations use the brand’s own patented chemicals, and station management runs on software that belongs to the brand as well."
+      }
+    }
   }
 }

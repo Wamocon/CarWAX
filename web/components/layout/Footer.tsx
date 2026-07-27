@@ -2,8 +2,27 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { social, hq, brand } from '@/lib/data/site';
 
+/**
+ * Sprungziele, die nicht in den Kopfbalken passen. Sieben Punkte sind dort
+ * schon die Obergrenze; Yorumlar und Sorular kämen als achter und neunter
+ * hinzu und würden den Balken auf dem Laptop umbrechen lassen. Im Fuß sind
+ * sie trotzdem erreichbar, und der Fuß ist der Ort, an dem Besucher nach
+ * genau solchen Nebenwegen suchen.
+ */
+const JUMP = [
+  { id: 'hizmetler', key: 'services' },
+  { id: 'paketler', key: 'packages' },
+  { id: 'yorumlar', key: 'reviews' },
+  { id: 'marine', key: 'marine' },
+  { id: 'urunler', key: 'products' },
+  { id: 'subeler', key: 'branches' },
+  { id: 'sorular', key: 'faq' },
+  { id: 'iletisim', key: 'contact' },
+] as const;
+
 export function Footer() {
   const t = useTranslations('footer');
+  const nav = useTranslations('nav');
   // Nur bestätigte Profile. Ein toter Link im Footer kostet mehr Vertrauen,
   // als ein fehlendes Icon je kosten könnte.
   const links = social.filter((s) => s.verified);
@@ -29,12 +48,25 @@ export function Footer() {
           <address className="mt-4 max-w-[46ch] text-[0.9rem] not-italic leading-relaxed text-fg-muted">
             {hq.address}
           </address>
-          <a
-            href={`tel:${hq.phone.replace(/\s/g, '')}`}
-            className="mt-2 inline-flex min-h-11 items-center font-mono text-[0.85rem] text-fg-muted transition-colors hover:text-fg"
-          >
-            {hq.phone}
-          </a>
+          {/* Beide Zentralnummern und die Mailadresse. Auf der Kundenseite
+              stehen sie gleichberechtigt; hier fehlte bisher die zweite. */}
+          <div className="mt-2 flex flex-wrap items-center gap-x-6">
+            {[hq.phone, hq.phone2].map((p) => (
+              <a
+                key={p}
+                href={`tel:${p.replace(/\s/g, '')}`}
+                className="inline-flex min-h-11 items-center font-mono text-[0.85rem] text-fg-muted transition-colors hover:text-fg"
+              >
+                {p}
+              </a>
+            ))}
+            <a
+              href={`mailto:${hq.email}`}
+              className="inline-flex min-h-11 items-center font-mono text-[0.85rem] text-fg-muted transition-colors hover:text-fg"
+            >
+              {hq.email}
+            </a>
+          </div>
         </div>
 
         {links.length > 0 ? (
@@ -55,7 +87,22 @@ export function Footer() {
         ) : null}
       </div>
 
-      <div className="wrap mt-12 flex flex-wrap justify-between gap-4 border-t border-hairline pt-7 text-[0.8rem] text-fg-faint">
+      <nav
+        aria-label={nav('menuLabel')}
+        className="wrap mt-12 flex flex-wrap gap-x-8 gap-y-1 border-t border-hairline pt-7"
+      >
+        {JUMP.map((j) => (
+          <a
+            key={j.id}
+            href={`#${j.id}`}
+            className="inline-flex min-h-11 items-center font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-fg-muted transition-colors duration-200 hover:text-brand"
+          >
+            {nav(j.key)}
+          </a>
+        ))}
+      </nav>
+
+      <div className="wrap mt-6 flex flex-wrap justify-between gap-4 border-t border-hairline pt-7 text-[0.8rem] text-fg-faint">
         <span>
           © {brand.foundedBrand}–2026 {brand.legalName}. {t('rights')}
         </span>
