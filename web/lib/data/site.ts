@@ -344,7 +344,7 @@ export const packages = [
     family: 'deep',
     tier: 'plus',
     featured: false,
-    hours: '3–4',
+    hours: '3-4',
     includes: [
       'standartYikama',
       'islakCila',
@@ -384,7 +384,7 @@ export const packages = [
     family: 'full',
     tier: 'plus',
     featured: true,
-    hours: '10–12',
+    hours: '10-12',
     includes: [
       'detayliYikama',
       'demirTozu',
