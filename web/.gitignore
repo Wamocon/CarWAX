@@ -1,0 +1,15 @@
+node_modules/
+.next/
+out/
+build/
+
+# Schlüssel gehören nie ins Repo. .env.example bleibt drin, .env.local nie.
+.env
+.env.local
+.env*.local
+
+*.tsbuildinfo
+next-env.d.ts
+
+scripts/__screens/
+.DS_Store

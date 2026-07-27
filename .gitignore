@@ -1,0 +1,58 @@
+# ---------------------------------------------------------------------------
+# Geheimnisse. Zuerst, damit niemand sie beim Umsortieren übersieht.
+# .env.example bleibt im Repo, .env.local nie.
+# ---------------------------------------------------------------------------
+.env
+.env.local
+.env*.local
+**/.env
+**/.env.local
+**/.env*.local
+
+# ---------------------------------------------------------------------------
+# Abhängigkeiten und Build-Artefakte
+# ---------------------------------------------------------------------------
+node_modules/
+**/node_modules/
+.next/
+**/.next/
+out/
+build/
+dist/
+*.tsbuildinfo
+next-env.d.ts
+
+# QA-Screenshots werden bei jedem Lauf neu erzeugt
+web/scripts/__screens/
+
+# ---------------------------------------------------------------------------
+# Betriebssystem und Editor
+# ---------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
+.vscode/
+.idea/
+
+# ---------------------------------------------------------------------------
+# Arbeitsdateien, die sich jederzeit neu erzeugen lassen
+# ---------------------------------------------------------------------------
+01 Fotos/_contactsheet-*.jpg
+01 Fotos/_marine-check.jpg
+scratchpad/
+.tmp/
+
+# ---------------------------------------------------------------------------
+# Interne Unterlagen — NICHT in einem öffentlichen Repo.
+#
+# Enthalten Wettbewerbsanalyse, offene Bewertung des Kunden (2,6 ★ aus 704)
+# und das Bildarchiv des Kunden. Sobald das Repo auf privat steht, diesen
+# Block löschen und `git add -A && git commit && git push` — dann ist alles drin.
+# ---------------------------------------------------------------------------
+Marktanalyse-Car-WAX-Antalya.md
+Roadmap-Car-WAX-Antalya.xlsx
+INSTRUCTION.md
+Video-Prompts-Hero.md
+Video-Script-CarWAX-Antalya-TR.md
+01 Fotos/

@@ -1,0 +1,286 @@
+{
+  "meta": {
+    "title": "CarWAX Antalya · Ceramic Coating, PPF and Car Detailing",
+    "description": "Caring for cars since 1989. Ceramic coating, PPF paint protection, deep interior cleaning and yacht care at four locations in Antalya."
+  },
+  "nav": {
+    "services": "Services",
+    "marine": "Boats & Yachts",
+    "branches": "Locations",
+    "contact": "Contact",
+    "call": "Call",
+    "products": "Products",
+    "about": "About",
+    "packages": "Packages",
+    "whatsapp": "WhatsApp",
+    "map": "Find us"
+  },
+  "hero": {
+    "eyebrow": "Antalya · Since 1989",
+    "title": {
+      "l1": "Your car should",
+      "l2": "look like",
+      "l3": "day one."
+    },
+    "sub": "Four locations across Antalya. Drop the car off, go do your shopping, and we'll take care of it. We look after boats with the same attention.",
+    "ctaPrimary": "Call Us",
+    "ctaSecondary": "What We Do",
+    "scroll": "Scroll"
+  },
+  "trust": {
+    "label": "Why CarWAX",
+    "since": {
+      "label": "Experience",
+      "value": "Doing this since 1989"
+    },
+    "stations": {
+      "label": "Network",
+      "value": "More than 50 locations across Turkey"
+    },
+    "languages": {
+      "label": "Languages",
+      "value": "Türkçe · English · Русский"
+    },
+    "insured": {
+      "label": "Peace of mind",
+      "value": "Insured service"
+    }
+  },
+  "counters": {
+    "title": "CarWAX in numbers",
+    "lead": "Treatments we have completed to date.",
+    "yikama": "Washes",
+    "boyaKoruma": "Paint Protection",
+    "antibakteriyel": "Antibacterial Cleans",
+    "seramik": "Ceramic Coatings"
+  },
+  "gloss": {
+    "eyebrow": "Ceramic Coating",
+    "title": "See the difference yourself.",
+    "lead": "Same car, same photo. Drag the line left and right: untreated paint on the left, ceramic coating on the right. And it doesn't stop at looks. A coated surface washes off easier and stays new for longer.",
+    "sliderLabel": "Drag the comparison line left or right",
+    "before": "Before",
+    "after": "After CarWAX",
+    "scrollBefore": "Untreated surface. Light scatters, colour looks flat, dirt finds a grip.",
+    "scrollAfter": "After a 9H ceramic coating. Light reflects in one piece, colour deepens, dirt struggles to hold."
+  },
+  "services": {
+    "eyebrow": "What we do",
+    "title": "Whatever your car needs.",
+    "lead": "From a small scratch to full paint protection. Not sure what you need? Call us. We'll look at the car and tell you honestly.",
+    "seramik": {
+      "title": "Ceramic Coating",
+      "text": "A thin, hard protective layer over the paint. Colour deepens, dirt struggles to stick."
+    },
+    "grafen": {
+      "title": "Graphene Coating",
+      "text": "A step above ceramic. Tougher against heat and water."
+    },
+    "ppf": {
+      "title": "PPF Paint Protection Film",
+      "text": "A clear film against stone chips and scratches. Your paint stays exactly as it was underneath."
+    },
+    "camKaplama": {
+      "title": "Glass Coating",
+      "text": "Rain beads up and slides away. Night driving gets noticeably easier."
+    },
+    "camFilmi": {
+      "title": "Window Tinting",
+      "text": "A cooler cabin against the Antalya sun, and more privacy."
+    },
+    "sesYalitimi": {
+      "title": "Sound Insulation",
+      "text": "Less road noise, better music, and long drives that tire you less."
+    },
+    "icTemizlik": {
+      "title": "Deep Interior Cleaning",
+      "text": "Seats, carpets, headliner, dashboard. You get in like it's the first day again."
+    },
+    "antibakteriyel": {
+      "title": "Antibacterial Cleaning",
+      "text": "Air-conditioning and cabin hygiene. Especially for families with children or allergies."
+    },
+    "gocuk": {
+      "title": "Dent Removal",
+      "text": "Dents pushed out without touching the paint. Your original finish stays intact."
+    },
+    "camCatlak": {
+      "title": "Windscreen Repair",
+      "text": "Small chips fixed before they spread. Far cheaper than a whole new screen."
+    },
+    "metalKaplama": {
+      "title": "Metal & Chrome Coating",
+      "text": "Lasting shine on wheels, chrome and metal trim, with a surface that resists staining."
+    },
+    "helpEyebrow": "Not sure?",
+    "helpTitle": "Let's work out what you actually need.",
+    "helpText": "We won't quote a price without seeing the car. Call us, tell us what's going on, and we won't sell you what you don't need."
+  },
+  "marine": {
+    "eyebrow": "Boat & Yacht Care",
+    "title": "Not only cars.",
+    "lead": "Antalya is a sea city. From gelcoat to teak deck, from propeller to hull, it's the same team and the same care.",
+    "jelcoat": "Gelcoat Care",
+    "pastaCila": "Compound & Polish",
+    "tik": "Teak Deck Care",
+    "pervane": "Propeller Cleaning",
+    "kevlar": "Kevlar Repair",
+    "boya": "Paint Application"
+  },
+  "branches": {
+    "eyebrow": "Antalya",
+    "title": "Pick the one nearest you.",
+    "lead": "Four locations across Muratpaşa and Kepez, all inside shopping centres. Leave the car and get on with your day.",
+    "premium": "Premium Branch",
+    "route": "Directions",
+    "call": "Call",
+    "newTab": "opens in a new tab",
+    "addressLabel": "Address",
+    "hoursLabel": "Opening hours",
+    "everyday": "Every day"
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "We're one phone call away.",
+    "lead": "Got a question? Want to know a price? Call your nearest branch. We're happy to talk it through.",
+    "call": "Call",
+    "note": "Prices depend on the condition of your car and the treatment you choose. We'd rather hear from you on the phone so we can give you a straight answer."
+  },
+  "footer": {
+    "socialLabel": "Social media",
+    "newTab": "opens in a new tab",
+    "rights": "All rights reserved.",
+    "by": "Website by"
+  },
+  "common": {
+    "skipToContent": "Skip to content"
+  },
+  "concierge": {
+    "eyebrow": "CarWAX Assistant",
+    "title": "Have a question?",
+    "greeting": "Hello. Ask me about our services, our branches, or what would suit your car. For prices and appointments I'll point you to the branch.",
+    "placeholder": "Type your question…",
+    "inputLabel": "Your message to the assistant",
+    "send": "Send",
+    "open": "Open assistant",
+    "close": "Close assistant",
+    "thinking": "Typing…",
+    "offline": "I can't answer right now. Please call your nearest branch.",
+    "disclaimer": "For prices and appointments please call the branch: {phone}"
+  },
+  "packages": {
+    "eyebrow": "Packages",
+    "title": "You don’t have to pick treatments one by one.",
+    "lead": "CarWAX packages bundle the treatments that make sense together. Not sure which fits? Call the branch and we'll look at the car.",
+    "featured": "Most chosen",
+    "askPrice": "Call for a price",
+    "note": "Prices depend on the condition of your car and the package you choose. That's why we don't print them here. We'd rather be straight with you on the phone.",
+    "shine": {
+      "title": "Shine",
+      "text": "Classic paint protection for people who care how the car looks."
+    },
+    "ceramicPremium": {
+      "title": "Ceramic Premium",
+      "text": "The furthest paint protection technology goes. 9H ceramic coating."
+    },
+    "full": {
+      "title": "Full",
+      "text": "Nano paint protection and antibacterial interior cleaning together."
+    },
+    "deep": {
+      "title": "Deep",
+      "text": "Deep antibacterial interior cleaning, for people who put health first."
+    },
+    "includes": {
+      "boyaKoruma": "Paint protection",
+      "pastaCila": "Compound & polish",
+      "disYikama": "Detailed exterior wash",
+      "seramik9h": "9H ceramic coating",
+      "jantKrom": "Wheel and chrome protection",
+      "nanoBoyaKoruma": "Nano paint protection",
+      "antibakteriyel": "Antibacterial cleaning",
+      "icTemizlik": "Deep interior cleaning",
+      "doseme": "Seat and upholstery care"
+    }
+  },
+  "products": {
+    "eyebrow": "Our products",
+    "title": "We make what we use.",
+    "lead": "Formulations developed jointly by American and Turkish engineers, and the same products we use in our own branches.",
+    "sampuan": {
+      "title": "Wash Shampoos",
+      "text": "Cleaning that is gentle on paint and leaves no streaks."
+    },
+    "pasta": {
+      "title": "Compound & Polish",
+      "text": "Scratch removal and gloss restoration."
+    },
+    "jant": {
+      "title": "Wheel, Metal & Chrome",
+      "text": "Against brake dust and metal staining."
+    },
+    "icTemizlik": {
+      "title": "Interior Cleaners",
+      "text": "For upholstery, plastic and leather."
+    },
+    "parfum": {
+      "title": "Car Fragrances",
+      "text": "Long-lasting cabin scents."
+    },
+    "amator": {
+      "title": "Home-Care Range",
+      "text": "For owners who look after the car themselves."
+    }
+  },
+  "story": {
+    "eyebrow": "About us",
+    "title": "This trade came to us from our father.",
+    "lead": "CarWAX is the Mumcu family’s business. It started with their father Hayrettin Mumcu’s passion for cars; today the same standard runs across more than 50 locations in Turkey.",
+    "teamTitle": "Our team",
+    "milestones": {
+      "start": "The first wash and care service opened on 700 m² in Erenköy, Istanbul.",
+      "name": "The CARWAX Car Care Systems brand was founded.",
+      "franchise": "The first franchise branch opened, and growth began."
+    },
+    "roles": {
+      "mustafa": "Director",
+      "nergis": "General Manager",
+      "dilara": "Team",
+      "emrah": "Team",
+      "gokhan": "Team",
+      "yusuf": "Team"
+    }
+  },
+  "whatsapp": {
+    "eyebrow": "WhatsApp",
+    "title": "If writing is easier than calling, write.",
+    "lead": "Send a photo of your car and we’ll tell you what it needs. You reach the branch directly on WhatsApp.",
+    "cta": "Message on WhatsApp",
+    "message": "Hello, I’d like some information about the {branch} branch.",
+    "note": "TerraCity uses a landline and therefore isn't on WhatsApp. Please call that branch instead.",
+    "fabLabel": "Message the {branch} branch on WhatsApp"
+  },
+  "map": {
+    "eyebrow": "Find us",
+    "title": "Four locations, all inside shopping centres.",
+    "lead": "Pick the one nearest you, see it on the map, and get directions in one tap.",
+    "route": "Directions",
+    "tablistLabel": "Choose a branch"
+  },
+  "rating": {
+    "eyebrow": "Google rating",
+    "proudTitle": "This is how our customers rate us.",
+    "proudLead": "We try to earn this score again every day. If you'd share your experience, we'd be glad.",
+    "honestTitle": "We show our rating as it is.",
+    "honestLead": "Our Google score isn't where we want it to be. Rather than hide that, we'll say it plainly: we read every review and we're fixing what's going wrong, one thing at a time. Write yours, good or bad. That's what helps us most.",
+    "cta": "Review us on Google",
+    "count": "{count} reviews",
+    "starsLabel": "{value} out of 5 stars",
+    "source": "Source: Google Maps · read on {date}"
+  },
+  "theme": {
+    "toLight": "Switch to light mode",
+    "toDark": "Switch to dark mode",
+    "toggle": "Switch appearance"
+  }
+}

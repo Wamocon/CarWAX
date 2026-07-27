@@ -1,0 +1,286 @@
+{
+  "meta": {
+    "title": "CarWAX Antalya · Seramik Kaplama, PPF ve Detaylı Araç Bakımı",
+    "description": "1989'dan beri araç bakımı. Antalya'da dört noktada seramik kaplama, PPF boya koruma, detaylı iç temizlik ve yat bakımı."
+  },
+  "nav": {
+    "services": "Hizmetler",
+    "marine": "Tekne & Yat",
+    "branches": "Şubeler",
+    "contact": "İletişim",
+    "call": "Ara",
+    "products": "Ürünler",
+    "about": "Hakkımızda",
+    "packages": "Paketler",
+    "whatsapp": "WhatsApp",
+    "map": "Konum"
+  },
+  "hero": {
+    "eyebrow": "Antalya · 1989'dan beri",
+    "title": {
+      "l1": "Aracınız",
+      "l2": "ilk günkü gibi",
+      "l3": "parlamalı."
+    },
+    "sub": "Antalya'da dört noktadayız. Aracınızı bırakın, siz alışverişinizi yapın; biz ilgilenelim. Teknenize de aynı özenle bakıyoruz.",
+    "ctaPrimary": "Bizi Arayın",
+    "ctaSecondary": "Neler Yapıyoruz",
+    "scroll": "Kaydır"
+  },
+  "trust": {
+    "label": "Neden CarWAX",
+    "since": {
+      "label": "Tecrübe",
+      "value": "1989'dan beri bu işi yapıyoruz"
+    },
+    "stations": {
+      "label": "Yaygınlık",
+      "value": "Türkiye genelinde 50'den fazla nokta"
+    },
+    "languages": {
+      "label": "Diller",
+      "value": "Türkçe · English · Русский"
+    },
+    "insured": {
+      "label": "Güvence",
+      "value": "Sigortalı hizmet"
+    }
+  },
+  "counters": {
+    "title": "Rakamlarla CarWAX",
+    "lead": "CarWAX olarak bugüne kadar tamamladığımız uygulamalar.",
+    "yikama": "Yıkama",
+    "boyaKoruma": "Boya Koruma",
+    "antibakteriyel": "Antibakteriyel Temizlik",
+    "seramik": "Seramik Kaplama"
+  },
+  "gloss": {
+    "eyebrow": "Seramik Kaplama",
+    "title": "Aradaki farkı kendiniz görün.",
+    "lead": "Aynı araç, aynı fotoğraf. Ortadaki çizgiyi sağa sola çekin: solda bakımsız yüzey, sağda seramik kaplama sonrası. Fark burada bitmiyor. Kaplı yüzey daha kolay temizleniyor ve daha uzun süre yeni kalıyor.",
+    "sliderLabel": "Karşılaştırma çizgisini sağa sola taşıyın",
+    "before": "Önce",
+    "after": "CarWAX sonrası",
+    "scrollBefore": "Bakımsız yüzey. Işık dağılıyor, renk sönük duruyor, kir tutunuyor.",
+    "scrollAfter": "9H seramik kaplama sonrası. Işık tek parça yansıyor, renk derinleşiyor, kir zor tutunuyor."
+  },
+  "services": {
+    "eyebrow": "Hizmetlerimiz",
+    "title": "Aracınıza ne gerekiyorsa.",
+    "lead": "Küçük bir çizikten komple boya korumaya kadar. Emin değilseniz arayın, aracınıza bakıp size en uygun olanı söyleyelim.",
+    "seramik": {
+      "title": "Seramik Kaplama",
+      "text": "Boyanın üzerinde ince ve sert bir koruma katmanı. Renk derinleşir, kir daha zor tutunur."
+    },
+    "grafen": {
+      "title": "Grafen Kaplama",
+      "text": "Seramiğin bir üst seviyesi. Sıcağa ve suya karşı daha dayanıklı."
+    },
+    "ppf": {
+      "title": "PPF Boya Koruma Filmi",
+      "text": "Taş çarpmasına ve çiziğe karşı şeffaf film. Boyanız altında olduğu gibi kalır."
+    },
+    "camKaplama": {
+      "title": "Cam Kaplama",
+      "text": "Yağmurda su damlaları kayıp gider. Gece görüşünüz belirgin şekilde rahatlar."
+    },
+    "camFilmi": {
+      "title": "Cam Filmi",
+      "text": "Antalya güneşine karşı serin bir kabin ve daha fazla mahremiyet."
+    },
+    "sesYalitimi": {
+      "title": "Ses Yalıtımı",
+      "text": "Yol gürültüsü azalır, müzik daha iyi duyulur, uzun yol yormaz."
+    },
+    "icTemizlik": {
+      "title": "Detaylı İç Temizlik",
+      "text": "Koltuk, halı, tavan, torpido. Aracınıza ilk aldığınız gündeki gibi binersiniz."
+    },
+    "antibakteriyel": {
+      "title": "Antibakteriyel Temizlik",
+      "text": "Klima ve kabin hijyeni. Özellikle çocuklu ve alerjisi olan aileler için."
+    },
+    "gocuk": {
+      "title": "Göçük Onarımı",
+      "text": "Boyaya dokunmadan göçük düzeltme. Orijinal boyanız korunur."
+    },
+    "camCatlak": {
+      "title": "Cam Çatlak Tamiri",
+      "text": "Küçük taş izleri büyümeden onarılır. Camı komple değiştirmekten çok daha ekonomik."
+    },
+    "metalKaplama": {
+      "title": "Metal & Krom Kaplama",
+      "text": "Jant, krom ve metal parçalarda kalıcı parlaklık ve leke tutmayan yüzey."
+    },
+    "helpEyebrow": "Emin değil misiniz?",
+    "helpTitle": "Hangisi gerekli, birlikte karar verelim.",
+    "helpText": "Aracınızı görmeden fiyat söylemiyoruz. Arayın, durumu anlatın; gereksiz işlem önermeyiz."
+  },
+  "marine": {
+    "eyebrow": "Tekne & Yat Bakımı",
+    "title": "Sadece otomobil değil.",
+    "lead": "Antalya bir deniz şehri. Teknenizin jelkotundan tik güvertesine, pervanesinden gövdesine kadar aynı ekip, aynı özenle ilgileniyor.",
+    "jelcoat": "Jelkot Bakımı",
+    "pastaCila": "Pasta & Cila",
+    "tik": "Tik Güverte Bakımı",
+    "pervane": "Pervane Temizliği",
+    "kevlar": "Kevlar Onarımı",
+    "boya": "Boya Uygulaması"
+  },
+  "branches": {
+    "eyebrow": "Antalya",
+    "title": "Size en yakın olanı seçin.",
+    "lead": "Muratpaşa ve Kepez'de dört noktadayız. Hepsi alışveriş merkezi içinde; aracınızı bırakıp işinize bakabilirsiniz.",
+    "premium": "Premium Şube",
+    "route": "Yol Tarifi",
+    "call": "Ara",
+    "newTab": "yeni sekmede açılır",
+    "addressLabel": "Adres",
+    "hoursLabel": "Çalışma saatleri",
+    "everyday": "Her gün"
+  },
+  "contact": {
+    "eyebrow": "İletişim",
+    "title": "Bir telefon kadar yakınız.",
+    "lead": "Aklınıza takılan bir şey mi var? Fiyat mı öğrenmek istiyorsunuz? En yakın şubemizi arayın, memnuniyetle anlatalım.",
+    "call": "Ara",
+    "note": "Fiyatlar aracınızın durumuna ve seçtiğiniz uygulamaya göre değişir. Doğru bilgiyi verebilmemiz için sizi telefonda dinlemeyi tercih ediyoruz."
+  },
+  "footer": {
+    "socialLabel": "Sosyal medya",
+    "newTab": "yeni sekmede açılır",
+    "rights": "Tüm hakları saklıdır.",
+    "by": "Website by"
+  },
+  "common": {
+    "skipToContent": "İçeriğe geç"
+  },
+  "concierge": {
+    "eyebrow": "CarWAX Asistanı",
+    "title": "Bir sorunuz mu var?",
+    "greeting": "Merhaba. Hizmetlerimiz, şubelerimiz veya aracınıza ne uygun olduğu hakkında sorabilirsiniz. Fiyat ve randevu için sizi şubeye yönlendiririm.",
+    "placeholder": "Sorunuzu yazın…",
+    "inputLabel": "Asistana mesajınız",
+    "send": "Gönder",
+    "open": "Asistanı aç",
+    "close": "Asistanı kapat",
+    "thinking": "Yazıyor…",
+    "offline": "Şu anda yanıt veremiyorum. Lütfen en yakın şubemizi arayın.",
+    "disclaimer": "Fiyat ve randevu için lütfen şubeyi arayın: {phone}"
+  },
+  "packages": {
+    "eyebrow": "Uygulama Paketleri",
+    "title": "Tek tek seçmek zorunda değilsiniz.",
+    "lead": "CarWAX paketleri, birlikte anlamlı olan işlemleri bir araya getirir. Emin değilseniz şubeyi arayın; aracınıza bakıp doğru olanı söyleriz.",
+    "featured": "En çok tercih edilen",
+    "askPrice": "Fiyat için arayın",
+    "note": "Fiyatlar aracınızın durumuna ve seçilen pakete göre değişir. Bu yüzden burada fiyat yazmıyoruz. Telefonda net konuşmayı tercih ediyoruz.",
+    "shine": {
+      "title": "Shine",
+      "text": "Dış görünüme önem verenler için klasik boya koruma."
+    },
+    "ceramicPremium": {
+      "title": "Ceramic Premium",
+      "text": "Boya koruma teknolojisinin geldiği son nokta. 9H sertliğinde seramik kaplama."
+    },
+    "full": {
+      "title": "Full",
+      "text": "Nano boya koruma ve antibakteriyel iç temizlik bir arada."
+    },
+    "deep": {
+      "title": "Deep",
+      "text": "Önce sağlık diyenler için derinlemesine antibakteriyel iç temizlik."
+    },
+    "includes": {
+      "boyaKoruma": "Boya koruma",
+      "pastaCila": "Pasta & cila",
+      "disYikama": "Detaylı dış yıkama",
+      "seramik9h": "9H seramik kaplama",
+      "jantKrom": "Jant ve krom koruma",
+      "nanoBoyaKoruma": "Nano boya koruma",
+      "antibakteriyel": "Antibakteriyel temizlik",
+      "icTemizlik": "Detaylı iç temizlik",
+      "doseme": "Koltuk ve döşeme bakımı"
+    }
+  },
+  "products": {
+    "eyebrow": "Ürünlerimiz",
+    "title": "Kullandığımız ürünleri kendimiz üretiyoruz.",
+    "lead": "Amerikan ve Türk mühendislerinin ortak çalışmasıyla geliştirilen formüller. Şubelerimizde kullandığımız ürünlerin aynısı.",
+    "sampuan": {
+      "title": "Yıkama Şampuanları",
+      "text": "Boyayı yormayan, iz bırakmayan temizlik."
+    },
+    "pasta": {
+      "title": "Pasta & Cila",
+      "text": "Çizik giderme ve parlatma ürünleri."
+    },
+    "jant": {
+      "title": "Jant, Metal & Krom",
+      "text": "Fren tozu ve metal lekelerine karşı."
+    },
+    "icTemizlik": {
+      "title": "İç Temizlik Ürünleri",
+      "text": "Döşeme, plastik ve deri için."
+    },
+    "parfum": {
+      "title": "Araç Parfümleri",
+      "text": "Kalıcı kabin kokuları."
+    },
+    "amator": {
+      "title": "Amatör Seri",
+      "text": "Aracına kendi bakmak isteyenler için."
+    }
+  },
+  "story": {
+    "eyebrow": "Hakkımızda",
+    "title": "Bu iş bizde babadan geliyor.",
+    "lead": "CarWAX, Mumcu ailesinin işi. Babaları Hayrettin Mumcu’nun otomobil tutkusuyla başladı; bugün Türkiye genelinde 50’den fazla noktada aynı standart uygulanıyor.",
+    "teamTitle": "Ekibimiz",
+    "milestones": {
+      "start": "İstanbul Erenköy’de 700 m² alanda ilk oto yıkama ve bakım servisi açıldı.",
+      "name": "CARWAX Car Care Systems markası kuruldu.",
+      "franchise": "İlk franchise şubesi açıldı; büyüme başladı."
+    },
+    "roles": {
+      "mustafa": "Direktör",
+      "nergis": "Genel Müdür",
+      "dilara": "Ekip",
+      "emrah": "Ekip",
+      "gokhan": "Ekip",
+      "yusuf": "Ekip"
+    }
+  },
+  "whatsapp": {
+    "eyebrow": "WhatsApp",
+    "title": "Yazmak aramaktan kolaysa, yazın.",
+    "lead": "Aracınızın fotoğrafını gönderin, ne gerektiğini söyleyelim. Şubeyle doğrudan WhatsApp üzerinden konuşabilirsiniz.",
+    "cta": "WhatsApp’tan yaz",
+    "message": "Merhaba, {branch} şubesi için bilgi almak istiyorum.",
+    "note": "TerraCity şubesi sabit hat kullandığı için WhatsApp listesinde yer almıyor. O şubeyi telefonla arayabilirsiniz.",
+    "fabLabel": "{branch} şubesine WhatsApp'tan yaz"
+  },
+  "map": {
+    "eyebrow": "Konum",
+    "title": "Dört noktadayız, hepsi AVM içinde.",
+    "lead": "Size en yakın olanı seçin, haritada görün, tek dokunuşla yol tarifi alın.",
+    "route": "Yol Tarifi",
+    "tablistLabel": "Şube seçimi"
+  },
+  "rating": {
+    "eyebrow": "Google Değerlendirmesi",
+    "proudTitle": "Müşterilerimiz böyle değerlendiriyor.",
+    "proudLead": "Bu puanı her gün yeniden kazanmaya çalışıyoruz. Siz de deneyiminizi paylaşırsanız seviniriz.",
+    "honestTitle": "Puanımızı olduğu gibi gösteriyoruz.",
+    "honestLead": "Google puanımız şu anda olmasını istediğimiz yerde değil. Bunu saklamak yerine söylüyoruz: her yorumu okuyoruz, aksayan noktaları tek tek düzeltiyoruz. Deneyiminiz iyi de olsa kötü de olsa yazın. En çok işimize yarayan şey bu.",
+    "cta": "Google’da değerlendir",
+    "count": "{count} değerlendirme",
+    "starsLabel": "5 üzerinden {value} yıldız",
+    "source": "Kaynak: Google Haritalar · {date} tarihinde okundu"
+  },
+  "theme": {
+    "toLight": "Aydınlık moda geç",
+    "toDark": "Karanlık moda geç",
+    "toggle": "Görünüm modunu değiştir"
+  }
+}

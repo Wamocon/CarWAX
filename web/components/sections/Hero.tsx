@@ -1,0 +1,117 @@
+'use client';
+
+import { useTranslations } from 'next-intl';
+import { motion, type Variants } from 'motion/react';
+import { GlossSweep } from '@/components/anim/GlossSweep';
+import { Button } from '@/components/ui/Button';
+import { branches } from '@/lib/data/site';
+
+/** --ease-out aus dem Designsystem. Als Tupel, sonst weitet TS es zu number[]. */
+const EASE_OUT: [number, number, number, number] = [0.23, 1, 0.32, 1];
+
+/**
+ * Der Text steigt zeilenweise aus einer Maske auf. Jede Zeile liegt in einem
+ * `overflow-hidden`-Container, der Inhalt startet auf translateY(102%).
+ * Staffel 70 ms — kurz genug, dass es als eine Bewegung gelesen wird.
+ */
+const line: Variants = {
+  hidden: { y: '102%' },
+  show: (i: number) => ({
+    y: '0%',
+    transition: { duration: 1.05, delay: 0.12 + i * 0.07, ease: EASE_OUT },
+  }),
+};
+
+const fade: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  show: (d: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.9, delay: d, ease: EASE_OUT },
+  }),
+};
+
+export function Hero() {
+  const t = useTranslations('hero');
+
+  return (
+    <header className="relative flex min-h-[100svh] items-end overflow-hidden">
+      <GlossSweep
+        src="/img/hero-studio.jpg"
+        alt=""
+        className="absolute inset-0 -z-10"
+      />
+
+      {/*
+        Textschleier. Der Hero bleibt in beiden Modi dunkel — das Motiv ist
+        ein dunkel gegradetes Foto, weiße Schrift darauf funktioniert immer.
+        Nur der untere Abschluss läuft in die aktuelle Bühnenfarbe aus, damit
+        der Übergang zur Seite im Hellen nicht als schwarze Kante steht.
+      */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-10"
+        style={{
+          background: [
+            'linear-gradient(90deg, rgba(8,8,10,.82) 0%, rgba(8,8,10,.42) 38%, transparent 66%)',
+            'linear-gradient(180deg, rgba(8,8,10,.86) 0%, rgba(8,8,10,.2) 34%, rgba(8,8,10,.5) 66%, var(--color-bg) 100%)',
+          ].join(','),
+        }}
+      />
+
+      <div className="wrap relative z-20 pb-[clamp(46px,8vh,104px)]">
+        <motion.p
+          className="eyebrow mb-6"
+          variants={fade}
+          initial="hidden"
+          animate="show"
+          custom={0}
+        >
+          {t('eyebrow')}
+        </motion.p>
+
+        <h1 className="display mb-7">
+          {(['l1', 'l2', 'l3'] as const).map((k, i) => (
+            <span key={k} className="block overflow-hidden">
+              <motion.span
+                // Nur die Schlusszeile läuft in den Markenverlauf aus. Eine
+                // komplett verlaufende Headline liest sich schlechter, nicht
+                // teurer — der Akzent wirkt, weil er die Ausnahme ist.
+                className={i === 2 ? 'grad-text block pb-[0.08em]' : 'block'}
+                variants={line}
+                initial="hidden"
+                animate="show"
+                custom={i}
+              >
+                {t(`title.${k}`)}
+              </motion.span>
+            </span>
+          ))}
+        </h1>
+
+        <motion.p
+          className="lead mb-9 max-w-[52ch]"
+          variants={fade}
+          initial="hidden"
+          animate="show"
+          custom={0.45}
+        >
+          {t('sub')}
+        </motion.p>
+
+        <motion.div
+          className="flex flex-wrap gap-3.5"
+          variants={fade}
+          initial="hidden"
+          animate="show"
+          custom={0.6}
+        >
+          <Button href={`tel:${branches[0].phone}`}>{t('ctaPrimary')}</Button>
+          <Button href="#hizmetler" variant="ghost">
+            {t('ctaSecondary')}
+          </Button>
+        </motion.div>
+      </div>
+    </header>
+  );
+}

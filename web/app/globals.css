@@ -1,0 +1,500 @@
+@import 'tailwindcss';
+
+/* ============================================================================
+   CarWAX Antalya — Design-Tokens
+   Einzige Quelle der Wahrheit: ../../DESIGN.md
+   Markenrot #EC1C24 aus carwax-logo.png gepickt, nicht geschätzt.
+
+   Zwei Modi. Dunkel ist die Standardbühne (die Fotos sind dunkel gegradet),
+   Hell ist vollwertig, nicht nachträglich invertiert. Alles läuft über
+   dieselben semantischen Tokens — eine Komponente weiß nie, in welchem Modus
+   sie gerade steckt.
+   ========================================================================== */
+
+@theme {
+  /* --- Dunkel: getont, nicht schwarz ------------------------------------ */
+  --color-bg: #0b0f16;
+  --color-bg-raised: #121826;
+  --color-bg-sunken: #070a10;
+  --color-glass: rgba(255, 255, 255, 0.045);
+  --color-glass-strong: rgba(255, 255, 255, 0.075);
+
+  /* --- Marke + warme Halte für Verläufe --------------------------------- */
+  --color-brand: #ec1c24;
+  --color-brand-hot: #ff3b42;
+  --color-brand-soft: #ff6b70;
+  --color-brand-deep: #8e0d13;
+  --color-ember: #ff8a3d;
+  --color-magenta: #ff2d6f;
+
+  --color-fg: #f2f5f9;
+  --color-fg-muted: #a2adbd;
+  --color-fg-faint: #6d7889;
+
+  --color-hairline: rgba(190, 210, 240, 0.11);
+  --color-hairline-strong: rgba(190, 210, 240, 0.24);
+
+  --color-wa: #25d366;
+  --color-star: #ffb020;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+
+  --radius-edge: 2px;
+}
+
+/* Deckkraft der Farbwolken — im Hellen brauchen sie andere Werte,
+   deshalb als eigene Variablen statt fest im Gradienten. */
+:root {
+  --aurora-red: 0.42;
+  --aurora-ember: 0.3;
+  --aurora-rose: 0.26;
+  --wash-strength: 0.09;
+}
+
+/* ============================================================================
+   Heller Modus
+   Kein invertiertes Dunkel: eigene, kühl getonte Weißtöne, damit das
+   Markenrot nicht orange kippt, und kräftigere Haarlinien, weil dünne
+   Linien auf Weiß schneller verschwinden als auf Schwarz.
+   ========================================================================== */
+
+:root[data-theme='light'] {
+  --color-bg: #f5f7fb;
+  --color-bg-raised: #ffffff;
+  --color-bg-sunken: #e9edf4;
+  --color-glass: rgba(255, 255, 255, 0.62);
+  --color-glass-strong: rgba(255, 255, 255, 0.85);
+
+  --color-fg: #0d1420;
+  --color-fg-muted: #4a5568;
+  --color-fg-faint: #7b8798;
+
+  --color-hairline: rgba(13, 20, 32, 0.1);
+  --color-hairline-strong: rgba(13, 20, 32, 0.22);
+
+  /* Rot auf Weiß wirkt greller als auf Schwarz — eine Spur abdunkeln,
+     sonst flimmert es an Textkanten. */
+  --color-brand: #d5121a;
+  --color-brand-hot: #ec1c24;
+  --color-brand-soft: #ff8a8e;
+
+  --aurora-red: 0.3;
+  --aurora-ember: 0.22;
+  --aurora-rose: 0.24;
+  --wash-strength: 0.07;
+}
+
+/* ============================================================================
+   Basis
+   ========================================================================== */
+
+@layer base {
+  /* clip statt hidden — `overflow:hidden` auf <html> macht daraus einen
+     Scroll-Container und killt jedes position:sticky im Dokument. */
+  html {
+    overflow-x: clip;
+    -webkit-text-size-adjust: 100%;
+    color-scheme: dark;
+  }
+
+  html[data-theme='light'] {
+    color-scheme: light;
+  }
+
+  body {
+    overflow-x: clip;
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    /* Beim Moduswechsel weich überblenden statt hart umspringen. */
+    transition:
+      background-color 420ms var(--ease-out),
+      color 420ms var(--ease-out);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: var(--color-brand);
+    color: #fff;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-weight: 500;
+    text-wrap: balance;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg-sunken);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--color-fg) 18%, transparent);
+    border-radius: 6px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in srgb, var(--color-fg) 30%, transparent);
+  }
+}
+
+/* ============================================================================
+   Atmosphäre — Farbwolken, Verlaufsschleier, Korn
+   ========================================================================== */
+
+@layer components {
+  /* Drei sehr langsam wandernde Wolken in Rot, Amber und Rosé. Sie sind der
+     Grund, warum die Seite nicht flach wirkt — und der einzige Ort, an dem
+     großflächige Farbe erlaubt ist, weil sie weichgezeichnet ist. */
+  .aurora {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .aurora span {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(85px);
+    will-change: transform;
+  }
+
+  .aurora span:nth-child(1) {
+    top: -18vmax;
+    left: -12vmax;
+    width: 58vmax;
+    height: 58vmax;
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgb(236 28 36 / var(--aurora-red)),
+      transparent 66%
+    );
+    animation: drift-a 34s var(--ease-in-out) infinite alternate;
+  }
+
+  .aurora span:nth-child(2) {
+    right: -18vmax;
+    top: 26vh;
+    width: 54vmax;
+    height: 54vmax;
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgb(255 138 61 / var(--aurora-ember)),
+      transparent 66%
+    );
+    animation: drift-b 42s var(--ease-in-out) infinite alternate;
+  }
+
+  /* Das helle Rot, um das gebeten wurde: eine Rosé-Wolke unten links. */
+  .aurora span:nth-child(3) {
+    bottom: -24vmax;
+    left: 12vw;
+    width: 62vmax;
+    height: 62vmax;
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgb(255 107 112 / var(--aurora-rose)),
+      transparent 68%
+    );
+    animation: drift-c 50s var(--ease-in-out) infinite alternate;
+  }
+
+  @keyframes drift-a {
+    to {
+      transform: translate3d(16vw, 12vh, 0) scale(1.18);
+    }
+  }
+  @keyframes drift-b {
+    to {
+      transform: translate3d(-14vw, -10vh, 0) scale(1.22);
+    }
+  }
+  @keyframes drift-c {
+    to {
+      transform: translate3d(10vw, -14vh, 0) scale(1.14);
+    }
+  }
+
+  /* Sektionsschleier: ein weicher Farbhauch hinter einzelnen Sektionen,
+     damit der Verlauf beim Scrollen wandert statt gleichmäßig zu liegen. */
+  .wash-brand::before,
+  .wash-ember::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .wash-brand::before {
+    background: radial-gradient(
+      70% 60% at 18% 0%,
+      rgb(236 28 36 / var(--wash-strength)),
+      transparent 70%
+    );
+  }
+
+  .wash-ember::before {
+    background: radial-gradient(
+      65% 55% at 85% 100%,
+      rgb(255 138 61 / var(--wash-strength)),
+      transparent 70%
+    );
+  }
+
+  .grain {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.045;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='160' height='160' filter='url(%23n)' opacity='.55'/></svg>");
+  }
+
+  :root[data-theme='light'] .grain {
+    opacity: 0.03;
+    mix-blend-mode: multiply;
+  }
+
+  /* ---------------------------------------------------------------------- */
+
+  .wrap {
+    width: 100%;
+    max-width: 1280px;
+    margin-inline: auto;
+    padding-inline: clamp(20px, 5vw, 64px);
+  }
+
+  .section {
+    position: relative;
+    padding-block: clamp(96px, 12vw, 180px);
+  }
+
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-brand);
+  }
+
+  .eyebrow::before {
+    content: '';
+    flex: none;
+    width: clamp(24px, 4vw, 52px);
+    height: 1px;
+    background: linear-gradient(90deg, var(--color-brand), var(--color-ember));
+  }
+
+  .display {
+    font-size: clamp(3.2rem, 9vw, 8rem);
+    line-height: 0.94;
+    letter-spacing: -0.035em;
+    font-weight: 500;
+  }
+
+  .h2 {
+    font-size: clamp(2rem, 4.4vw, 3.6rem);
+    line-height: 1.06;
+    letter-spacing: -0.025em;
+  }
+
+  .lead {
+    max-width: 68ch;
+    color: var(--color-fg-muted);
+  }
+
+  .grad-text {
+    background: linear-gradient(
+      100deg,
+      var(--color-fg) 0%,
+      var(--color-fg) 34%,
+      var(--color-brand-hot) 62%,
+      var(--color-ember) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Glaskarte. Im Hellen ist die Füllung dichter und der Rand kräftiger,
+     sonst löst sich die Karte im Hintergrund auf. */
+  .glass {
+    position: relative;
+    background: linear-gradient(
+      160deg,
+      rgba(255, 255, 255, 0.06),
+      rgba(255, 255, 255, 0.018)
+    );
+    backdrop-filter: blur(14px) saturate(1.25);
+    border: 1px solid var(--color-hairline);
+    border-radius: 4px;
+  }
+
+  :root[data-theme='light'] .glass {
+    background: linear-gradient(
+      160deg,
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 255, 255, 0.62)
+    );
+    box-shadow: 0 1px 2px rgb(13 20 32 / 0.04), 0 12px 32px -20px rgb(13 20 32 / 0.28);
+  }
+
+  .glass::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.28),
+      transparent
+    );
+    pointer-events: none;
+  }
+
+  :root[data-theme='light'] .glass::before {
+    display: none;
+  }
+
+  .grad-ring {
+    position: relative;
+    border-radius: 4px;
+  }
+
+  .grad-ring::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      140deg,
+      var(--color-brand),
+      var(--color-ember) 45%,
+      transparent 75%
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .glow-brand {
+    box-shadow:
+      0 0 0 1px var(--color-hairline),
+      0 20px 60px -30px rgb(236 28 36 / 0.55);
+  }
+
+  .sheen {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .sheen::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(
+      110deg,
+      transparent 35%,
+      rgba(255, 255, 255, 0.09) 48%,
+      rgb(255 138 61 / 0.12) 52%,
+      transparent 65%
+    );
+    transform: translateX(-120%);
+    transition: transform 900ms var(--ease-out);
+  }
+
+  :root[data-theme='light'] .sheen::after {
+    background: linear-gradient(
+      110deg,
+      transparent 35%,
+      rgb(236 28 36 / 0.05) 50%,
+      transparent 65%
+    );
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .sheen:hover::after {
+      transform: translateX(120%);
+    }
+  }
+
+  .rule-fade {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-hairline-strong),
+      transparent
+    );
+  }
+
+  /* Modusabhängige Sichtbarkeit.
+     Gebraucht für das Logo: die Wortmarke hat schwarze Bildteile. Auf der
+     dunklen Bühne läuft die aufgehellte Variante, auf Weiß muss das Original
+     zurück — sonst verschwindet die Hälfte der Marke im Hintergrund.
+     Umgeschaltet wird per CSS statt per JS, damit beim Moduswechsel kein
+     Bild nachgeladen werden muss und nichts flackert. */
+  :root[data-theme='light'] .only-dark {
+    display: none;
+  }
+
+  .only-light {
+    display: none;
+  }
+
+  :root[data-theme='light'] .only-light {
+    display: revert-layer;
+  }
+}
+
+/* ============================================================================
+   Reduzierte Bewegung
+   »Reduced« heißt weniger und sanfter, nicht null. Farbe und Kontrast
+   bleiben — sie tragen Bedeutung. Bewegung fliegt raus, inklusive Aurora.
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .aurora span {
+    animation: none !important;
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "carwax-antalya-projekt",
+  "private": true,
+  "//": "Die Website liegt in web/. Dieses Wurzel-package.json existiert nur, damit npm-Befehle auch hier oben funktionieren statt mit ENOENT abzubrechen.",
+  "scripts": {
+    "dev": "npm --prefix web run dev",
+    "build": "npm --prefix web run build",
+    "start": "npm --prefix web run start",
+    "typecheck": "npm --prefix web run typecheck",
+    "qa": "npm --prefix web run qa",
+    "install:web": "npm --prefix web install"
+  }
+}
