@@ -24,18 +24,22 @@ import { useEffect, useRef, useState } from 'react';
  */
 export function GlossSweep({
   src,
+  video,
   alt = '',
   className,
   duration = 2200,
   play = true,
 }: {
   src: string;
+  /** Optionaler Clip als versiegelte Ebene. Ohne ihn bleibt es das Standbild. */
+  video?: string;
   alt?: string;
   className?: string;
   duration?: number;
   play?: boolean;
 }) {
   const root = useRef<HTMLDivElement>(null);
+  const vid = useRef<HTMLVideoElement>(null);
   const [reduced, setReduced] = useState(false);
 
   useEffect(() => {
@@ -70,6 +74,39 @@ export function GlossSweep({
     raf = requestAnimationFrame(step);
     return () => cancelAnimationFrame(raf);
   }, [play, reduced, duration, src]);
+
+  /*
+    Der Clip läuft nur, solange er auch zu sehen ist.
+
+    Ein Video, das im Hintergrund weiterläuft, während der Besucher längst bei
+    den Paketen ist, kostet Akku und Rechenzeit für ein Bild, das niemand
+    anschaut. Der IntersectionObserver hält es an, sobald der Hero aus dem
+    Sichtfeld ist, und startet es wieder, wenn man zurückscrollt.
+
+    Bei `prefers-reduced-motion` wird gar nicht erst abgespielt: dann bleibt
+    das Posterbild stehen, und das ist genau dasselbe Motiv, aus dem der Clip
+    erzeugt wurde. Kein Ruckeln, kein Umschalten, nur ein Standbild.
+  */
+  useEffect(() => {
+    const el = vid.current;
+    if (!el) return;
+
+    if (reduced) {
+      el.pause();
+      el.removeAttribute('autoplay');
+      return;
+    }
+
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) void el.play().catch(() => {});
+        else el.pause();
+      },
+      { threshold: 0.1 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [reduced, video]);
 
   return (
     /*
@@ -108,14 +145,39 @@ export function GlossSweep({
         className="absolute inset-0"
         style={{ filter: 'saturate(1.14) brightness(1.02) contrast(1.16)' }}
       >
-        <Image
-          src={src}
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />
+        {/*
+          Liegt ein Clip vor, ist ER die versiegelte Ebene, und der Wisch deckt
+          ihn auf: aus mattem Standbild wird bewegter Spiegelglanz. Genau die
+          Aussage des Produkts, ohne dass dafür ein zweites Video dekodiert
+          werden muss. Die matte Ebene darüber bleibt das Bild.
+
+          `poster` ist das Standbild, aus dem der Clip erzeugt wurde. Deshalb
+          gibt es beim Umschalten von Poster auf Video kein Springen.
+        */}
+        {video ? (
+          <video
+            ref={vid}
+            className="absolute inset-0 h-full w-full object-cover object-center"
+            src={video}
+            poster={src}
+            muted
+            loop
+            playsInline
+            autoPlay
+            preload="metadata"
+            aria-hidden
+            tabIndex={-1}
+          />
+        ) : (
+          <Image
+            src={src}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+        )}
       </div>
 
       {/* matt — liegt oben und wird weggewischt */}

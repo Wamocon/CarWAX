@@ -36,8 +36,18 @@ export function Hero() {
 
   return (
     <header className="relative flex min-h-svh items-end overflow-hidden">
+      {/*
+        Der Clip stammt aus Veo, erzeugt aus genau diesem Standbild. Deshalb ist
+        `hero-studio.jpg` zugleich das Posterbild: bis das Video läuft, steht
+        dasselbe Motiv, und beim Umschalten springt nichts.
+
+        Fällt das Video aus, egal ob durch reduzierte Bewegung, gesperrtes
+        Autoplay oder einen Ladefehler, bleibt der Hero der, der er vorher war.
+        Das Video ist eine Zugabe, keine Voraussetzung.
+      */}
       <GlossSweep
         src="/img/hero-studio.jpg"
+        video="/video/hero.mp4"
         alt=""
         className="absolute inset-0 -z-10"
       />
