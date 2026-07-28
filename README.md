@@ -67,6 +67,12 @@ höflich, dass er gerade nicht verfügbar ist, und nennt eine Telefonnummer.
 - [`vercel.json`](vercel.json) setzt die Region auf **fra1** (Frankfurt). Vorgabe
   wäre Washington; für Besucher in Antalya und ein Backend in Europa ist das ein
   spürbarer Unterschied bei jeder Antwort des Concierge.
+
+  > ⚠️ **Keine Kommentare in `vercel.json`.** Vercel prüft die Datei gegen ein
+  > strenges Schema und weist jeden unbekannten Schlüssel ab. Der in
+  > `package.json` übliche `"//"`-Trick führt dort zu
+  > `Invalid request: should NOT have additional property '//'` und blockiert
+  > den Import des Projekts. Erklärungen gehören hierher, nicht in die Datei.
 - Die Chat-Route setzt `maxDuration = 30`. **Ohne das bricht der Concierge auf
   Vercel ab, obwohl er lokal läuft:** die Vorgabe für Serverless-Funktionen liegt
   bei zehn Sekunden, der Anbieterabruf wartet bis zu 25. Vercel würde nach zehn
