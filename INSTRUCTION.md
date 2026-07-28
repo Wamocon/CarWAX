@@ -154,8 +154,22 @@ werden. `pending.rating` in `lib/data/site.ts` bleibt bis dahin `null`.
    unter 6 MB, als Hintergrund hinter den Gloss Sweep legen.
 5. ~~Marktanalyse + Roadmap~~ — geschrieben, liegen im Repo.
 6. **Türkisches Erklärvideo** mit WAMOCON-Webdesign-Intro (~15 s), dann ~60–90 s CarWAX.
-7. **TR/RU von Muttersprachlern prüfen lassen.** Die Übersetzungen sind sorgfältig, aber
-   nicht muttersprachlich geprüft.
+7. **TR/RU von Muttersprachlern prüfen lassen.** *Teilweise erledigt am 28.07.:*
+   maschinell prüfbare Fehler sind raus. Türkisch: alle Eigennamen und Zahlen
+   tragen den Apostroph vor dem Suffix (`Antalya’da`, `1989’dan`, `190’a`),
+   Apostrophe durchgängig typografisch. Russisch: ICU-Pluralformen für
+   `one/few/many` statt der falschen Einheitsform („704 ОТЗЫВОВ"), Genus der
+   vier weiblichen Kundenstimmen korrigiert, und `Защит покрытия` zu
+   `Защит краски` geändert, weil es direkt neben `Керамических покрытий` stand
+   und zweimal dasselbe Wort für zwei verschiedene Sachen benutzte.
+
+   **Was ein Muttersprachler trotzdem noch prüfen muss:** Register und Idiomatik.
+   Konkret angesehen und bewusst NICHT geändert, weil verständlich aber
+   möglicherweise übersetzt klingend: `contact.title` „Мы на расстоянии звонка."
+   Das ist eine Lehnübersetzung von „We are one phone call away"; sie ist im
+   Russischen gebräuchlich, aber ein Muttersprachler soll entscheiden, ob
+   „Мы всего в одном звонке." besser trägt. So etwas findet keine Prüfung,
+   das findet nur ein Mensch, der die Sprache spricht.
 8. **Scope klären:** Antalya-Betreiber oder Konzern? Ändert Umfang und Zielgruppe.
 
 ## 8. Referenzen
