@@ -78,17 +78,64 @@ grain. No text, no logo, no face, seamless loop.
 
 > Antalya hat Marinas — das ist das Argument, das kein lokaler Wettbewerber hat.
 
+> ⚠️ **Korrektur.** Die erste Fassung dieses Prompts verlangte eine „white luxury
+> motor yacht" in einer Marina. Im Ordner `C-Marine/` liegen aber die Bilder des
+> **roten Runabouts aus dem abgedunkelten Studio**. Drei rote Referenzbilder gegen
+> einen Prompt, der Weiß fordert: genau daran ist die Erzeugung gescheitert.
+>
+> Das Archiv hat zwei getrennte Marine-Serien, und die eine passte zum Prompt,
+> die andere lag im Ordner:
+>
+> | Serie | Motiv | Passt zu |
+> |---|---|---|
+> | `VEO-Upload/C-Marine/` | roter Runabout, Chromscheuerleiste, Tikdeck, Edelstahlpropeller, schwarzes Studio | dem Prompt unten |
+> | `web-carwax/cmarine-*`, `cam-pastas-1`, `Krom-Koruma-yeni-1` | weiße Rümpfe, Tageslicht, Wasser und Marina im Hintergrund | dem alten Prompt |
+>
+> Rot ist ohnehin die richtige Wahl: es ist die Markenfarbe, und ein roter
+> Runabout vor Antalyas Marina ist ein Bild, das kein Wettbewerber hat.
+
+**Upload (Set C, in dieser Reihenfolge):**
+`01-ACTION-yacht-rumpf-politur.jpg` · `02-OBJECT-teakdeck.jpg` · `03-OBJECT-propeller.jpg`
+
+Die Referenzen liefern **das Boot und die Materialien**, der Prompt liefert
+**den Ort**. Das muss ausdrücklich dastehen, sonst übernimmt Veo auch das
+schwarze Studio und den Techniker mit Atemschutz aus den Vorlagen.
+
 ```
-Cinematic shot at blue hour in a Mediterranean marina. Use the reference images for the
-yacht hull, the teak deck and the polished propeller. A white luxury motor yacht hull,
-freshly polished, mirrors the last warm light. A slow lateral dolly glides along the hull;
-the gelcoat reflection travels with the camera. Calm water, soft ripples, distant marina
-lights as bokeh. Colour palette: deep teal-black water, pearl-white hull, warm amber
-highlights. Anamorphic lens, shallow depth of field, subtle grain.
-No text, no logo, no people, seamless loop.
+Cinematic shot at blue hour in a Mediterranean marina. Use the reference images ONLY for
+the boat itself and its materials: the deep candy-red glossy hull, the polished stainless
+rub rail running along the sheer line, the varnished teak deck with black caulking seams,
+and the stainless steel propeller. Do NOT copy the dark studio background or any person
+from the references. A classic red runabout lies moored at a quiet marina, its freshly
+polished hull mirroring the last warm light. A slow lateral dolly glides along the hull;
+the reflection travels with the camera and the chrome rail catches one hard specular line.
+Calm water, soft ripples against the waterline, distant marina lights as warm bokeh,
+silhouetted masts far behind. Colour palette: deep teal-black water, candy-red hull,
+polished chrome, warm amber highlights. Anamorphic lens, shallow depth of field, subtle
+film grain. No text, no logo, no people, no cuts. Calm, luxurious, loopable.
 ```
 
-**Negative:** `text, watermark, logo, people, fast motion, choppy water, cartoon, oversaturated, shaky camera, cuts`
+**Negative:** `text, watermark, logo, people, hands, gloves, respirator mask, dark studio background, white hull, fast motion, choppy water, cartoon, oversaturated, shaky camera, cuts, transitions, distorted hull, extra propellers`
+
+---
+
+### 5b. PROMPT C-alt — Werkstatt statt Marina (dieselbe Serie)
+
+Wer den Vorlagen vollständig treu bleiben will, nimmt den Ort, den sie zeigen.
+Das ist die risikoärmere Variante: Veo muss nichts erfinden.
+
+```
+Cinematic macro sequence in a blacked-out marine detailing workshop. Use the reference
+images for the boat: deep candy-red glossy hull, polished stainless rub rail, varnished
+teak deck with black caulking seams, stainless steel propeller. A slow lateral dolly
+glides along the freshly polished red hull; one hard rim-light rakes across it and the
+reflection travels with the camera, revealing a mirror-like finish. Fine dust motes drift
+through the light beam. Colour palette: near-black background, deep candy red, polished
+chrome, cool white speculars. Anamorphic lens, shallow depth of field, subtle film grain.
+No text, no logo, no people, no cuts. Calm, luxurious, loopable.
+```
+
+**Negative:** `text, watermark, logo, people, hands, gloves, respirator mask, daylight, water, fast motion, cartoon, oversaturated, shaky camera, cuts, transitions, distorted hull`
 
 ---
 
