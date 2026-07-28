@@ -25,6 +25,12 @@ next-env.d.ts
 # QA-Screenshots werden bei jedem Lauf neu erzeugt
 web/scripts/__screens/
 
+# Wegwerf-Skripte von Prüfläufen. Puppeteer-Skripte müssen zum Auflösen des
+# Imports in web/ liegen, landen also zwangsläufig im Projektbaum.
+web/_audit_*
+web/_shot*
+web/_tmp_*
+
 # ---------------------------------------------------------------------------
 # Betriebssystem und Editor
 # ---------------------------------------------------------------------------
