@@ -136,10 +136,14 @@ export function Header() {
             werden. Auf dem Telefon kam die Wortmarke dadurch auf 64px statt
             106px heraus und war sichtbar gestaucht.
           */}
+          {/* `self-stretch` gibt dem Sprung nach oben die volle Balkenhöhe als
+              Trefferfläche. Die Wortmarke selbst ist nur 26px hoch, und auf dem
+              Telefon war das ein Ziel weit unter den 44px, die ein Daumen
+              braucht. Am Aussehen ändert es nichts. */}
           <a
             href="#top"
             aria-label={`${brand.displayName} — ${brand.descriptor}`}
-            className="shrink-0"
+            className="flex shrink-0 items-center self-stretch"
           >
             <Image
               src="/brand/carwax-logo-light.png"

@@ -62,10 +62,18 @@ export default async function HomePage({
               lead={t('lead')}
             />
             <Reveal>
-              {/* Bewusst ein Auto: die Sektion erklärt Seramik Kaplama am
-                  Fahrzeug. Das Motiv „Genel Temizlik" zeigt einen Bootsrumpf
-                  und steht deshalb als `marine-genel` in der Marine-Sektion. */}
-              <GlossCompare src="/img/svc-seramik-nano.jpg" />
+              {/*
+                Anderes Motiv als die gepinnte Wisch-Sequenz weiter oben.
+                Vorher lief beides auf demselben Bild mit derselben
+                Überschrift, und der zweite Auftritt las sich als Wiederholung
+                statt als zweiter Beleg. Zwei Motive zeigen, dass der Effekt
+                nicht am einen Foto hängt.
+
+                Bewusst ein Auto: die Sektion erklärt Seramik Kaplama am
+                Fahrzeug. Das Motiv „Genel Temizlik" zeigt einen Bootsrumpf
+                und steht deshalb als `marine-genel` in der Marine-Sektion.
+              */}
+              <GlossCompare src="/img/svc-seramik-premium.jpg" />
             </Reveal>
           </div>
         </section>

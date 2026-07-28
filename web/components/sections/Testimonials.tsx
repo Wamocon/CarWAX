@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -30,6 +30,10 @@ export function Testimonials() {
   const root = useRef<HTMLElement>(null);
   const stage = useRef<HTMLDivElement>(null);
   const track = useRef<HTMLUListElement>(null);
+  // Sagt der Anzeige, ob die Bahn gerade geführt wird oder ob der
+  // Besucher selbst wischt. Nur im ersten Fall gibt es eine Strecke,
+  // deren Fortschritt man anzeigen könnte.
+  const [pinned, setPinned] = useState(false);
 
   useGsap(() => {
     const el = root.current;
@@ -54,7 +58,20 @@ export function Testimonials() {
       // Erst jetzt den händischen Scrollbereich abschalten: ab hier führt der
       // Effekt die Bahn. Wird der Effekt zurückgedreht, kommt er zurück.
       tr.dataset.pinned = 'true';
+      setPinned(true);
 
+      /*
+        Der Fortschrittsbalken ist nicht Zierde, er ist die Begründung.
+
+        Eine gepinnte Querbahn nimmt dem Besucher den Scroll ab und schickt ihn
+        seitwärts. Ohne Anhaltspunkt, wie weit er ist und wie viel noch kommt,
+        ist das ein Karussell ohne Grund: man scrollt und weiß nicht, wann es
+        aufhört. Mit Positionsanzeige wird daraus eine Strecke mit Anfang und
+        Ende, und die Bewegung hat einen Zweck statt nur einer Wirkung.
+
+        Läuft auf demselben Scrub wie die Bahn, kann also nicht auseinander
+        driften, und kostet nur eine Transform.
+      */
       const tween = gsap.to(tr, {
         x: () => -overhang(),
         ease: 'none',
@@ -65,6 +82,9 @@ export function Testimonials() {
           pin: st,
           scrub: 0.7,
           invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            st.style.setProperty('--rail', String(self.progress));
+          },
         },
       });
 
@@ -73,6 +93,7 @@ export function Testimonials() {
         tween.kill();
         gsap.set(tr, { clearProps: 'transform' });
         delete tr.dataset.pinned;
+        setPinned(false);
       };
     });
 
@@ -133,10 +154,24 @@ export function Testimonials() {
           </ul>
         </div>
 
-        <div className="wrap">
-          <p className="mt-8 font-mono text-[0.625rem] uppercase tracking-[0.18em] text-fg-faint">
+        <div className="wrap mt-8 flex flex-wrap items-center justify-between gap-4">
+          <p className="font-mono text-[0.625rem] uppercase tracking-[0.18em] text-fg-faint">
             {t('source')}
           </p>
+
+          {/* Nur sichtbar, solange die Bahn tatsächlich geführt wird. Auf dem
+              Telefon wischt der Besucher selbst und sieht seinen Fortschritt
+              am Einrasten der Karten. */}
+          <div
+            aria-hidden
+            className="hidden h-px w-40 shrink-0 bg-hairline-strong data-[pinned=true]:block"
+            data-pinned={pinned}
+          >
+            <div
+              className="h-px origin-left bg-brand"
+              style={{ transform: 'scaleX(var(--rail, 0))' }}
+            />
+          </div>
         </div>
       </div>
     </section>

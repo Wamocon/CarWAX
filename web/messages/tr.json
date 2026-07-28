@@ -65,7 +65,8 @@
     "before": "Önce",
     "after": "CarWAX sonrası",
     "scrollBefore": "Bakımsız yüzey. Işık dağılıyor, renk sönük duruyor, kir tutunuyor.",
-    "scrollAfter": "9H seramik kaplama sonrası. Işık tek parça yansıyor, renk derinleşiyor, kir zor tutunuyor."
+    "scrollAfter": "9H seramik kaplama sonrası. Işık tek parça yansıyor, renk derinleşiyor, kir zor tutunuyor.",
+    "sweepTitle": "Işık yalan söylemez."
   },
   "services": {
     "title": "Aracınıza ne gerekiyorsa.",

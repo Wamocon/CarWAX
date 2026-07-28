@@ -17,12 +17,22 @@ export function BrandLinks() {
   return (
     <section className="section pt-0" aria-labelledby="markenwege-h">
       <div className="wrap">
-        <h2
-          id="markenwege-h"
+        {/*
+          Die Überschrift steht im Dokumentgerüst, aber nicht als 11px-Zeile
+          sichtbar. Ein <h2>, das kleiner gesetzt ist als der Fließtext,
+          behauptet im Gerüst eine Ebene, die das Auge nicht sieht. Gleiche
+          Lösung wie in der Zähler-Sektion: Überschrift für Screenreader,
+          sichtbar bleibt eine Beschriftung.
+        */}
+        <h2 id="markenwege-h" className="sr-only">
+          {t('title')}
+        </h2>
+        <p
+          aria-hidden
           className="mb-8 font-mono text-[0.6875rem] uppercase tracking-[0.2em] text-fg-faint"
         >
           {t('title')}
-        </h2>
+        </p>
 
         <ul className="grid gap-px overflow-hidden border-y border-hairline bg-hairline sm:grid-cols-2">
           {brandLinks.map((l, i) => (

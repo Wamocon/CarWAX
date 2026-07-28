@@ -65,7 +65,8 @@
     "before": "Before",
     "after": "After CarWAX",
     "scrollBefore": "Untreated surface. Light scatters, colour looks flat, dirt finds a grip.",
-    "scrollAfter": "After a 9H ceramic coating. Light reflects in one piece, colour deepens, dirt struggles to hold."
+    "scrollAfter": "After a 9H ceramic coating. Light reflects in one piece, colour deepens, dirt struggles to hold.",
+    "sweepTitle": "Light does not lie."
   },
   "services": {
     "title": "Whatever your car needs.",

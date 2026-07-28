@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import gsap from 'gsap';
@@ -94,29 +95,36 @@ export function ScrollGloss({ src }: { src: string }) {
           } as React.CSSProperties
         }
       >
-        {/* versiegelt: liegt unten und wird aufgedeckt */}
+        {/*
+          Beide Ebenen über next/image statt `background-image`. Als CSS-
+          Hintergrund lud der Browser das ungeteilte Original, ohne Rücksicht
+          auf die Gerätebreite und ohne Lazy-Loading, obwohl die Sektion weit
+          unterhalb des ersten Bildschirms liegt. Kein `priority` hier: das ist
+          bewusst nicht das LCP-Element.
+        */}
         <div
           aria-hidden
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url(${src})`,
-            filter: 'saturate(1.16) brightness(1.03) contrast(1.16)',
-          }}
-        />
+          className="absolute inset-0"
+          style={{ filter: 'saturate(1.16) brightness(1.03) contrast(1.16)' }}
+        >
+          <Image src={src} alt="" fill sizes="100vw" className="object-cover object-center" />
+        </div>
+
         {/* matt: liegt oben und wird weggewischt */}
         <div
           aria-hidden
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0"
           style={{
-            backgroundImage: `url(${src})`,
             filter: 'saturate(0.3) brightness(0.5) contrast(1.02)',
             clipPath: 'inset(0 0 0 var(--sweep))',
           }}
-        />
+        >
+          <Image src={src} alt="" fill sizes="100vw" className="object-cover object-center" />
+        </div>
         {/* die Lichtkante läuft auf derselben Zahl mit */}
         <div
           aria-hidden
-          className="pointer-events-none absolute -top-[10%] -bottom-[10%] w-[clamp(90px,12vw,200px)] mix-blend-screen"
+          className="pointer-events-none absolute top-[-10%] bottom-[-10%] w-[clamp(90px,12vw,200px)] mix-blend-screen"
           style={{
             left: 'var(--sweep)',
             transform: 'translateX(-50%) skewX(-9deg)',
@@ -140,7 +148,11 @@ export function ScrollGloss({ src }: { src: string }) {
             id="gloss-scroll-h"
             className="h2 mb-4 max-w-[16ch] text-white"
           >
-            {t('title')}
+            {/* Eigene Zeile, nicht dieselbe wie beim Vergleichsregler weiter
+                unten. Diese Sektion ist die Behauptung, der Regler ist der
+                Beleg; wortgleiche Ueberschriften lasen sich wie ein
+                Copy-Paste-Fehler. */}
+            {t('sweepTitle')}
           </h2>
           <div className="relative h-[3.5em] max-w-[54ch]">
             <p

@@ -61,3 +61,4 @@ scratchpad/
 # Weiterhin ausgeschlossen bleibt nur, was Schaden anrichtet oder sich neu
 # erzeugen lässt: Schlüssel, node_modules, Build-Artefakte, Screenshots.
 # ---------------------------------------------------------------------------
+.gstack/
