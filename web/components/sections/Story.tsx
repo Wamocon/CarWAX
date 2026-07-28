@@ -20,14 +20,27 @@ export function Story() {
       className="section border-t border-hairline"
       aria-labelledby="hakkimizda-h"
     >
-      <div className="wrap">
-        <SectionHeading
-          id="hakkimizda-h"
-          size="lg"
-          title={t('title')}
-          lead={t('lead')}
-        />
+      {/*
+        Zweispaltig statt gestapelt, und die linke Spalte bleibt stehen.
 
+        Überschrift oben, Raster darunter war der Aufbau von neun Sektionen
+        hintereinander. Hier trägt die Herkunftsgeschichte den Text, während
+        Meilensteine und Gesichter daneben durchlaufen: der Leser hat die
+        Aussage die ganze Zeit im Blick, statt sie beim Weiterscrollen zu
+        verlieren. `lg:` bleibt es bei einer Spalte, denn auf dem Telefon ist
+        ein klebender Block nur verlorene Höhe.
+      */}
+      <div className="wrap grid gap-x-16 gap-y-12 lg:grid-cols-[minmax(0,22rem)_1fr]">
+        <div className="lg:sticky lg:top-28 lg:self-start">
+          <SectionHeading
+            id="hakkimizda-h"
+            size="lg"
+            title={t('title')}
+            lead={t('lead')}
+          />
+        </div>
+
+        <div>
         <ol className="mb-20 grid gap-px bg-hairline sm:grid-cols-3">
           {MILESTONES.map((m, i) => (
             <Reveal as="li" key={m.year} delay={i * 0.06} className="bg-bg p-8">
@@ -45,7 +58,7 @@ export function Story() {
           <h3 className="mb-8 text-[1.4rem] tracking-[-0.02em]">{t('teamTitle')}</h3>
         </Reveal>
 
-        <ul className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-6">
+        <ul className="grid grid-cols-2 gap-6 sm:grid-cols-3">
           {team.map((p, i) => (
             <Reveal as="li" key={p.id} delay={(i % 6) * 0.04}>
               <figure>
@@ -54,7 +67,7 @@ export function Story() {
                     src={p.img}
                     alt={p.name}
                     fill
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 22vw"
                     className="object-cover"
                   />
                 </div>
@@ -68,6 +81,7 @@ export function Story() {
             </Reveal>
           ))}
         </ul>
+        </div>
       </div>
     </section>
   );
