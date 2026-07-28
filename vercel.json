@@ -1,0 +1,6 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "//": "Die Anwendung liegt in web/. Root Directory muss im Vercel-Projekt auf 'web' stehen; das ist eine Projekteinstellung und laesst sich hier nicht setzen. Siehe README, Abschnitt Vercel.",
+  "regions": ["fra1"],
+  "framework": "nextjs"
+}

@@ -6,6 +6,21 @@ import { branches } from '@/lib/data/site';
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
+/**
+ * ⚠️ Ohne diesen Wert bricht der Concierge auf Vercel ab, obwohl er lokal läuft.
+ *
+ * Die Vorgabe für eine Serverless-Funktion liegt bei zehn Sekunden. Der
+ * Anbieterabruf in `lib/ai/provider.ts` wartet bis zu 25 Sekunden auf das
+ * Backend, weil eine erste Antwort mit Reasoning-Modell genau so lange dauern
+ * kann. Ohne Anhebung würde Vercel die Funktion nach zehn Sekunden hart
+ * abschneiden: der Besucher bekäme einen Funktionsfehler statt der höflichen
+ * Ersatzantwort mit Telefonnummer, die für genau diesen Fall gebaut ist.
+ *
+ * 30 statt 25, damit die App IMMER zuerst abbricht und ihre eigene Antwort
+ * ausliefern kann. Die Reihenfolge ist der ganze Punkt.
+ */
+export const maxDuration = 30;
+
 /** Ein Concierge-Gespräch bleibt kurz. Alles darüber ist Missbrauch, nicht Bedarf. */
 const MAX_MESSAGES = 24;
 const MAX_CHARS = 1500;

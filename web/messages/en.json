@@ -141,6 +141,11 @@
     "dosemeTamiri": {
       "title": "Upholstery Repair",
       "text": "Tears, burns and worn leather repaired in place. No full replacement needed."
+    },
+    "groups": {
+      "koruma": "Protection & Coating",
+      "ic": "Interior Care",
+      "onarim": "Repair & Correction"
     }
   },
   "marine": {
@@ -329,10 +334,8 @@
     "fabLabel": "Message the {branch} branch on WhatsApp"
   },
   "map": {
-    "title": "Four locations, all inside shopping centres.",
-    "lead": "Pick the one nearest you, see it on the map, and get directions in one tap.",
     "route": "Directions",
-    "tablistLabel": "Choose a branch"
+    "showOnMap": "Show on map"
   },
   "rating": {
     "proudTitle": "This is how our customers rate us.",

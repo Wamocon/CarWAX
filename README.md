@@ -34,6 +34,64 @@ cd web && npm run qa      # 3 Sprachen × 3 Viewports
 
 ---
 
+## Auf Vercel deployen
+
+### 1. Root Directory auf `web` stellen
+
+**Das ist der Schritt, an dem es sonst scheitert.** Die Anwendung liegt in
+[`web/`](web); im Wurzelverzeichnis steht nur ein Weiterleitungs-`package.json`.
+Ohne die Einstellung installiert Vercel im falschen Ordner und der Build bricht ab.
+
+> Vercel → Project → Settings → General → **Root Directory** = `web`
+
+Framework-Preset bleibt Next.js, Build- und Install-Befehl bleiben Vorgabe.
+
+### 2. Umgebungsvariablen setzen
+
+| Variable | Pflicht | Wofür |
+|---|---|---|
+| `NEXT_PUBLIC_SITE_URL` | **ja** | canonical, hreflang, sitemap, og:image, strukturierte Daten |
+| `AI_API_URL` | nein | Concierge-Backend |
+| `AI_API_KEY` | nein | Concierge-Backend |
+| `AI_CHAT_COMPLETIONS_PATH` | nein | Pfad am Backend |
+| `AI_MODEL_CHAT` | nein | Modellname |
+
+Ohne die AI-Variablen läuft die Seite vollständig; der Concierge antwortet dann
+höflich, dass er gerade nicht verfügbar ist, und nennt eine Telefonnummer.
+
+`NEXT_PUBLIC_SITE_URL` wird zur Bauzeit eingebacken. Nach einer Änderung ist ein
+**Redeploy nötig**, ein Neustart reicht nicht.
+
+### 3. Was schon vorbereitet ist
+
+- [`vercel.json`](vercel.json) setzt die Region auf **fra1** (Frankfurt). Vorgabe
+  wäre Washington; für Besucher in Antalya und ein Backend in Europa ist das ein
+  spürbarer Unterschied bei jeder Antwort des Concierge.
+- Die Chat-Route setzt `maxDuration = 30`. **Ohne das bricht der Concierge auf
+  Vercel ab, obwohl er lokal läuft:** die Vorgabe für Serverless-Funktionen liegt
+  bei zehn Sekunden, der Anbieterabruf wartet bis zu 25. Vercel würde nach zehn
+  Sekunden hart abschneiden und der Besucher bekäme einen Funktionsfehler statt
+  der vorbereiteten Ersatzantwort. 30 sorgt dafür, dass immer die App zuerst
+  abbricht.
+- Sicherheits-Kopfzeilen in [`next.config.mjs`](web/next.config.mjs).
+- Node ist über `engines` und `.nvmrc` auf 20+ festgelegt.
+
+### 4. Was auf Vercel anders funktioniert als lokal
+
+**Der Rate-Limiter des Concierge zählt pro Instanz.** Er liegt im
+Arbeitsspeicher ([`lib/ai/ratelimit.ts`](web/lib/ai/ratelimit.ts)). Auf einem
+einzelnen Server ist das genau richtig; serverless zählt jede Instanz für sich
+und ein Kaltstart setzt zurück. Gegen einen einzelnen Nutzer, der zu schnell
+tippt, hilft er weiterhin. Gegen verteilten Missbrauch nicht.
+
+Das Backend kostet pro Anfrage Geld. Wenn im Log ungewöhnlicher Verkehr auf
+`/api/chat` auftaucht, gehört der Zähler nach Upstash Redis; dafür ist genau
+diese eine Datei auszutauschen, der Rest bleibt unberührt.
+
+`robots.txt` sperrt `/api/` bereits für Crawler.
+
+---
+
 ## Vor dem Livegang
 
 Eine Sache **muss** gesetzt werden, sonst zeigt die Seite Google die falsche Adresse:

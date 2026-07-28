@@ -141,6 +141,11 @@
     "dosemeTamiri": {
       "title": "Döşeme Tamiri",
       "text": "Yırtık, yanık ve aşınmış deri yerinde onarılır. Komple değişim gerekmez."
+    },
+    "groups": {
+      "koruma": "Koruma & Kaplama",
+      "ic": "İç Bakım & Koruma",
+      "onarim": "Onarım & Düzeltme"
     }
   },
   "marine": {
@@ -329,10 +334,8 @@
     "fabLabel": "{branch} şubesine WhatsApp'tan yaz"
   },
   "map": {
-    "title": "Dört noktadayız, hepsi AVM içinde.",
-    "lead": "Size en yakın olanı seçin, haritada görün, tek dokunuşla yol tarifi alın.",
     "route": "Yol Tarifi",
-    "tablistLabel": "Şube seçimi"
+    "showOnMap": "Haritada göster"
   },
   "rating": {
     "proudTitle": "Müşterilerimiz böyle değerlendiriyor.",

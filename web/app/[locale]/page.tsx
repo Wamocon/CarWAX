@@ -17,7 +17,6 @@ import { Products } from '@/components/sections/Products';
 import { BrandLinks } from '@/components/sections/BrandLinks';
 import { Story } from '@/components/sections/Story';
 import { Branches } from '@/components/sections/Branches';
-import { MapSection } from '@/components/sections/MapSection';
 import { Testimonials } from '@/components/sections/Testimonials';
 import { Faq } from '@/components/sections/Faq';
 import { Rating } from '@/components/sections/Rating';
@@ -89,8 +88,10 @@ export default async function HomePage({
         <Products />
         <BrandLinks />
         <Story />
+        {/* Karte und Filialen sind eine Sektion: die Filialkarten sind
+            zugleich die Auswahl fuer die Karte. Vorher zaehlten beide
+            Sektionen dieselben vier Standorte hintereinander auf. */}
         <Branches />
-        <MapSection />
         <Faq />
         <WhatsApp />
         <Contact />
