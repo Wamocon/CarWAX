@@ -72,12 +72,24 @@ export function GlossSweep({
   }, [play, reduced, duration, src]);
 
   return (
+    /*
+      Zugänglichkeit der drei Ebenen.
+
+      Der Effekt besteht aus zwei gestapelten Bildern plus einer Lichtkante,
+      zeigt aber EIN Motiv. Deshalb tragen die inneren <img> bewusst `alt=""`
+      und der Rahmen führt den Namen: sonst liest ein Screenreader dasselbe
+      Foto dreimal vor.
+
+      Ohne `alt` wird der Rahmen ganz aus dem Baum genommen, statt als
+      `role="img"` mit leerem Namen dazustehen. Ein Bildelement ohne
+      Bezeichnung anzukündigen ist schlechter, als es gar nicht anzukündigen;
+      im Hero trägt die Überschrift die Aussage, das Foto ist Bühne.
+    */
     <div
       ref={root}
       className={className}
       style={{ '--sweep': '100%', '--edge-opacity': '0' } as React.CSSProperties}
-      role="img"
-      aria-label={alt}
+      {...(alt ? { role: 'img', 'aria-label': alt } : { 'aria-hidden': true })}
     >
       {/*
         Beide Ebenen laufen über next/image statt über `background-image`.
