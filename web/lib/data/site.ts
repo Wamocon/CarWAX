@@ -57,6 +57,8 @@ export const hq = {
 export const branches = [
   {
     id: 'terracity',
+    postalCode: '07160',
+    geo: { lat: 36.852484, lon: 30.757174 },
     name: 'TerraCity',
     tier: 'premium',
     district: 'Muratpaşa',
@@ -69,6 +71,8 @@ export const branches = [
   },
   {
     id: 'mark-antalya',
+    postalCode: '07050',
+    geo: { lat: 36.892923, lon: 30.704038 },
     name: 'Mark Antalya',
     tier: 'premium',
     district: 'Muratpaşa',
@@ -80,6 +84,8 @@ export const branches = [
   },
   {
     id: 'erasta',
+    postalCode: '07090',
+    geo: { lat: 36.907604, lon: 30.664542 },
     name: 'Erasta AVM',
     tier: 'standard',
     district: 'Kepez',
@@ -91,6 +97,8 @@ export const branches = [
   },
   {
     id: 'ozdilek',
+    postalCode: '07025',
+    geo: { lat: 36.910394, lon: 30.677527 },
     name: 'ÖzdilekPark',
     tier: 'standard',
     district: 'Kepez',
@@ -263,19 +271,33 @@ export const counters = [
   { id: 'seramik', value: 36962 },
 ] as const;
 
-/** Leistungen exakt nach der Menüstruktur von carwax.com.tr. */
+/**
+ * Leistungen exakt nach der Menüstruktur von carwax.com.tr.
+ *
+ * Jetzt vollständig: alle siebzehn Punkte aus „Koruma & Kaplama",
+ * „İç Bakım & Koruma" und „Onarım & Düzeltme". Die sechs zuletzt ergänzten
+ * standen im Menü des Kunden, fehlten hier aber. Die Varianten einer Familie
+ * (Seramik Nano/Plus/Premium, PPF in BQ/HQ/PQ) laufen bewusst unter einem
+ * Punkt: siebzehn Karten sind schon viel, dreißig wären eine Preisliste.
+ */
 export const services = [
   { id: 'seramik', img: '/img/svc-seramik-premium.jpg', group: 'koruma' },
   { id: 'grafen', img: '/img/svc-grafen.jpg', group: 'koruma' },
+  { id: 'ceramicWax', img: '/img/svc-ceramic-wax.jpg', group: 'koruma' },
+  { id: 'pastaCila', img: '/img/svc-pasta-cila.jpg', group: 'koruma' },
   { id: 'ppf', img: '/img/svc-ppf-hq.jpg', group: 'koruma' },
+  { id: 'renkDegisim', img: '/img/svc-renk-degisim.jpg', group: 'koruma' },
   { id: 'camKaplama', img: '/img/svc-cam-kaplama.jpg', group: 'koruma' },
   { id: 'camFilmi', img: '/img/svc-cam-filmi.jpg', group: 'koruma' },
+  { id: 'metalKaplama', img: '/img/svc-metal-kaplama.jpg', group: 'koruma' },
+  { id: 'pasOnleme', img: '/img/svc-pas-onleme.jpg', group: 'koruma' },
   { id: 'sesYalitimi', img: '/img/svc-ses-yalitimi.jpg', group: 'koruma' },
   { id: 'icTemizlik', img: '/img/svc-ic-temizlik.jpg', group: 'ic' },
+  { id: 'icMekan', img: '/img/svc-ic-mekan.jpg', group: 'ic' },
   { id: 'antibakteriyel', img: '/img/svc-antibakteriyel.jpg', group: 'ic' },
-  { id: 'metalKaplama', img: '/img/svc-metal-kaplama.jpg', group: 'koruma' },
   { id: 'gocuk', img: '/img/svc-gocuk.jpg', group: 'onarim' },
   { id: 'camCatlak', img: '/img/svc-cam-catlak.jpg', group: 'onarim' },
+  { id: 'dosemeTamiri', img: '/img/svc-doseme.jpg', group: 'onarim' },
 ] as const;
 
 /**
@@ -406,14 +428,31 @@ export const packages = [
   },
 ] as const;
 
-/** Ürünlerimiz — eigene Chemie, echte Katalogfotos. */
+/**
+ * Ürünlerimiz — eigene Chemie, echte Katalogfotos.
+ * Alle zehn Gruppen aus dem Katalog des Kunden; vier davon fehlten bisher.
+ */
 export const products = [
   { id: 'sampuan', img: '/img/urun-sampuan.jpg' },
-  { id: 'pasta', img: '/img/urun-pasta.jpg' },
+  { id: 'lastik', img: '/img/urun-lastik.jpg' },
   { id: 'jant', img: '/img/urun-jant.jpg' },
   { id: 'icTemizlik', img: '/img/urun-ic-temizlik.jpg' },
+  { id: 'leke', img: '/img/urun-leke.jpg' },
+  { id: 'hizli', img: '/img/urun-hizli.jpg' },
+  { id: 'motor', img: '/img/urun-motor.jpg' },
+  { id: 'pasta', img: '/img/urun-pasta.jpg' },
   { id: 'parfum', img: '/img/urun-parfum.jpg' },
   { id: 'amator', img: '/img/urun-amator.jpg' },
+] as const;
+
+/**
+ * Weiterführende Angebote der Marke, die keine eigene Sektion tragen, aber
+ * verlinkt gehören: der Onlineshop und die Franchise-Bewerbung. Beide standen
+ * im Hauptmenü des Kunden und fehlten hier komplett.
+ */
+export const brandLinks = [
+  { id: 'shop', href: 'https://carwax.com.tr/urunlerimiz/' },
+  { id: 'franchise', href: 'https://carwax.com.tr/bayilik-basvurusu/' },
 ] as const;
 
 /** Ekibimiz — Namen und Rollen von carwax.com.tr/ekibimiz. */
@@ -491,7 +530,6 @@ export const faq = ['nedir', 'hizmetler', 'nerede', 'franchise', 'teknoloji'] as
 export const pending = {
   whatsapp: null,
   hours: null,
-  geo: null,
   prices: null,
   rating: null,
   instagram: null,

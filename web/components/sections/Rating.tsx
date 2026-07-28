@@ -76,13 +76,6 @@ export function Rating() {
           </Reveal>
 
           <Reveal delay={0.08}>
-            {/* Diese Sektion baut ihre Überschrift selbst, braucht die
-                Kapitelnummer aber trotzdem: sonst reißt die Zählung genau
-                hier eine Lücke. */}
-            <p className="eyebrow mb-5">
-              {t('eyebrow')}
-              <span aria-hidden className="chapter" />
-            </p>
             <h2 id="degerlendirme-h" className="h2 mb-5">
               {proud ? t('proudTitle') : t('honestTitle')}
             </h2>

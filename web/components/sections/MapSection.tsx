@@ -25,7 +25,6 @@ export function MapSection() {
       <div className="wrap">
         <SectionHeading
           id="harita-h"
-          eyebrow={t('eyebrow')}
           title={t('title')}
           lead={t('lead')}
         />

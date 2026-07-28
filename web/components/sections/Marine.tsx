@@ -17,7 +17,7 @@ export function Marine() {
       <div className="wrap">
         <SectionHeading
           id="marine-h"
-          eyebrow={t('eyebrow')}
+          size="lg"
           title={t('title')}
           lead={t('lead')}
         />

@@ -30,7 +30,6 @@ export function Packages() {
       <div className="wrap">
         <SectionHeading
           id="paketler-h"
-          eyebrow={t('eyebrow')}
           title={t('title')}
           lead={t('lead')}
         />

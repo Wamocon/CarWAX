@@ -14,7 +14,7 @@ export function Services() {
       <div className="wrap">
         <SectionHeading
           id="hizmetler-h"
-          eyebrow={t('eyebrow')}
+          size="lg"
           title={t('title')}
           lead={t('lead')}
         />

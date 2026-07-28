@@ -27,7 +27,6 @@ export function WhatsApp() {
       <div className="wrap">
         <SectionHeading
           id="whatsapp-h"
-          eyebrow={t('eyebrow')}
           title={t('title')}
           lead={t('lead')}
         />

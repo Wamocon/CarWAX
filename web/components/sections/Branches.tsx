@@ -12,7 +12,6 @@ export function Branches() {
       <div className="wrap">
         <SectionHeading
           id="subeler-h"
-          eyebrow={t('eyebrow')}
           title={t('title')}
           lead={t('lead')}
         />

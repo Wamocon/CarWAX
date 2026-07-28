@@ -134,7 +134,6 @@ export function ScrollGloss({ src }: { src: string }) {
         />
 
         <div className="wrap absolute inset-x-0 bottom-[clamp(48px,10vh,120px)]">
-          <p className="eyebrow mb-5 text-white">{t('eyebrow')}</p>
           <h2
             id="gloss-scroll-h"
             className="h2 mb-4 max-w-[16ch] text-white"

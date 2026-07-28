@@ -35,7 +35,7 @@ export function Hero() {
   const t = useTranslations('hero');
 
   return (
-    <header className="relative flex min-h-[100svh] items-end overflow-hidden">
+    <header className="relative flex min-h-svh items-end overflow-hidden">
       <GlossSweep
         src="/img/hero-studio.jpg"
         alt=""
@@ -62,24 +62,22 @@ export function Hero() {
 
       {/* on-dark definiert die Farbtokens lokal um: hell auf Foto, in beiden Modi. */}
       <div className="on-dark wrap relative z-20 pb-[clamp(46px,8vh,104px)]">
-        <motion.p
-          className="eyebrow mb-6"
-          variants={fade}
-          initial="hidden"
-          animate="show"
-          custom={0}
-        >
-          {t('eyebrow')}
-        </motion.p>
+        {/*
+          Kein Label über der Headline mehr. Vorher stand hier
+          „Antalya · 1989'dan beri" — eine Information, die die Vertrauensleiste
+          direkt darunter ohnehin trägt, und in dieser Position nichts weiter
+          als der Kicker, an dem man eine Vorlage erkennt. Die Headline beginnt
+          jetzt auf der ersten Zeile.
 
+          Auch der Farbverlauf auf der Schlusszeile ist weg. Betonung kommt aus
+          Gewicht und Grad; ein Verlauf über Schrift ist Dekoration, die auf
+          hellem Grund zusätzlich Kontrast kostet.
+        */}
         <h1 className="display mb-7">
           {(['l1', 'l2', 'l3'] as const).map((k, i) => (
             <span key={k} className="block overflow-hidden">
               <motion.span
-                // Nur die Schlusszeile läuft in den Markenverlauf aus. Eine
-                // komplett verlaufende Headline liest sich schlechter, nicht
-                // teurer — der Akzent wirkt, weil er die Ausnahme ist.
-                className={i === 2 ? 'grad-text block pb-[0.08em]' : 'block'}
+                className="block"
                 variants={line}
                 initial="hidden"
                 animate="show"

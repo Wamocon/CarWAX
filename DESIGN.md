@@ -65,14 +65,35 @@ Unterschied zwischen *Werkstatt* und *Labor* macht.
 
 | Rolle | Familie | Größe | Tracking | Weight |
 |---|---|---|---|---|
-| Display / Hero | Geist Sans | `clamp(3.2rem, 9vw, 8rem)` | `-0.035em` | 500 |
-| H2 | Geist Sans | `clamp(2rem, 4.4vw, 3.6rem)` | `-0.025em` | 500 |
+| Display / Hero | Geist Sans | `clamp(3rem, 7.4vw, 6rem)` | `-0.035em` | 500 |
+| H2 groß (`h2-lg`) | Geist Sans | `clamp(2.4rem, 5.6vw, 4.4rem)` | `-0.03em` | 500 |
+| H2 (`h2`) | Geist Sans | `clamp(1.9rem, 3.6vw, 2.9rem)` | `-0.022em` | 500 |
 | H3 | Geist Sans | `clamp(1.25rem, 2vw, 1.6rem)` | `-0.015em` | 500 |
 | Fließtext | Geist Sans | `1.0625rem` / `1.65` | `0` | 400 |
-| Eyebrow / Label | **Geist Mono** | `0.6875rem` | `0.22em`, uppercase | 500 |
+| Label im Bauteil | **Geist Mono** | `0.6875rem` | `0.22em`, uppercase | 500 |
 | Zahl / Spec | **Geist Mono** | variabel, `tabular-nums` | `-0.01em` | 500 |
 
-- **Zeilenhöhe Display: `0.94`.** Enger als es sich richtig anfühlt — das ist der Punkt.
+- **Zeilenhöhe Display: `0.95`.** Enger als es sich richtig anfühlt — das ist der Punkt.
+
+### Zwei H2-Grade, kein Kicker
+
+Die erste Fassung hatte über jeder Sektion ein kleines Mono-Label
+(„Hizmetlerimiz", „Ürünlerimiz", „Konum") und alle Überschriften im selben Grad.
+Beides ist raus, und das ist die wichtigste Designentscheidung des Projekts:
+
+- **Kein Kicker über einer Überschrift.** Dreizehn Sektionen mit
+  Label → Überschrift → Fließtext sind genau die Dreiteilung, an der man eine
+  Vorlage erkennt. Die Labels sagten außerdem nichts, was die Überschrift nicht
+  schon sagt. Mono-Labels bleiben erlaubt **innerhalb** eines Bauteils
+  (Paketstufe, Bewertungszähler, Quellenzeile), nie darüber.
+- **Zwei Grade statt einem.** `h2-lg` tragen die drei Sektionen, die das
+  Argument tragen (Leistungen, Marine, Herkunft), alle übrigen `h2`. Als jede
+  Überschrift gleich groß war, hatte die Seite keine Betonung, nur Abstände.
+- **Kein Farbverlauf auf Schrift.** Betonung kommt aus Grad und Gewicht.
+  Der Verlauf auf der Hero-Schlusszeile ist entfernt; auf hellem Grund kostete
+  er zusätzlich Kontrast.
+- **Display bei 6rem gedeckelt** statt 8rem. Darüber wurde die Zeile zum
+  Layoutproblem und brach in jeder Sprache anders.
 - Fließtext nie breiter als **68 Zeichen**.
 - Türkisch braucht `İ ı ş ğ ç ö ü`, Russisch Kyrillisch — Geist deckt beides.
   **Vor dem Launch mit echtem TR/RU-Text prüfen, nicht mit Lorem Ipsum.**

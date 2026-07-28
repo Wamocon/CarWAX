@@ -23,7 +23,7 @@ export function Story() {
       <div className="wrap">
         <SectionHeading
           id="hakkimizda-h"
-          eyebrow={t('eyebrow')}
+          size="lg"
           title={t('title')}
           lead={t('lead')}
         />

@@ -22,7 +22,6 @@ export function Faq() {
       <div className="wrap">
         <SectionHeading
           id="sorular-h"
-          eyebrow={t('eyebrow')}
           title={t('title')}
           lead={t('lead')}
         />

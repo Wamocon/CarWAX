@@ -82,7 +82,6 @@ export function Testimonials() {
         <div className="wrap">
           <SectionHeading
             id="yorumlar-h"
-            eyebrow={t('eyebrow')}
             title={t('title')}
             lead={t('lead')}
           />

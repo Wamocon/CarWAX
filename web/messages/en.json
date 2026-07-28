@@ -21,7 +21,6 @@
     "faq": "Questions"
   },
   "hero": {
-    "eyebrow": "Antalya · Since 1989",
     "title": {
       "l1": "Your car should",
       "l2": "look like",
@@ -60,7 +59,6 @@
     "seramik": "Ceramic Coatings"
   },
   "gloss": {
-    "eyebrow": "Ceramic Coating",
     "title": "See the difference yourself.",
     "lead": "Same car, same photo. Drag the line left and right: untreated paint on the left, ceramic coating on the right. And it doesn't stop at looks. A coated surface washes off easier and stays new for longer.",
     "sliderLabel": "Drag the comparison line left or right",
@@ -70,7 +68,6 @@
     "scrollAfter": "After a 9H ceramic coating. Light reflects in one piece, colour deepens, dirt struggles to hold."
   },
   "services": {
-    "eyebrow": "What we do",
     "title": "Whatever your car needs.",
     "lead": "From a small scratch to full paint protection. Not sure what you need? Call us. We'll look at the car and tell you honestly.",
     "seramik": {
@@ -119,10 +116,33 @@
     },
     "helpEyebrow": "Not sure?",
     "helpTitle": "Let's work out what you actually need.",
-    "helpText": "We won't quote a price without seeing the car. Call us, tell us what's going on, and we won't sell you what you don't need."
+    "helpText": "We won't quote a price without seeing the car. Call us, tell us what's going on, and we won't sell you what you don't need.",
+    "ceramicWax": {
+      "title": "Ceramic Wax",
+      "text": "Ceramic-based protection, applied fast. The shine is there the same day."
+    },
+    "pastaCila": {
+      "title": "Compound & Polish",
+      "text": "Takes the scratches out of dull paint and brings the colour back."
+    },
+    "renkDegisim": {
+      "title": "Colour Change Films",
+      "text": "Change the colour without touching the paint. Reversible whenever you want."
+    },
+    "pasOnleme": {
+      "title": "Rust Prevention",
+      "text": "Underbody and hidden cavities sealed. Sea air is not gentle here."
+    },
+    "icMekan": {
+      "title": "Interior Protection",
+      "text": "Seats, trim and carpet stop holding stains. Spilled tea leaves no mark."
+    },
+    "dosemeTamiri": {
+      "title": "Upholstery Repair",
+      "text": "Tears, burns and worn leather repaired in place. No full replacement needed."
+    }
   },
   "marine": {
-    "eyebrow": "Boat & Yacht Care",
     "title": "Not only cars.",
     "lead": "Antalya is a sea city. From gelcoat to teak deck, from propeller to hull, it's the same team and the same care.",
     "jelcoat": "Gelcoat Care",
@@ -139,7 +159,6 @@
     "genelTemizlik": "General Cleaning and Care"
   },
   "branches": {
-    "eyebrow": "Antalya",
     "title": "Pick the one nearest you.",
     "lead": "Four locations across Muratpaşa and Kepez, all inside shopping centres. Leave the car and get on with your day.",
     "premium": "Premium Branch",
@@ -151,7 +170,6 @@
     "everyday": "Every day"
   },
   "contact": {
-    "eyebrow": "Contact",
     "title": "We're one phone call away.",
     "lead": "Got a question? Want to know a price? Call your nearest branch. We're happy to talk it through.",
     "call": "Call",
@@ -180,7 +198,6 @@
     "disclaimer": "For prices and appointments please call the branch: {phone}"
   },
   "packages": {
-    "eyebrow": "Care packages",
     "title": "You do not have to pick line by line.",
     "lead": "Three families, two levels. Shine looks after the paint, Deep after the cabin, Full after both. If you are unsure, call the branch. We look at your car and tell you which one fits.",
     "featured": "Most complete",
@@ -241,7 +258,6 @@
     }
   },
   "products": {
-    "eyebrow": "Our products",
     "title": "We make what we use.",
     "lead": "Formulations developed jointly by American and Turkish engineers, and the same products we use in our own branches.",
     "sampuan": {
@@ -249,8 +265,8 @@
       "text": "Cleaning that is gentle on paint and leaves no streaks."
     },
     "pasta": {
-      "title": "Compound & Polish",
-      "text": "Scratch removal and gloss restoration."
+      "title": "Compound & Polish Products",
+      "text": "Scratch removal and gloss chemistry."
     },
     "jant": {
       "title": "Wheel, Metal & Chrome",
@@ -267,10 +283,25 @@
     "amator": {
       "title": "Home-Care Range",
       "text": "For owners who look after the car themselves."
+    },
+    "lastik": {
+      "title": "Tyre & Plastic",
+      "text": "Brings depth back to faded plastic and rubber."
+    },
+    "leke": {
+      "title": "Stain Removers",
+      "text": "Targeted answers for the stubborn marks."
+    },
+    "hizli": {
+      "title": "Quick Polishes",
+      "text": "Visible shine in about two minutes."
+    },
+    "motor": {
+      "title": "Engine Cleaning",
+      "text": "Grease and grime solvents for the engine bay."
     }
   },
   "story": {
-    "eyebrow": "About us",
     "title": "This trade came to us from our father.",
     "lead": "CarWAX is the Mumcu family’s business. It started with their father Hayrettin Mumcu’s passion for cars, and today the same standard runs across 122 stations.",
     "teamTitle": "Our team",
@@ -289,7 +320,6 @@
     }
   },
   "whatsapp": {
-    "eyebrow": "WhatsApp",
     "title": "If writing is easier than calling, write.",
     "lead": "Send a photo of your car and we’ll tell you what it needs. You reach the branch directly on WhatsApp.",
     "cta": "Message on WhatsApp",
@@ -298,14 +328,12 @@
     "fabLabel": "Message the {branch} branch on WhatsApp"
   },
   "map": {
-    "eyebrow": "Find us",
     "title": "Four locations, all inside shopping centres.",
     "lead": "Pick the one nearest you, see it on the map, and get directions in one tap.",
     "route": "Directions",
     "tablistLabel": "Choose a branch"
   },
   "rating": {
-    "eyebrow": "Google rating",
     "proudTitle": "This is how our customers rate us.",
     "proudLead": "We try to earn this score again every day. If you'd share your experience, we'd be glad.",
     "honestTitle": "We show our rating as it is.",
@@ -321,7 +349,6 @@
     "toggle": "Switch appearance"
   },
   "testimonials": {
-    "eyebrow": "Customer voices",
     "title": "What people say about us.",
     "lead": "These are the customer comments CarWAX publishes itself. Directly below you will find our Google score exactly as it stands.",
     "source": "Source: carwax.com.tr, customer comments",
@@ -340,7 +367,6 @@
     }
   },
   "faq": {
-    "eyebrow": "Common questions",
     "title": "Things people ask.",
     "lead": "Five short answers to the questions we hear most. If something else is on your mind, call the branch or write to the assistant below.",
     "items": {
@@ -364,6 +390,17 @@
         "q": "What technology do you use?",
         "a": "The stations use the brand’s own patented chemicals, and station management runs on software that belongs to the brand as well."
       }
+    }
+  },
+  "brandLinks": {
+    "title": "Other doors into CarWAX",
+    "shop": {
+      "title": "CarWAX Online",
+      "text": "Buy our own products directly."
+    },
+    "franchise": {
+      "title": "Become a franchisee",
+      "text": "Interested in opening a CarWAX station?"
     }
   }
 }

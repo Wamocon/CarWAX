@@ -16,7 +16,6 @@ export function Contact() {
       <div className="wrap">
         <SectionHeading
           id="iletisim-h"
-          eyebrow={t('eyebrow')}
           title={t('title')}
           lead={t('lead')}
         />

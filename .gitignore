@@ -44,15 +44,14 @@ scratchpad/
 .tmp/
 
 # ---------------------------------------------------------------------------
-# Interne Unterlagen — NICHT in einem öffentlichen Repo.
+# Die Projektunterlagen (Marktanalyse, Roadmap, INSTRUCTION.md, Videoskripte)
+# und das Bildarchiv des Kunden liegen bewusst mit im Repo. Ausdrücklich so
+# entschieden: das Repo ist öffentlich und soll es bleiben.
 #
-# Enthalten Wettbewerbsanalyse, offene Bewertung des Kunden (2,6 ★ aus 704)
-# und das Bildarchiv des Kunden. Sobald das Repo auf privat steht, diesen
-# Block löschen und `git add -A && git commit && git push` — dann ist alles drin.
+# Wer hier vorbeikommt: `01 Fotos/web-carwax/` ist das Originalarchiv von
+# carwax.com.tr und die Quelle für `web/scripts/grade-images.py`. Ohne dieses
+# Archiv lässt sich die Bildstrecke nicht neu erzeugen.
+#
+# Weiterhin ausgeschlossen bleibt nur, was Schaden anrichtet oder sich neu
+# erzeugen lässt: Schlüssel, node_modules, Build-Artefakte, Screenshots.
 # ---------------------------------------------------------------------------
-Marktanalyse-Car-WAX-Antalya.md
-Roadmap-Car-WAX-Antalya.xlsx
-INSTRUCTION.md
-Video-Prompts-Hero.md
-Video-Script-CarWAX-Antalya-TR.md
-01 Fotos/

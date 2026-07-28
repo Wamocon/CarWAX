@@ -14,6 +14,7 @@ import { Counters } from '@/components/sections/Counters';
 import { Marine } from '@/components/sections/Marine';
 import { Packages } from '@/components/sections/Packages';
 import { Products } from '@/components/sections/Products';
+import { BrandLinks } from '@/components/sections/BrandLinks';
 import { Story } from '@/components/sections/Story';
 import { Branches } from '@/components/sections/Branches';
 import { MapSection } from '@/components/sections/MapSection';
@@ -57,7 +58,6 @@ export default async function HomePage({
           <div className="wrap">
             <SectionHeading
               id="parlaklik-h"
-              eyebrow={t('eyebrow')}
               title={t('title')}
               lead={t('lead')}
             />
@@ -79,6 +79,7 @@ export default async function HomePage({
         <Counters />
         <Marine />
         <Products />
+        <BrandLinks />
         <Story />
         <Branches />
         <MapSection />

@@ -17,7 +17,6 @@ export function Products() {
       <div className="wrap">
         <SectionHeading
           id="urunler-h"
-          eyebrow={t('eyebrow')}
           title={t('title')}
           lead={t('lead')}
         />

@@ -21,7 +21,6 @@
     "faq": "Sorular"
   },
   "hero": {
-    "eyebrow": "Antalya · 1989'dan beri",
     "title": {
       "l1": "Aracınız",
       "l2": "ilk günkü gibi",
@@ -60,7 +59,6 @@
     "seramik": "Seramik Kaplama"
   },
   "gloss": {
-    "eyebrow": "Seramik Kaplama",
     "title": "Aradaki farkı kendiniz görün.",
     "lead": "Aynı araç, aynı fotoğraf. Ortadaki çizgiyi sağa sola çekin: solda bakımsız yüzey, sağda seramik kaplama sonrası. Fark burada bitmiyor. Kaplı yüzey daha kolay temizleniyor ve daha uzun süre yeni kalıyor.",
     "sliderLabel": "Karşılaştırma çizgisini sağa sola taşıyın",
@@ -70,7 +68,6 @@
     "scrollAfter": "9H seramik kaplama sonrası. Işık tek parça yansıyor, renk derinleşiyor, kir zor tutunuyor."
   },
   "services": {
-    "eyebrow": "Hizmetlerimiz",
     "title": "Aracınıza ne gerekiyorsa.",
     "lead": "Küçük bir çizikten komple boya korumaya kadar. Emin değilseniz arayın, aracınıza bakıp size en uygun olanı söyleyelim.",
     "seramik": {
@@ -119,10 +116,33 @@
     },
     "helpEyebrow": "Emin değil misiniz?",
     "helpTitle": "Hangisi gerekli, birlikte karar verelim.",
-    "helpText": "Aracınızı görmeden fiyat söylemiyoruz. Arayın, durumu anlatın; gereksiz işlem önermeyiz."
+    "helpText": "Aracınızı görmeden fiyat söylemiyoruz. Arayın, durumu anlatın; gereksiz işlem önermeyiz.",
+    "ceramicWax": {
+      "title": "Ceramic Wax",
+      "text": "Seramik esaslı hızlı koruma. Parlaklık hemen gelir, bakımı kolaydır."
+    },
+    "pastaCila": {
+      "title": "Pasta & Cila",
+      "text": "Mat kalmış boyada çizikleri alır, rengi geri getirir."
+    },
+    "renkDegisim": {
+      "title": "Renk Değişim Filmleri",
+      "text": "Boyaya dokunmadan renk değiştirin. İsterseniz eski haline döner."
+    },
+    "pasOnleme": {
+      "title": "Pas Önleme",
+      "text": "Alt takım ve gizli boşluklar korunur. Deniz havası burada acımıyor."
+    },
+    "icMekan": {
+      "title": "İç Mekan Koruma",
+      "text": "Koltuk, döşeme ve halı leke tutmaz hale gelir. Dökülen çay iz bırakmaz."
+    },
+    "dosemeTamiri": {
+      "title": "Döşeme Tamiri",
+      "text": "Yırtık, yanık ve aşınmış deri yerinde onarılır. Komple değişim gerekmez."
+    }
   },
   "marine": {
-    "eyebrow": "Tekne & Yat Bakımı",
     "title": "Sadece otomobil değil.",
     "lead": "Antalya bir deniz şehri. Teknenizin jelkotundan tik güvertesine, pervanesinden gövdesine kadar aynı ekip, aynı özenle ilgileniyor.",
     "jelcoat": "Jelkot Bakımı",
@@ -139,7 +159,6 @@
     "genelTemizlik": "Genel Temizlik ve Bakım"
   },
   "branches": {
-    "eyebrow": "Antalya",
     "title": "Size en yakın olanı seçin.",
     "lead": "Muratpaşa ve Kepez'de dört noktadayız. Hepsi alışveriş merkezi içinde; aracınızı bırakıp işinize bakabilirsiniz.",
     "premium": "Premium Şube",
@@ -151,7 +170,6 @@
     "everyday": "Her gün"
   },
   "contact": {
-    "eyebrow": "İletişim",
     "title": "Bir telefon kadar yakınız.",
     "lead": "Aklınıza takılan bir şey mi var? Fiyat mı öğrenmek istiyorsunuz? En yakın şubemizi arayın, memnuniyetle anlatalım.",
     "call": "Ara",
@@ -180,7 +198,6 @@
     "disclaimer": "Fiyat ve randevu için lütfen şubeyi arayın: {phone}"
   },
   "packages": {
-    "eyebrow": "Uygulama Paketleri",
     "title": "Tek tek seçmek zorunda değilsiniz.",
     "lead": "Üç aile, iki kademe. Shine boyayla, Deep iç mekânla, Full ikisiyle birden ilgilenir. Emin değilseniz şubeyi arayın; aracınıza bakıp doğru olanı söyleriz.",
     "featured": "En kapsamlı",
@@ -241,7 +258,6 @@
     }
   },
   "products": {
-    "eyebrow": "Ürünlerimiz",
     "title": "Kullandığımız ürünleri kendimiz üretiyoruz.",
     "lead": "Amerikan ve Türk mühendislerinin ortak çalışmasıyla geliştirilen formüller. Şubelerimizde kullandığımız ürünlerin aynısı.",
     "sampuan": {
@@ -249,8 +265,8 @@
       "text": "Boyayı yormayan, iz bırakmayan temizlik."
     },
     "pasta": {
-      "title": "Pasta & Cila",
-      "text": "Çizik giderme ve parlatma ürünleri."
+      "title": "Pasta & Cila Ürünleri",
+      "text": "Çizik giderme ve parlatma kimyasalları."
     },
     "jant": {
       "title": "Jant, Metal & Krom",
@@ -267,10 +283,25 @@
     "amator": {
       "title": "Amatör Seri",
       "text": "Aracına kendi bakmak isteyenler için."
+    },
+    "lastik": {
+      "title": "Lastik & Plastik",
+      "text": "Solmuş plastik ve lastiğe derinlik verir."
+    },
+    "leke": {
+      "title": "Leke Sökücüler",
+      "text": "İnatçı lekeler için nokta çözümler."
+    },
+    "hizli": {
+      "title": "Hızlı Cilalar",
+      "text": "İki dakikada gözle görülür parlaklık."
+    },
+    "motor": {
+      "title": "Motor Temizleme",
+      "text": "Motor bölmesi için yağ ve kir çözücüler."
     }
   },
   "story": {
-    "eyebrow": "Hakkımızda",
     "title": "Bu iş bizde babadan geliyor.",
     "lead": "CarWAX, Mumcu ailesinin işi. Babaları Hayrettin Mumcu’nun otomobil tutkusuyla başladı; bugün 122 istasyonda aynı standart uygulanıyor.",
     "teamTitle": "Ekibimiz",
@@ -289,7 +320,6 @@
     }
   },
   "whatsapp": {
-    "eyebrow": "WhatsApp",
     "title": "Yazmak aramaktan kolaysa, yazın.",
     "lead": "Aracınızın fotoğrafını gönderin, ne gerektiğini söyleyelim. Şubeyle doğrudan WhatsApp üzerinden konuşabilirsiniz.",
     "cta": "WhatsApp’tan yaz",
@@ -298,14 +328,12 @@
     "fabLabel": "{branch} şubesine WhatsApp'tan yaz"
   },
   "map": {
-    "eyebrow": "Konum",
     "title": "Dört noktadayız, hepsi AVM içinde.",
     "lead": "Size en yakın olanı seçin, haritada görün, tek dokunuşla yol tarifi alın.",
     "route": "Yol Tarifi",
     "tablistLabel": "Şube seçimi"
   },
   "rating": {
-    "eyebrow": "Google Değerlendirmesi",
     "proudTitle": "Müşterilerimiz böyle değerlendiriyor.",
     "proudLead": "Bu puanı her gün yeniden kazanmaya çalışıyoruz. Siz de deneyiminizi paylaşırsanız seviniriz.",
     "honestTitle": "Puanımızı olduğu gibi gösteriyoruz.",
@@ -321,7 +349,6 @@
     "toggle": "Görünüm modunu değiştir"
   },
   "testimonials": {
-    "eyebrow": "Müşteri Yorumları",
     "title": "Bizim hakkımızda ne diyorlar.",
     "lead": "Bu yorumlar CarWAX’ın kendi yayınladığı müşteri görüşleridir. Hemen aşağıda Google puanımızı olduğu gibi bulacaksınız.",
     "source": "Kaynak: carwax.com.tr, Müşteri Yorumları",
@@ -340,7 +367,6 @@
     }
   },
   "faq": {
-    "eyebrow": "Sık Sorulanlar",
     "title": "Merak edilenler.",
     "lead": "En çok sorulan beş soruyu kısaca cevapladık. Aklınıza başka bir şey takılırsa şubeyi arayın ya da aşağıdaki asistana yazın.",
     "items": {
@@ -364,6 +390,17 @@
         "q": "Hangi teknolojileri kullanıyorsunuz?",
         "a": "İstasyonlarda markaya ait patentli kimyasallar kullanılıyor ve istasyon yönetimi yine markaya ait bir yazılımla yürütülüyor."
       }
+    }
+  },
+  "brandLinks": {
+    "title": "CarWAX’ın diğer kapıları",
+    "shop": {
+      "title": "CarWAX Online",
+      "text": "Kendi ürünlerimizi doğrudan satın alın."
+    },
+    "franchise": {
+      "title": "Bayilik Başvurusu",
+      "text": "CarWAX istasyonu açmak ister misiniz?"
     }
   }
 }

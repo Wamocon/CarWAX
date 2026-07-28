@@ -311,42 +311,35 @@
     background: linear-gradient(90deg, var(--color-brand), var(--color-ember));
   }
 
-  /* Kapitelnummern.
-     Neun Sektionen mit identischem Aufbau lesen sich als Vorlage, egal wie
-     sauber die Typografie ist. Eine durchlaufende Nummer macht daraus ein
-     Inhaltsverzeichnis: die Seite wirkt gesetzt statt zusammengesteckt, und
-     der Besucher weiß jederzeit, wo er ist.
-
-     Gezählt wird per CSS-Zähler statt per Prop. Damit stimmt die Reihenfolge
-     automatisch, auch wenn später eine Sektion dazwischenrutscht — niemand
-     muss neun Dateien nachziehen und dabei eine vergessen. */
-  main {
-    counter-reset: chapter;
-  }
-
-  .chapter {
-    flex: none;
-    margin-left: auto;
-    font-variant-numeric: tabular-nums;
-    color: var(--color-fg-faint);
-  }
-
-  .chapter::before {
-    counter-increment: chapter;
-    content: counter(chapter, decimal-leading-zero);
-  }
-
+  /* 8rem war zu viel. Bei 1440px stand die Headline über die volle Breite und
+     brach in Türkisch anders als in Russisch; ab etwa 6rem trägt der Grad die
+     Wirkung, ohne dass die Zeile zum Layoutproblem wird. */
   .display {
-    font-size: clamp(3.2rem, 9vw, 8rem);
-    line-height: 0.94;
+    font-size: clamp(3rem, 7.4vw, 6rem);
+    line-height: 0.95;
     letter-spacing: -0.035em;
     font-weight: 500;
   }
 
+  /* Zwei Grade statt einem.
+     Als jede Sektion denselben Grad trug, hatte die Seite keine Betonung,
+     sondern nur Abstände. `h2-lg` bekommen die drei Sektionen, die das
+     Argument tragen (Leistungen, Marine, Herkunft); der Rest bleibt auf `h2`.
+     Der Sprung ist mit Absicht deutlich: ein knapper Unterschied liest sich
+     als Fehler, nicht als Hierarchie. */
   .h2 {
-    font-size: clamp(2rem, 4.4vw, 3.6rem);
-    line-height: 1.06;
-    letter-spacing: -0.025em;
+    font-size: clamp(1.9rem, 3.6vw, 2.9rem);
+    line-height: 1.08;
+    letter-spacing: -0.022em;
+    text-wrap: balance;
+  }
+
+  .h2-lg {
+    font-size: clamp(2.4rem, 5.6vw, 4.4rem);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    font-weight: 500;
+    text-wrap: balance;
   }
 
   .lead {
@@ -354,18 +347,6 @@
     color: var(--color-fg-muted);
   }
 
-  .grad-text {
-    background: linear-gradient(
-      100deg,
-      var(--color-fg) 0%,
-      var(--color-fg) 34%,
-      var(--color-brand-hot) 62%,
-      var(--color-ember) 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
 
   /* Glaskarte. Im Hellen ist die Füllung dichter und der Rand kräftiger,
      sonst löst sich die Karte im Hintergrund auf. */
