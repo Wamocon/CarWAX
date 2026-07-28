@@ -66,13 +66,93 @@ for (const locale of LOCALES) {
 
     const checks = await page.evaluate(() => {
       const de = document.documentElement;
+
+      /*
+        Überlauf NICHT über scrollWidth messen.
+
+        `overflow-x: clip` auf <html> und <body> verbirgt genau den Überlauf,
+        den wir suchen: scrollWidth meldet dann sauber, während ein Element
+        rechts aus dem Bild ragt. Genau so ist der Menüknopf einmal auf einem
+        390px-Telefon nach 384–428px gerutscht, ohne dass die Prüfung anschlug.
+
+        Deshalb jedes sichtbare Element einzeln gegen die Fensterbreite messen.
+        Zwei Zugeständnisse: 1px Toleranz gegen Rundung, und Elemente, die
+        bewusst quer aus dem Bild laufen, sind ausgenommen (die Zitatbahn).
+      */
+      const w = window.innerWidth;
+      const spill = [];
+
+      /*
+        Ein Element ragt nur dann WIRKLICH aus dem Bild, wenn es kein Vorfahr
+        vorher abschneidet. Die Farbwolken liegen mit Absicht weit außerhalb
+        und stecken in `.aurora { overflow: hidden }`; ohne diese Prüfung
+        meldet jede Seite drei Fehlalarme und man gewöhnt sich das Hinsehen ab.
+
+        Die Kette endet BEWUSST vor <html>/<body>: die tragen `overflow-x: clip`,
+        und genau deren Verbergen wollen wir ja umgehen.
+      */
+      const clippedByAncestor = (el) => {
+        for (let p = el.parentElement; p && p !== document.body; p = p.parentElement) {
+          const o = getComputedStyle(p);
+          if (/hidden|clip|auto|scroll/.test(o.overflowX + o.overflow)) return true;
+        }
+        return false;
+      };
+
+      for (const el of document.querySelectorAll('body *')) {
+        if (el.closest('#yorumlar')) continue; // Querbahn läuft absichtlich hinaus
+        const cs = getComputedStyle(el);
+        if (cs.display === 'none' || cs.visibility === 'hidden') continue;
+        if (cs.position === 'fixed') continue; // Schwebeknöpfe, Kopfbalken, Wolken
+        const r = el.getBoundingClientRect();
+        if (r.width === 0 || r.height === 0) continue;
+        if (r.right <= w + 1 && r.left >= -1) continue;
+        if (clippedByAncestor(el)) continue;
+
+        const cls =
+          typeof el.className === 'string' && el.className
+            ? '.' + el.className.trim().split(/\s+/).slice(0, 2).join('.')
+            : '';
+        spill.push(
+          `${el.tagName.toLowerCase()}${el.id ? '#' + el.id : ''}${cls} ` +
+            `${Math.round(r.left)}–${Math.round(r.right)}`,
+        );
+        if (spill.length >= 3) break;
+      }
+
+      // Sind die Eintritts-Animationen wirklich durchgelaufen? Die Hero-Zeilen
+      // starten maskiert auf translateY(102%) und müssen am Ende bei 0 stehen.
+      // Vorher hing diese Prüfung an `.eyebrow` — das Element gibt es im Hero
+      // nicht mehr, die Prüfung traf ein fremdes und ging still durch.
+      const heroLine = document.querySelector('h1.display span > span');
+      const heroBox = heroLine && heroLine.getBoundingClientRect();
+      const h1Box = document.querySelector('h1.display')?.getBoundingClientRect();
+
       return {
-        overflow: de.scrollWidth - de.clientWidth,
-        // Hydriert? Lenis hängt seine Klasse an <html>, sobald es läuft.
+        spill,
         hydrated: de.className.includes('lenis'),
-        // Sind die Eintritts-Animationen wirklich durchgelaufen?
-        heroTextVisible:
-          getComputedStyle(document.querySelector('.eyebrow')).opacity === '1',
+        heroTextVisible: Boolean(
+          heroLine &&
+            getComputedStyle(heroLine).opacity === '1' &&
+            heroBox.height > 0 &&
+            // Noch in der Maske geparkt heißt: unterhalb der eigenen Zeile.
+            h1Box &&
+            heroBox.top < h1Box.bottom,
+        ),
+        // Die Sektionen, die es geben MUSS. Fällt eine weg, weil ein Umbau
+        // sie zerlegt hat, meldet das hier statt erst der Kunde.
+        missingSections: [
+          'hizmetler',
+          'paketler',
+          'yorumlar',
+          'degerlendirme',
+          'marine',
+          'urunler',
+          'subeler',
+          'harita',
+          'sorular',
+          'iletisim',
+        ].filter((id) => !document.getElementById(id)),
         title: document.title,
       };
     });
@@ -85,9 +165,12 @@ for (const locale of LOCALES) {
     const problems = [];
     if (errors.length) problems.push(`JS: ${errors.slice(0, 3).join(' | ')}`);
     if (failed.length) problems.push(`REQ: ${failed.slice(0, 3).join(' | ')}`);
-    if (checks.overflow > 0) problems.push(`H-OVERFLOW ${checks.overflow}px`);
+    if (checks.spill.length)
+      problems.push(`AUS DEM BILD: ${checks.spill.join(' | ')}`);
     if (!checks.hydrated) problems.push('NOT HYDRATED');
     if (!checks.heroTextVisible) problems.push('HERO TEXT STUCK AT initial');
+    if (checks.missingSections.length)
+      problems.push(`SEKTION FEHLT: ${checks.missingSections.join(', ')}`);
 
     const tag = problems.length ? 'FAIL' : ' ok ';
     if (problems.length) failures++;

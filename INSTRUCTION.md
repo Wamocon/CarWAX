@@ -1,7 +1,7 @@
 # INSTRUCTION.md — CarWAX Car Care Systems · Antalya
 
 > Arbeits-Playbook. Beim Weiterarbeiten zuerst diese Datei lesen, dann [`DESIGN.md`](DESIGN.md).
-> Stand: **27.07.2026** · Status: **Next.js-Gerüst steht, Hero live, 9/9 QA grün**
+> Stand: **28.07.2026** · Status: **Seite inhaltlich vollständig, SEO/GEO/AEO live, 9/9 QA grün**
 
 ---
 
@@ -20,7 +20,7 @@ technisch gehoben auf den New-Level-Premium-Stack.
 | Marke | CARWAX Car Care Systems · Handel seit 1989, Marke seit 1995, Franchise seit 2002 |
 | Inhaber | Mustafa Mumcu (Direktör), Erkan Mumcu · Nergis Mumcu (Genel Müdür) |
 | Zentrale | Ümraniye / İstanbul · +90 216 540 03 48 |
-| Netz | 50+ Stationen · Dubai, Kasachstan, KKTC, Irak, Kosovo, Bulgarien, Nigeria |
+| Netz | **122 Stationen** (eigene Angabe, Ziel 190 bis Ende 2030) · Dubai, Kasachstan, KKTC, Irak, Kosovo, Bulgarien, Nigeria |
 | Eigene Chemie | ja — eigene Produktlinie + Onlineshop „CarWAX Online" |
 | Besonderheit | **C-Marine Care** — komplette Yacht-/Bootssparte |
 | Bestandsseite | [carwax.com.tr](https://carwax.com.tr) (TR/EN/RU/AR) — **mit Lorem Ipsum auf der Startseite** |
@@ -130,20 +130,29 @@ werden. `pending.rating` in `lib/data/site.ts` bleibt bis dahin `null`.
 
 ## 7. Offene Punkte
 
-1. **Kundendaten:** WhatsApp-Nummer, Öffnungszeiten der drei übrigen Filialen,
-   Geokoordinaten, Preise, Google-Rating. Stehen als `null` in `lib/data/site.ts` und
-   erscheinen nirgends im UI, bis sie bestätigt sind.
-2. **Social bestätigen lassen:** Auf carwax.com.tr zeigen die Icons für Facebook,
-   Instagram und X ins Leere — sie verlinken Login-Seiten statt Profile. Geprüft und
-   echt ist nur der YouTube-Kanal. Instagram `@carwax_antalya` steht auf der Seite, weil
-   der Kunde das Handle selbst über das Ticket geliefert hat.
-   `facebook.com/terracitycarwax` ist über die Suche gefunden, nicht bestätigt, und
-   deshalb `verified: false` — es erscheint nicht im Footer.
+0. **⚠️ VOR DEM LIVEGANG: `NEXT_PUBLIC_SITE_URL` setzen.** Daran hängen canonical,
+   hreflang, sitemap, og:image und alle strukturierten Daten. Ohne den Wert läuft
+   alles gegen den Platzhalter `carwax-antalya.com`. Siehe [`README.md`](README.md).
+1. **Kundendaten:** WhatsApp bestätigen, Öffnungszeiten der drei übrigen Filialen,
+   Preise. Stehen als `null` in `lib/data/site.ts` und erscheinen nirgends im UI,
+   bis sie bestätigt sind.
+   *Erledigt am 28.07.:* Geokoordinaten und Postleitzahlen aller vier Filialen
+   über Nominatim aufgelöst und gegen die Kundenadressen geprüft.
+1b. **Google Business Profile beanspruchen** für Mark Antalya, Erasta und Özdilek.
+   Nur TerraCity hat einen gepflegten Eintrag; die anderen drei liefern in Maps
+   eine nackte Stecknadel ohne Bewertungskarte. Genau deshalb lässt sich der
+   Gesamtschnitt bisher nicht ehrlich über alle vier bilden. Sobald die Werte da
+   sind, in `branchRatings` eintragen — der Rest rechnet sich selbst.
+2. **Social bestätigen lassen:** Die Profillinks stehen jetzt drin und wurden aus
+   den Redirect-Zielen der Footer-Icons von carwax.com.tr gezogen, nicht geraten:
+   Instagram `@carwax.turkiye`, Facebook `carwaxcarcaresystems`, X `carwax_pcw`,
+   dazu der geprüfte YouTube-Kanal und das lokale `@carwax_antalya` aus dem Ticket.
+   `facebook.com/terracitycarwax` bleibt `verified: false` und erscheint nicht.
 3. **Instagram-Bilder:** Meta blockiert jeden automatisierten Zugriff. Muss der Kunde
    oder Waleri liefern.
 4. **Hero-Video:** Veo-Clips nach [`Video-Prompts-Hero.md`](Video-Prompts-Hero.md) erzeugen,
    unter 6 MB, als Hintergrund hinter den Gloss Sweep legen.
-5. **Marktanalyse + Roadmap** nach dem WAMOCON-Master-Prompt schreiben.
+5. ~~Marktanalyse + Roadmap~~ — geschrieben, liegen im Repo.
 6. **Türkisches Erklärvideo** mit WAMOCON-Webdesign-Intro (~15 s), dann ~60–90 s CarWAX.
 7. **TR/RU von Muttersprachlern prüfen lassen.** Die Übersetzungen sind sorgfältig, aber
    nicht muttersprachlich geprüft.
