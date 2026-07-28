@@ -57,13 +57,29 @@ export function Services() {
                 </h3>
               </Reveal>
 
-              <ul className="grid gap-px bg-hairline sm:grid-cols-2 lg:grid-cols-3">
+              {/*
+                Kein `gap-px bg-hairline` mehr.
+
+                Dieser Kniff malt den Rasterbehälter und lässt die Karten
+                darin ausstanzen. Solange das Raster exakt aufgeht, sieht das
+                aus wie eine Tabelle. Sobald eine Reihe nicht voll wird, ist
+                die leere Zelle aber kein Loch, sondern eine ausgefüllte graue
+                Fläche: der Behälter selbst.
+
+                Vor der Gruppierung ging es auf, 17 Leistungen plus die
+                Anrufkarte sind 18 Kacheln und damit genau sechs Dreierreihen.
+                Die Gruppen sind 11, 3 und 3 und lassen bei zwei wie bei drei
+                Spalten Reste stehen. Jetzt trägt jede Karte ihre eigene
+                Haarlinie und die Lücke ist einfach unsichtbar, unabhängig
+                davon, wie viele Leistungen später dazukommen.
+              */}
+              <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {items.map((s, i) => (
                   <Reveal
                     as="li"
                     key={s.id}
                     delay={(i % 3) * 0.06}
-                    className="group bg-bg transition-transform duration-300 ease-out motion-safe:hover:-translate-y-1"
+                    className="group border border-hairline bg-bg transition-transform duration-300 ease-out motion-safe:hover:-translate-y-1"
                   >
                     <Tilt className="h-full">
                       <article className="flex h-full flex-col">
@@ -93,31 +109,38 @@ export function Services() {
                   </Reveal>
                 ))}
 
-                {/* Die Anruf-Karte hängt an der letzten Gruppe und füllt dort
-                    die freie Rasterzelle. Sie fängt alle ab, die nach siebzehn
-                    Leistungen immer noch nicht wissen, was sie brauchen. */}
-                {group === GROUPS[GROUPS.length - 1] ? (
-                  <Reveal as="li" delay={0.12} className="bg-bg">
-                    <a
-                      href={`tel:${branches[0].phone}`}
-                      className="flex h-full flex-col justify-center gap-4 p-9 transition-[background-color] duration-200 hover:bg-bg-raised"
-                    >
-                      <span className="eyebrow">{t('helpEyebrow')}</span>
-                      <span className="text-[1.35rem] leading-snug tracking-[-0.02em]">
-                        {t('helpTitle')}
-                      </span>
-                      <span className="text-[0.95rem] text-fg-muted">{t('helpText')}</span>
-                      <span className="mt-2 inline-flex items-center gap-2 font-mono text-[0.8125rem] text-brand">
-                        <Phone aria-hidden size={14} />
-                        {branches[0].phoneLabel}
-                      </span>
-                    </a>
-                  </Reveal>
-                ) : null}
               </ul>
             </div>
           );
         })}
+
+        {/*
+          Die Anruf-Karte ist keine Leistung und stand vorher trotzdem als
+          achtzehnte Kachel zwischen den Leistungen. Als breiter Abschluss über
+          die volle Textbreite ist sie schwerer zu übersehen und muss nicht mehr
+          eine Rasterlücke stopfen, für die sie nie gedacht war.
+        */}
+        <Reveal delay={0.1}>
+          <a
+            href={`tel:${branches[0].phone}`}
+            className="mt-14 grid items-center gap-6 border border-hairline bg-bg p-9 transition-[background-color,border-color] duration-200 hover:border-brand/40 hover:bg-bg-raised sm:grid-cols-[1fr_auto] sm:p-12"
+          >
+            <span>
+              <span className="eyebrow mb-4">{t('helpEyebrow')}</span>
+              <span className="mt-4 block max-w-[22ch] text-[clamp(1.4rem,2.6vw,2rem)] leading-snug tracking-[-0.02em]">
+                {t('helpTitle')}
+              </span>
+              <span className="mt-3 block max-w-[52ch] text-[0.95rem] leading-relaxed text-fg-muted">
+                {t('helpText')}
+              </span>
+            </span>
+
+            <span className="inline-flex min-h-13 items-center gap-3 justify-self-start rounded-[2px] bg-brand px-8 font-mono text-[0.8125rem] tracking-[0.06em] text-white sm:justify-self-end">
+              <Phone aria-hidden size={16} />
+              {branches[0].phoneLabel}
+            </span>
+          </a>
+        </Reveal>
       </div>
     </section>
   );
