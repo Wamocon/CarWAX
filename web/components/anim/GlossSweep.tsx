@@ -113,7 +113,8 @@ export function GlossSweep({
       Zugänglichkeit der drei Ebenen.
 
       Der Effekt besteht aus zwei gestapelten Bildern plus einer Lichtkante,
-      zeigt aber EIN Motiv. Deshalb tragen die inneren <img> bewusst `alt=""`
+      zeigt aber EIN Motiv. Deshalb tragen die inneren Bildelemente bewusst
+      einen leeren Alternativtext
       und der Rahmen führt den Namen: sonst liest ein Screenreader dasselbe
       Foto dreimal vor.
 
@@ -137,7 +138,7 @@ export function GlossSweep({
         passenden Breite, und `priority` setzt den Preload-Hinweis, der bei einem
         Hintergrundbild grundsätzlich nicht gehen kann.
 
-        Der Filter sitzt auf dem Wrapper, nicht auf dem <img>: sonst müsste
+        Der Filter sitzt auf dem Wrapper, nicht auf dem Bild selbst: sonst müsste
         next/image ihn durchreichen. Gleiche Quelle in beiden Ebenen heißt eine
         einzige Netzanfrage.
       */}
