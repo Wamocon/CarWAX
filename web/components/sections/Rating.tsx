@@ -4,16 +4,17 @@ import { Reveal } from '@/components/ui/Reveal';
 import { aggregateRating, branches, reviewUrl } from '@/lib/data/site';
 
 /**
- * Google-Bewertung mit Sternen.
+ * Google-Bewertung mit Sternen — als Auszeichnung, nicht als Bekenntnis.
  *
- * Die Sektion liest den Wert aus `rating` und entscheidet selbst, wie sie
- * auftritt: ab `proudFrom` als Auszeichnung, darunter als offene Bitte um
- * Bewertungen. Damit muss beim Sanieren niemand Code anfassen — nur die Zahl.
+ * Die Sektion erscheint erst ab `proudFrom` (4,5). Darunter rendert sie gar
+ * nichts. Der aktuelle Wert liegt bei 2,6, also ist sie derzeit unsichtbar,
+ * und das ist eine Entscheidung des Kunden: die eigene schwache Zahl auf der
+ * eigenen Startseite zu wiederholen ist unüblich, und kein Wettbewerber in
+ * Antalya tut es.
  *
- * Der aktuelle Wert ist 2,6. Eine schlechte Bewertung zu verstecken, während
- * sie einen Klick entfernt in Google steht, wirkt schlechter als sie zu
- * benennen; sie zu benennen und um Rückmeldung zu bitten, ist die einzige
- * Fassung, die dem Besucher gegenüber ehrlich bleibt.
+ * Sie bleibt trotzdem im Code. Sobald die Sanierung greift und der Schnitt
+ * über 4,5 steigt, kommt die Auszeichnung von allein zurück; es genügt, die
+ * Zahl in `branchRatings` nachzuführen.
  */
 export function Rating() {
   const t = useTranslations('rating');
@@ -23,8 +24,23 @@ export function Rating() {
   const format = useFormatter();
   const rating = aggregateRating();
   const branch = branches[0];
-  if (!rating) return null;
-  const proud = rating.value >= rating.proudFrom;
+
+  /*
+    Die Sektion zeigt sich nur, wenn die Zahl sie trägt.
+
+    Auf Wunsch des Kunden erscheinen die Sterne nicht, solange die Bewertung
+    unter `proudFrom` liegt. Bewusst als Schwelle und nicht als gelöschte
+    Sektion: die Auszeichnung ist fertig gebaut und kommt von selbst zurück,
+    sobald sie verdient ist. Niemand muss dafür Code anfassen oder sich in
+    zwei Jahren daran erinnern, dass es sie einmal gab.
+
+    Was das NICHT ändert: was in Google steht. Die Zahl liegt einen Klick
+    entfernt in Maps, ob wir sie hier wiederholen oder nicht. Der einzige
+    Hebel sind neue, gute Bewertungen, und die Einladung dazu steht jetzt
+    im Kontaktbereich.
+  */
+  if (!rating || rating.value < rating.proudFrom) return null;
+
   const pct = (rating.value / rating.scale) * 100;
 
   return (
@@ -81,10 +97,10 @@ export function Rating() {
 
           <Reveal delay={0.08}>
             <h2 id="degerlendirme-h" className="h2 mb-5">
-              {proud ? t('proudTitle') : t('honestTitle')}
+              {t('proudTitle')}
             </h2>
             <p className="lead mb-8">
-              {proud ? t('proudLead') : t('honestLead')}
+              {t('proudLead')}
             </p>
 
             <div className="flex flex-wrap gap-3">

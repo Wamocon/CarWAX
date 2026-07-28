@@ -1,8 +1,8 @@
 import { useTranslations } from 'next-intl';
-import { Phone } from 'lucide-react';
+import { Phone, ArrowUpRight } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Reveal } from '@/components/ui/Reveal';
-import { branches } from '@/lib/data/site';
+import { branches, reviewUrl } from '@/lib/data/site';
 
 export function Contact() {
   const t = useTranslations('contact');
@@ -51,6 +51,34 @@ export function Contact() {
 
         <Reveal delay={0.1}>
           <p className="mt-8 text-[0.95rem] text-fg-muted">{t('note')}</p>
+        </Reveal>
+
+        {/*
+          Die Bitte um eine Bewertung, ohne Zahl und ohne Sterne.
+
+          Die Bewertungssektion ist ausgeblendet, solange der Schnitt unter 4,5
+          liegt. Damit fiele aber auch das Einzige weg, das den Schnitt je
+          bewegen kann: neue Rückmeldungen. Deshalb steht die Einladung hier
+          unten, wo jemand ankommt, der tatsächlich schon Kunde war, und nicht
+          oben im Verkaufsweg, wo sie bettelnd wirkt.
+
+          Kein Wert, kein Stern, keine Behauptung. Nur die Aufforderung.
+        */}
+        <Reveal delay={0.16}>
+          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4 border-t border-hairline pt-8">
+            <p className="max-w-[54ch] flex-1 text-[0.9rem] leading-relaxed text-fg-faint">
+              {t('reviewNote')}
+            </p>
+            <a
+              href={reviewUrl(branches[0].address)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-11 shrink-0 items-center gap-2 border-b border-hairline-strong pb-1 font-mono text-[0.6875rem] uppercase tracking-[0.2em] text-fg-muted transition-colors duration-200 hover:border-brand hover:text-brand"
+            >
+              {t('reviewCta')}
+              <ArrowUpRight aria-hidden size={14} />
+            </a>
+          </div>
         </Reveal>
       </div>
     </section>

@@ -1,6 +1,5 @@
 import {
   brand,
-  branchRatings,
   branches,
   hq,
   marine,
@@ -21,9 +20,11 @@ import {
  *
  * ZERO-FABRICATION gilt auch hier, und hier besonders: strukturierte Daten
  * gehen direkt in Suchergebnisse. Nichts wird geschätzt.
- *   - `aggregateRating` steht nur an der Filiale, für die eine echte Google-
- *     Bewertung vorliegt (TerraCity). Sie an alle vier zu hängen, wäre eine
- *     Falschaussage gegenüber Google, und Google prüft das.
+ *   - `aggregateRating` steht NICHT mehr im Graphen. Die sichtbare Sektion ist
+ *     auf Wunsch des Kunden ausgeblendet, solange der Schnitt unter 4,5 liegt;
+ *     die Zahl trotzdem an Google zu melden waere widersinnig, weil Google
+ *     daraus Sterne im Suchergebnis bauen darf. Google zieht die echte
+ *     Bewertung ohnehin aus Maps, dafuer braucht es unsere Auszeichnung nicht.
  *   - `openingHours` steht nur, wo die Zeiten bestätigt sind.
  *   - Preise kommen nicht vor. `priceRange` bleibt weg, statt geraten zu werden.
  */
@@ -36,8 +37,6 @@ function tel(v: string) {
 }
 
 function branchNode(b: (typeof branches)[number], locale: string) {
-  const rating = branchRatings.find((r) => r.branchId === b.id);
-
   return {
     '@type': 'AutoRepair',
     '@id': `${BASE}/${locale}#${b.id}`,
@@ -96,17 +95,6 @@ function branchNode(b: (typeof branches)[number], locale: string) {
             ],
             opens: b.hours.split(/[–-]/)[0].trim(),
             closes: b.hours.split(/[–-]/)[1].trim(),
-          },
-        }
-      : {}),
-    ...(rating
-      ? {
-          aggregateRating: {
-            '@type': 'AggregateRating',
-            ratingValue: rating.value,
-            reviewCount: rating.count,
-            bestRating: 5,
-            worstRating: 1,
           },
         }
       : {}),

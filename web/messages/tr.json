@@ -179,7 +179,9 @@
     "title": "Bir telefon kadar yakınız.",
     "lead": "Aklınıza takılan bir şey mi var? Fiyat mı öğrenmek istiyorsunuz? En yakın şubemizi arayın, memnuniyetle anlatalım.",
     "call": "Ara",
-    "note": "Fiyatlar aracınızın durumuna ve seçtiğiniz uygulamaya göre değişir. Doğru bilgiyi verebilmemiz için sizi telefonda dinlemeyi tercih ediyoruz."
+    "note": "Fiyatlar aracınızın durumuna ve seçtiğiniz uygulamaya göre değişir. Doğru bilgiyi verebilmemiz için sizi telefonda dinlemeyi tercih ediyoruz.",
+    "reviewNote": "Bizde hizmet aldıysanız deneyiminizi yazın. İyi de olsa kötü de olsa hepsini okuyoruz; en çok işimize yarayan şey bu.",
+    "reviewCta": "Google’da değerlendir"
   },
   "footer": {
     "socialLabel": "Sosyal medya",
@@ -340,8 +342,6 @@
   "rating": {
     "proudTitle": "Müşterilerimiz böyle değerlendiriyor.",
     "proudLead": "Bu puanı her gün yeniden kazanmaya çalışıyoruz. Siz de deneyiminizi paylaşırsanız seviniriz.",
-    "honestTitle": "Puanımızı olduğu gibi gösteriyoruz.",
-    "honestLead": "Google puanımız şu anda olmasını istediğimiz yerde değil. Bunu saklamak yerine söylüyoruz: her yorumu okuyoruz, aksayan noktaları tek tek düzeltiyoruz. Deneyiminiz iyi de olsa kötü de olsa yazın. En çok işimize yarayan şey bu.",
     "cta": "Google’da değerlendir",
     "count": "{count} değerlendirme",
     "starsLabel": "5 üzerinden {value} yıldız",

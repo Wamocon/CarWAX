@@ -1,5 +1,4 @@
 import {
-  aggregateRating,
   brand,
   branches,
   counters,
@@ -136,8 +135,6 @@ export function buildKnowledgeBase(): string {
     .map((c) => `- ${c.value.toLocaleString('en-US')} ${COUNTER_LABELS[c.id] ?? c.id}`)
     .join('\n');
 
-  const rating = aggregateRating();
-
   return `# CarWAX Antalya — verified facts
 
 ## The company
@@ -173,15 +170,12 @@ ${marineLines}
 ${counterLines}
 
 ## Google rating
-${
-  rating
-    ? `- ${rating.value} out of ${rating.scale}, from ${rating.count} Google reviews (read on ${rating.verifiedAt}).
-- This is a weak score and the site states it openly rather than hiding it. If a
-  visitor raises it, acknowledge it plainly. Do not argue, do not explain it
-  away, and do not blame customers. Say that the team is working on it and that
-  feedback by phone reaches the branch directly. Never claim a better score.`
-    : '- No rating available. Do not state one.'
-}
+- The site does not display a rating, and you must not state one. Do not quote a
+  number, a star count, or a review total, even if you can infer one.
+- If a visitor asks about the rating: say the reviews are on the branch's Google
+  listing and they are welcome to look, and that feedback by phone reaches the
+  branch directly. Never claim the rating is good, never claim there is none, and
+  never argue with a visitor who mentions a bad one. Acknowledge, do not defend.
 
 ## Customer comments on the site
 - The eleven quotes in the "Müşteri Yorumları" section are the customer comments
@@ -195,5 +189,5 @@ ${
 - How long an individual service takes. The package durations above are averages
   published by CARWAX; anything outside that list is unknown.
 - Whether an appointment is required, and which slots are free.
-- The Google rating of any branch other than TerraCity.`;
+- Any rating figure. Not published on this site, not yours to quote.`;
 }

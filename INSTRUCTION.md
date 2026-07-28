@@ -104,29 +104,42 @@ Requests, kein horizontaler Überlauf, Hydration bestätigt, Hero-Animationen la
 
 ## 6a. Google-Bewertung — warum sie NICHT auf der Seite steht
 
-> ⚠️ **Korrektur vom 27.07.2026, nachmittags.** Eine frühere Fassung nannte
-> hier „3,9 ★ bei 17 Bewertungen (Yandex)". Das war der einzige Wert, den ich
-> zu dem Zeitpunkt auslesen konnte, und er ist deutlich zu freundlich.
-> Die eingebettete Karte auf der neuen Seite zeigt den echten Google-Eintrag —
-> die Zahlen unten sind die richtigen.
+**Entscheidung des Kunden vom 28.07.2026: die Sterne erscheinen nicht.**
 
-Es war gewünscht, die Google-Sterne einzublenden. Drei Gründe, warum das aktuell
-schadet statt zu helfen:
+Der echte Wert ist **2,6 ★ aus 704 Bewertungen** (Carwax Terracity, abgelesen aus
+dem Google-Maps-Eintrag). Zum Vergleich: Meguiar's Antalya steht bei 4,9 ★ aus
+665 Bewertungen, also nahezu gleiche Menge bei 2,3 Sternen Abstand.
+Şikayetvar: 1,7 von 5, 100 Beschwerden im letzten Jahr, davon 8 gelöst.
 
-1. **Die echte Google-Bewertung ist 2,6 ★ bei 704 Bewertungen** (Carwax Terracity
-   Profesyonel Araç Bakım Hizmetleri, abgelesen aus dem Google-Maps-Eintrag).
-   Nicht 17 Bewertungen — **704**. Der Eintrag ist gut besucht und schlecht bewertet.
-2. **Şikayetvar ist noch deutlicher: 1,7 von 5 bei 43 Bewertungen. 100 Beschwerden
-   im letzten Jahr, davon 8 gelöst.** Das ist keine Ausreißer-Statistik, das ist ein
-   Muster.
-3. **Der Wettbewerb steht bei 4,9 ★ mit 665 Bewertungen** (Meguiar's Antalya).
-   Bei praktisch gleicher Bewertungsmenge — 704 gegen 665 — steht CarWAX 2,3 Sterne
-   darunter. Das ist der schärfste Befund des ganzen Projekts.
+Umgesetzt ist das NICHT als gelöschte Sektion, sondern als Schwelle:
+`Rating.tsx` rendert nur oberhalb von `ratingMeta.proudFrom` (4,5). Damit kommt
+die Auszeichnung von allein zurück, sobald sie verdient ist; es genügt, den Wert
+in `branchRatings` nachzuführen. Niemand muss sich in zwei Jahren erinnern, dass
+es die Sektion einmal gab.
 
-Regel aus dem Alanyum-Projekt, hier übernommen: **Rating erst prominent ab ≥ 4,5 ★.**
-Vorher zuerst sanieren — QR-Karte bei der Fahrzeugübergabe, Nachfass-Nachricht, und ein
-Markenprofil auf Şikayetvar anlegen, damit die offenen Beschwerden überhaupt beantwortet
-werden. `pending.rating` in `lib/data/site.ts` bleibt bis dahin `null`.
+Mitgezogen wurde alles, was die Zahl sonst hintenherum weitergegeben hätte:
+
+| Ort | Vorher | Jetzt |
+|---|---|---|
+| Sektion `#degerlendirme` | 2,6 mit Sternen | wird nicht gerendert |
+| JSON-LD `aggregateRating` | 2,6 / 704 an TerraCity | ganz entfernt |
+| Concierge-Wissensbasis | nannte die Zahl offen | darf keine Zahl nennen |
+| `/llms.txt` | Zahl + Umgangsregel | keine Zahl |
+| QA-Pflichtsektionen | forderte `degerlendirme` | nicht mehr gefordert |
+
+Die strukturierten Daten waren dabei der wichtigste Punkt: die Sektion
+auszublenden und Google die Zahl weiter zu melden wäre widersinnig gewesen,
+weil Google daraus Sterne im Suchergebnis bauen darf.
+
+**Was das nicht ändert.** In Google Maps steht die 2,6 weiter. Wer „CarWAX
+Antalya" sucht, sieht sie, ob die Seite sie wiederholt oder nicht. Ausblenden
+ist kosmetisch; der einzige Hebel sind neue, gute Bewertungen. Deshalb steht im
+Kontaktbereich jetzt eine Einladung ohne Zahl und ohne Sterne, dort wo jemand
+ankommt, der bereits Kunde war.
+
+**Die eigentliche Aufgabe bleibt beim Kunden:** Google Business Profile für alle
+vier Filialen beanspruchen, Bewertungen beantworten, Markenprofil auf Şikayetvar
+anlegen. Ohne das bewegt sich die Zahl nicht, und die Sektion bleibt aus.
 
 ## 7. Offene Punkte
 

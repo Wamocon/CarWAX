@@ -183,7 +183,6 @@ for (const locale of LOCALES) {
           'hizmetler',
           'paketler',
           'yorumlar',
-          'degerlendirme',
           'marine',
           'urunler',
           'subeler',

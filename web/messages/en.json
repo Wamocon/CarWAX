@@ -179,7 +179,9 @@
     "title": "We’re one phone call away.",
     "lead": "Got a question? Want to know a price? Call your nearest branch. We’re happy to talk it through.",
     "call": "Call",
-    "note": "Prices depend on the condition of your car and the treatment you choose. We’d rather hear from you on the phone so we can give you a straight answer."
+    "note": "Prices depend on the condition of your car and the treatment you choose. We’d rather hear from you on the phone so we can give you a straight answer.",
+    "reviewNote": "If you have been to us, tell us how it went. Good or bad, we read all of it. Nothing helps us more.",
+    "reviewCta": "Leave a review on Google"
   },
   "footer": {
     "socialLabel": "Social media",
@@ -340,8 +342,6 @@
   "rating": {
     "proudTitle": "This is how our customers rate us.",
     "proudLead": "We try to earn this score again every day. If you’d share your experience, we’d be glad.",
-    "honestTitle": "We show our rating as it is.",
-    "honestLead": "Our Google score isn’t where we want it to be. Rather than hide that, we’ll say it plainly: we read every review and we’re fixing what’s going wrong, one thing at a time. Write yours, good or bad. That’s what helps us most.",
     "cta": "Review us on Google",
     "count": "{count, plural, one {# review} other {# reviews}}",
     "starsLabel": "{value} out of 5 stars",
