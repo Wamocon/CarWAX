@@ -1,5 +1,4 @@
 import {
-  aggregateRating,
   brand,
   branchRatings,
   branches,
@@ -124,8 +123,6 @@ export function buildJsonLd(
   t: (key: string) => string,
   faqIds: readonly string[],
 ) {
-  const overall = aggregateRating();
-
   const organization = {
     '@type': 'Organization',
     '@id': `${BASE}#organization`,
@@ -150,7 +147,7 @@ export function buildJsonLd(
 
   const website = {
     '@type': 'WebSite',
-    '@id': `${BASE}#website`,
+    '@id': `${BASE}/${locale}#website`,
     url: `${BASE}/${locale}`,
     name: brand.legalName,
     inLanguage: locale,
@@ -188,7 +185,7 @@ export function buildJsonLd(
         '@type': 'Service',
         '@id': `${BASE}/${locale}#marine`,
         name: 'C-Marine Care',
-        serviceType: t('marine.title'),
+        serviceType: t('nav.marine'),
         provider: { '@id': `${BASE}#organization` },
         areaServed: { '@type': 'City', name: 'Antalya' },
         hasOfferCatalog: {
@@ -200,19 +197,6 @@ export function buildJsonLd(
           })),
         },
       },
-      ...(overall
-        ? [
-            {
-              '@type': 'AggregateRating',
-              '@id': `${BASE}#rating`,
-              itemReviewed: { '@id': `${BASE}#organization` },
-              ratingValue: overall.value,
-              reviewCount: overall.count,
-              bestRating: overall.scale,
-              worstRating: 1,
-            },
-          ]
-        : []),
     ],
   };
 }

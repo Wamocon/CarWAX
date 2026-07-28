@@ -83,7 +83,7 @@ export function GlossCompare({ src }: { src: string }) {
         aria-valuenow={Math.round(pos)}
         aria-valuetext={`${Math.round(pos)}%`}
         onKeyDown={onKeyDown}
-        className="absolute inset-y-0 z-20 -ml-6 w-12 cursor-ew-resize focus-visible:outline-none"
+        className="group absolute inset-y-0 z-20 -ml-6 w-12 cursor-ew-resize focus-visible:outline-none"
         style={{ left: 'var(--pos)' }}
       >
         <span
@@ -93,7 +93,7 @@ export function GlossCompare({ src }: { src: string }) {
         />
         <span
           aria-hidden
-          className="absolute left-1/2 top-1/2 grid h-14 w-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-brand bg-bg/60 backdrop-blur-sm"
+          className="absolute left-1/2 top-1/2 grid h-14 w-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-brand bg-bg/60 backdrop-blur-sm transition-[box-shadow,border-color] duration-140 ease-out group-focus-visible:border-white group-focus-visible:shadow-[0_0_0_3px_var(--color-bg),0_0_0_6px_var(--color-brand)]"
         >
           <svg width="18" height="12" viewBox="0 0 18 12" fill="none" aria-hidden>
             <path d="M5 1 1 6l4 5M13 1l4 5-4 5" stroke="#F4F3F1" strokeWidth="1.5" />

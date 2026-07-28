@@ -29,7 +29,10 @@
 
   --color-fg: #f2f5f9;
   --color-fg-muted: #a2adbd;
-  --color-fg-faint: #6d7889;
+  /* War #6d7889 und lag damit auf getoenten Flaechen unter 4,5:1.
+     Dieser Wert traegt >=6:1 auf #0b0f16 und bleibt auch auf den
+     Glaskarten und den Wash-Sektionen ueber der Grenze. */
+  --color-fg-faint: #8b96a6;
 
   --color-hairline: rgba(190, 210, 240, 0.11);
   --color-hairline-strong: rgba(190, 210, 240, 0.24);
@@ -72,7 +75,8 @@
 
   --color-fg: #0d1420;
   --color-fg-muted: #4a5568;
-  --color-fg-faint: #7b8798;
+  /* Heller Modus: war #7b8798, ebenfalls unter AA. */
+  --color-fg-faint: #5f6b7c;
 
   --color-hairline: rgba(13, 20, 32, 0.1);
   --color-hairline-strong: rgba(13, 20, 32, 0.22);
@@ -502,6 +506,35 @@
 
   :root[data-theme='light'] .only-light {
     display: revert-layer;
+  }
+
+  /* Wortmarke im Kopfbalken.
+
+     Sie folgt NICHT dem Modus, sondern dem Untergrund. Solange der Balken
+     durchsichtig auf dem Heldenbild liegt, ist der Untergrund in beiden Modi
+     ein dunkles Foto, und die Originaldatei mit den schwarzen Bildteilen
+     verliert dort „PROFESSIONAL" und „CAR CARE SYSTEMS" komplett. Erst wenn
+     der Balken hinterlegt ist, darf der helle Modus die Originalmarke ziehen.
+
+     Bewusst mit ausdrücklichen Werten statt `revert-layer`: innerhalb
+     derselben Kaskadenschicht springt `revert-layer` nicht auf die Regel
+     daneben zurück, sondern auf den Browserwert, und die Umschaltung blieb
+     wirkungslos. Der Fuß nutzt weiterhin only-dark/only-light, er liegt nie
+     auf einem Foto. */
+  header .logo-bright {
+    display: block;
+  }
+
+  header .logo-original {
+    display: none;
+  }
+
+  :root[data-theme='light'] header[data-bar='solid'] .logo-bright {
+    display: none;
+  }
+
+  :root[data-theme='light'] header[data-bar='solid'] .logo-original {
+    display: block;
   }
 
   /* Aufklappen ohne JavaScript und ohne Höhenmessung.

@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 
 /**
@@ -78,36 +79,75 @@ export function GlossSweep({
       role="img"
       aria-label={alt}
     >
-      {/* versiegelt — liegt unten und wird aufgedeckt */}
+      {/*
+        Beide Ebenen laufen über next/image statt über `background-image`.
+
+        Vorher stand hier `url(${src})` und der Browser lud das 2400px-Original
+        mit 262 KB, unverkleinert, auch auf ein 390px-Telefon. Es war zugleich
+        das LCP-Element der Seite. Über next/image kommen jetzt AVIF/WebP in der
+        passenden Breite, und `priority` setzt den Preload-Hinweis, der bei einem
+        Hintergrundbild grundsätzlich nicht gehen kann.
+
+        Der Filter sitzt auf dem Wrapper, nicht auf dem <img>: sonst müsste
+        next/image ihn durchreichen. Gleiche Quelle in beiden Ebenen heißt eine
+        einzige Netzanfrage.
+      */}
       <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: `url(${src})`,
-          filter: 'saturate(1.14) brightness(1.02) contrast(1.16)',
-        }}
-      />
+        className="absolute inset-0"
+        style={{ filter: 'saturate(1.14) brightness(1.02) contrast(1.16)' }}
+      >
+        <Image
+          src={src}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+      </div>
+
       {/* matt — liegt oben und wird weggewischt */}
       <div
-        className="absolute inset-0 bg-cover bg-center"
+        className="absolute inset-0"
         style={{
-          backgroundImage: `url(${src})`,
           filter: 'saturate(0.34) brightness(0.54) contrast(1.04)',
           clipPath: 'inset(0 0 0 var(--sweep))',
         }}
-      />
-      {/* die Kante selbst */}
+      >
+        <Image
+          src={src}
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+      </div>
+
+      {/*
+        Die Kante wandert über `transform`, nicht über `left`.
+
+        `left` ist eine Layout-Eigenschaft: jedes Bild der 2,2-Sekunden-Animation
+        löste Layout und Paint aus und schrieb 0,24 CLS auf das Konto, bevor der
+        Besucher irgendetwas angefasst hatte. Der Prozentwert in `translateX`
+        bezieht sich auf die eigene Breite des Elements, und weil dieser Wrapper
+        `inset-0` ist, entspricht er exakt der alten `left`-Position.
+      */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-[10%] -bottom-[10%] w-[clamp(90px,12vw,190px)] mix-blend-screen"
-        style={{
-          left: 'var(--sweep)',
-          transform: 'translateX(-50%) skewX(-9deg)',
-          opacity: 'var(--edge-opacity)',
-          transition: 'opacity 500ms var(--ease-out)',
-          background:
-            'linear-gradient(90deg, transparent 0%, rgba(255,255,255,.05) 34%, rgba(255,255,255,.55) 49%, rgba(255,255,255,.9) 50%, rgba(255,255,255,.5) 51%, rgba(236,28,36,.3) 62%, transparent 100%)',
-        }}
-      />
+        className="pointer-events-none absolute inset-0"
+        style={{ transform: 'translateX(var(--sweep))' }}
+      >
+        <div
+          className="absolute top-[-10%] bottom-[-10%] left-0 w-[clamp(90px,12vw,190px)] mix-blend-screen"
+          style={{
+            transform: 'translateX(-50%) skewX(-9deg)',
+            opacity: 'var(--edge-opacity)',
+            transition: 'opacity 500ms var(--ease-out)',
+            background:
+              'linear-gradient(90deg, transparent 0%, rgba(255,255,255,.05) 34%, rgba(255,255,255,.55) 49%, rgba(255,255,255,.9) 50%, rgba(255,255,255,.5) 51%, rgba(236,28,36,.3) 62%, transparent 100%)',
+          }}
+        />
+      </div>
     </div>
   );
 }

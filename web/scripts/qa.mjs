@@ -182,6 +182,61 @@ for (const locale of LOCALES) {
   }
 }
 
+/*
+  Durchgang mit reduzierter Bewegung.
+
+  Diese Klasse von Fehlern ist im normalen Sweep unsichtbar und war deshalb
+  lange da: Animationen setzen ihren Anfangszustand in JavaScript, und wenn
+  der Effekt bei `prefers-reduced-motion` gar nicht erst anläuft, bleibt der
+  Inhalt in diesem Anfangszustand hängen. Konkret gefunden wurden sieben von
+  elf Kundenstimmen, die ohne Scrollbereich hinter einem `overflow-hidden`
+  eingesperrt waren, und zwei Bildunterschriften, die deckungsgleich
+  übereinander lagen und unlesbaren Mischsatz ergaben.
+
+  Wer reduzierte Bewegung einstellt, bekommt weniger Bewegung. Nicht weniger
+  Inhalt.
+*/
+{
+  const page = await browser.newPage();
+  await page.emulateMediaFeatures([
+    { name: 'prefers-reduced-motion', value: 'reduce' },
+  ]);
+  await page.setViewport({ width: 1440, height: 900 });
+  await page.goto(`${BASE}/tr`, { waitUntil: 'networkidle2', timeout: 60000 });
+  await new Promise((r) => setTimeout(r, 1500));
+
+  const rm = await page.evaluate(() => {
+    const track = document.querySelector('#yorumlar ul');
+    const after = document.querySelector('[data-cap="after"]');
+    const before = document.querySelector('[data-cap="before"]');
+    const gloss = document.querySelector('#gloss-scroll-h')?.closest('section');
+    return {
+      overflow: track ? getComputedStyle(track).overflowX : 'kein Track',
+      overWide: track ? track.scrollWidth > track.clientWidth + 1 : false,
+      after: after ? getComputedStyle(after).opacity : '?',
+      before: before ? getComputedStyle(before).opacity : '?',
+      glossH: gloss ? Math.round(gloss.getBoundingClientRect().height) : 0,
+      vh: window.innerHeight,
+    };
+  });
+
+  const problems = [];
+  if (rm.overWide && !['auto', 'scroll'].includes(rm.overflow))
+    problems.push(`ZITATE UNERREICHBAR (overflow-x=${rm.overflow})`);
+  if (rm.after !== '0' || rm.before !== '1')
+    problems.push(`BILDUNTERSCHRIFTEN ÜBERDRUCKT (${rm.before}/${rm.after})`);
+  if (rm.glossH > rm.vh * 1.4)
+    problems.push(`LEERE BAHN ${rm.glossH}px bei ${rm.vh}px Sichtfeld`);
+
+  if (problems.length) failures++;
+  console.log(
+    `[${problems.length ? 'FAIL' : ' ok '}] reduzierte Bewegung   ${
+      problems.join(' · ') || 'Inhalt vollständig erreichbar'
+    }`,
+  );
+  await page.close();
+}
+
 await browser.close();
 console.log(
   failures ? `\n${failures} Prüfung(en) fehlgeschlagen.` : '\nAlle Prüfungen bestanden.',

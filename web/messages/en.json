@@ -52,7 +52,7 @@
   },
   "counters": {
     "title": "CarWAX in numbers",
-    "lead": "Treatments we have completed to date.",
+    "lead": "Treatments completed across the CarWAX network to date.",
     "yikama": "Washes",
     "boyaKoruma": "Paint Protection",
     "antibakteriyel": "Antibacterial Cleans",
@@ -203,7 +203,7 @@
     "featured": "Most complete",
     "askPrice": "Call for a price",
     "duration": "Takes about {hours} hours",
-    "more": "{count} more steps",
+    "more": "{count, plural, one {# more step} other {# more steps}}",
     "note": "Prices depend on the condition of your car and the package you choose, so we do not print them here. We would rather be straight with you on the phone. Times are averages.",
     "tier": {
       "plus": "Plus",
@@ -339,7 +339,7 @@
     "honestTitle": "We show our rating as it is.",
     "honestLead": "Our Google score isn't where we want it to be. Rather than hide that, we'll say it plainly: we read every review and we're fixing what's going wrong, one thing at a time. Write yours, good or bad. That's what helps us most.",
     "cta": "Review us on Google",
-    "count": "{count} reviews",
+    "count": "{count, plural, one {# review} other {# reviews}}",
     "starsLabel": "{value} out of 5 stars",
     "source": "Source: Google Maps · read on {date}"
   },

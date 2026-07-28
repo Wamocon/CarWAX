@@ -38,7 +38,6 @@ export function ScrollGloss({ src }: { src: string }) {
         end: '+=180%',
         pin: st,
         scrub: 0.6,
-        anticipatePin: 1,
       },
     });
 
@@ -80,7 +79,10 @@ export function ScrollGloss({ src }: { src: string }) {
     <section
       ref={root}
       aria-labelledby="gloss-scroll-h"
-      className="relative h-[280vh]"
+      /* Die lange Bahn traegt den Pin. Laeuft er nicht, weil der Besucher
+         reduzierte Bewegung eingestellt hat, blieben hier 180vh voellig
+         leerer Scroll stehen und die Seite wirkte kaputt. */
+      className="relative h-[280vh] motion-reduce:h-screen"
     >
       <div
         ref={stage}
@@ -147,9 +149,13 @@ export function ScrollGloss({ src }: { src: string }) {
             >
               {t('scrollBefore')}
             </p>
+            {/* opacity-0 als Ruhezustand: ohne das lagen bei reduzierter
+                Bewegung beide Bildunterschriften deckungsgleich uebereinander
+                und ergaben unlesbaren Mischsatz. Der Effekt blendet sie ein,
+                wenn er laeuft; laeuft er nicht, bleibt die Vorher-Zeile stehen. */}
             <p
               data-cap="after"
-              className="absolute inset-0 text-[1rem] leading-relaxed text-white/85"
+              className="absolute inset-0 text-[1rem] leading-relaxed text-white/85 opacity-0"
             >
               {t('scrollAfter')}
             </p>

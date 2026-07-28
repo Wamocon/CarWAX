@@ -1,4 +1,4 @@
-import { useTranslations } from 'next-intl';
+import { useTranslations, useFormatter } from 'next-intl';
 import { Star, ArrowUpRight } from 'lucide-react';
 import { Reveal } from '@/components/ui/Reveal';
 import { aggregateRating, branches, reviewUrl } from '@/lib/data/site';
@@ -17,6 +17,10 @@ import { aggregateRating, branches, reviewUrl } from '@/lib/data/site';
  */
 export function Rating() {
   const t = useTranslations('rating');
+  // Fest auf 'tr-TR' formatiert stand auf der englischen Seite "2,6",
+  // was ein englischer Leser als Tausendertrenner liest. Ausgerechnet die
+  // eine Zahl, die hier bewusst ehrlich steht.
+  const format = useFormatter();
   const rating = aggregateRating();
   const branch = branches[0];
   if (!rating) return null;
@@ -34,7 +38,7 @@ export function Rating() {
           <Reveal>
             <div className="glass grad-ring flex flex-col items-center gap-4 px-12 py-10 text-center">
               <span className="font-mono text-[3.4rem] font-medium leading-none tabular-nums">
-                {rating.value.toLocaleString('tr-TR', { minimumFractionDigits: 1 })}
+                {format.number(rating.value, { minimumFractionDigits: 1 })}
               </span>
 
               {/* Sterne als zwei Ebenen: graue Basis, farbige Füllung darüber
@@ -44,7 +48,7 @@ export function Rating() {
                 className="relative inline-flex"
                 role="img"
                 aria-label={t('starsLabel', {
-                  value: rating.value,
+                  value: format.number(rating.value, { minimumFractionDigits: 1 }),
                   scale: rating.scale,
                 })}
               >
@@ -96,7 +100,11 @@ export function Rating() {
             </div>
 
             <p className="mt-6 font-mono text-[0.625rem] uppercase tracking-[0.18em] text-fg-faint">
-              {t('source', { date: rating.verifiedAt })}
+              {t('source', {
+                date: format.dateTime(new Date(rating.verifiedAt), {
+                  dateStyle: 'long',
+                }),
+              })}
             </p>
           </Reveal>
         </div>

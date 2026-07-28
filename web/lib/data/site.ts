@@ -67,7 +67,7 @@ export const branches = [
     phoneLabel: '0242 318 16 17',
     whatsapp: null,
     /** Bestätigt über terracity.com.tr: Center-Zeiten, denen der Laden folgt. */
-    hours: '10:00 – 22:00',
+    hours: '10:00 - 22:00',
   },
   {
     id: 'mark-antalya',
@@ -309,9 +309,13 @@ export const services = [
  *
  * `includes` und `hours` sind wörtlich von den sechs Paketseiten übernommen.
  * Die Anwendungsdauer ist der stärkste Inhalt der ganzen Sektion: sie ist
- * konkret, nachprüfbar, und kein Wettbewerber in Antalya nennt sie. Deep Eko
- * gibt auf der Kundenseite keine Dauer an, steht deshalb auf `null` und wird
- * im UI weggelassen statt geschätzt.
+ * konkret, nachprüfbar, und kein Wettbewerber in Antalya nennt sie. Alle sechs
+ * Dauern stehen so auf den Paketseiten des Kunden.
+ *
+ * Korrektur: Deep Eko stand hier eine Zeit lang auf `hours: null` mit dem
+ * Vermerk, der Kunde nenne keine Dauer. Das war falsch, die Seite nennt
+ * „Uygulama Süresi 5 Saat"; meine erste Auslesung war vor der Zeile
+ * abgeschnitten. Zwei Inhaltspunkte fehlten aus demselben Grund.
  */
 export const packages = [
   {
@@ -351,7 +355,7 @@ export const packages = [
     family: 'deep',
     tier: 'eko',
     featured: false,
-    hours: null,
+    hours: '5',
     includes: [
       'standartYikama',
       'islakCila',
@@ -359,6 +363,8 @@ export const packages = [
       'doseme',
       'bagaj',
       'antibakteriyel',
+      'deriPlastik',
+      'klimaKanallari',
     ],
   },
   {

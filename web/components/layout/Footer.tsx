@@ -104,7 +104,8 @@ export function Footer() {
 
       <div className="wrap mt-6 flex flex-wrap justify-between gap-4 border-t border-hairline pt-7 text-[0.8rem] text-fg-faint">
         <span>
-          © {brand.foundedBrand}–2026 {brand.legalName}. {t('rights')}
+          © {brand.foundedBrand}-{new Date().getFullYear()} {brand.legalName}.{' '}
+          {t('rights')}
         </span>
         <span>
           {t('by')}{' '}

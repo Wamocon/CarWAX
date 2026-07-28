@@ -17,18 +17,33 @@ import {
  * der Kunde eine Telefonnummer korrigiert, korrigiert sich der Bot mit.
  */
 
+/**
+ * ⚠️ Muss jede id aus `services` in site.ts abdecken.
+ *
+ * Als die Liste von elf auf siebzehn wuchs, blieben sechs Beschriftungen hier
+ * stehen. Der Rückfall auf `s.id` hat daraus stillschweigend „pasOnleme" und
+ * „dosemeTamiri" gemacht — und zwar in /llms.txt, das genau dafür existiert,
+ * dass Antwortmaschinen den Betrieb korrekt zitieren, und im Systemprompt des
+ * Concierge. `assertLabels()` unten lässt das nicht mehr durchgehen.
+ */
 const SERVICE_LABELS: Record<string, string> = {
   seramik: 'Seramik Kaplama (ceramic coating, 9H)',
   grafen: 'Grafen Kaplama (graphene coating)',
+  ceramicWax: 'Ceramic Wax (fast ceramic-based protection)',
+  pastaCila: 'Pasta & Cila (compound and polish)',
   ppf: 'PPF Boya Koruma Filmi (paint protection film, BQ/HQ/PQ)',
+  renkDegisim: 'Renk Değişim Filmleri (colour change wrap film)',
   camKaplama: 'Seramik Cam Kaplama (water-repellent glass coating)',
   camFilmi: 'Oto Cam Filmi (window tinting)',
   sesYalitimi: 'Ses Yalıtımı (sound insulation)',
-  icTemizlik: 'Detaylı İç Temizlik (deep interior cleaning)',
-  antibakteriyel: 'Antibakteriyel Temizlik (cabin/AC hygiene)',
   metalKaplama: 'Metal & Krom Kaplama (wheel, chrome and metal coating)',
+  pasOnleme: 'Pas Önleme (rust prevention, underbody and cavities)',
+  icTemizlik: 'Detaylı İç Temizlik (deep interior cleaning)',
+  icMekan: 'İç Mekan Koruma (interior stain protection)',
+  antibakteriyel: 'Antibakteriyel Temizlik (cabin/AC hygiene)',
   gocuk: 'Göçük Onarımı (paintless dent repair)',
   camCatlak: 'Cam Çatlak Tamiri (windscreen chip/crack repair)',
+  dosemeTamiri: 'Döşeme Tamiri (upholstery and leather repair)',
 };
 
 const MARINE_LABELS: Record<string, string> = {
@@ -62,7 +77,32 @@ const COUNTER_LABELS: Record<string, string> = {
   seramik: 'ceramic coatings',
 };
 
+/**
+ * Fällt beim Bauen auf, nicht beim Kunden.
+ *
+ * Ohne diese Prüfung wandert eine neu angelegte Leistung als roher Bezeichner
+ * in die Wissensbasis, und der Fehler ist genau dort unsichtbar, wo er am
+ * teuersten ist: in dem, was ein Sprachmodell über den Betrieb behauptet.
+ */
+function assertLabels(
+  what: string,
+  ids: readonly string[],
+  labels: Record<string, string>,
+) {
+  const missing = ids.filter((id) => !labels[id]);
+  if (missing.length) {
+    throw new Error(
+      `Wissensbasis unvollständig: ${what} ohne Beschriftung -> ${missing.join(', ')}. ` +
+        `In lib/ai/knowledge.ts ergänzen.`,
+    );
+  }
+}
+
 export function buildKnowledgeBase(): string {
+  assertLabels('Leistungen', services.map((s) => s.id), SERVICE_LABELS);
+  assertLabels('C-Marine', marine.map((m) => m.id), MARINE_LABELS);
+  assertLabels('Pakete', packages.map((p) => p.id), PACKAGE_LABELS);
+
   const branchLines = branches
     .map(
       (b) =>

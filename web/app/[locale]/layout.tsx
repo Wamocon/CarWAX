@@ -11,6 +11,17 @@ import { faq } from '@/lib/data/site';
 import { SmoothScroll } from '@/components/providers/SmoothScroll';
 import '../globals.css';
 
+/**
+ * `og:locale` verlangt sprache_TERRITORIUM. Ein blankes „tr" akzeptieren
+ * Facebook, LinkedIn und WhatsApp nicht und fallen still auf en_US zurück:
+ * die türkische Vorschau wird dann als englischer Inhalt ausgewiesen.
+ */
+const OG_LOCALE: Record<string, string> = {
+  tr: 'tr_TR',
+  en: 'en_US',
+  ru: 'ru_RU',
+};
+
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
@@ -44,7 +55,10 @@ export async function generateMetadata({
       description: t('description'),
       url: `/${locale}`,
       siteName: 'CarWAX Antalya',
-      locale,
+      locale: OG_LOCALE[locale] ?? 'tr_TR',
+      alternateLocale: routing.locales
+        .filter((l) => l !== locale)
+        .map((l) => OG_LOCALE[l]),
       type: 'website',
       images: [{ url: '/og.jpg', width: 1200, height: 630, alt: t('title') }],
     },

@@ -40,12 +40,20 @@ export function Testimonials() {
     gsap.registerPlugin(ScrollTrigger);
 
     const mm = gsap.matchMedia();
-    mm.add('(min-width: 768px)', () => {
+    // Höhe zählt genauso wie Breite: auf einem quer gehaltenen Telefon (375px
+    // hoch) oder in einem flachen Laptopfenster ist die gepinnte Bühne höher
+    // als das Sichtfeld, und der Besucher scrollt viertausend Pixel an
+    // Zitatkarten vorbei, von denen er nur die erste Zeile sieht.
+    mm.add('(min-width: 768px) and (min-height: 880px)', () => {
       // Weglänge an die tatsächliche Überbreite gekoppelt statt an einen
       // festen Prozentwert. Sonst hängt die Bahn je nach Sprache
       // unterschiedlich lange fest: Russisch trägt spürbar mehr Text.
       const overhang = () => Math.max(0, tr.scrollWidth - tr.clientWidth);
       if (overhang() <= 0) return;
+
+      // Erst jetzt den händischen Scrollbereich abschalten: ab hier führt der
+      // Effekt die Bahn. Wird der Effekt zurückgedreht, kommt er zurück.
+      tr.dataset.pinned = 'true';
 
       const tween = gsap.to(tr, {
         x: () => -overhang(),
@@ -57,7 +65,6 @@ export function Testimonials() {
           pin: st,
           scrub: 0.7,
           invalidateOnRefresh: true,
-          anticipatePin: 1,
         },
       });
 
@@ -65,6 +72,7 @@ export function Testimonials() {
         tween.scrollTrigger?.kill();
         tween.kill();
         gsap.set(tr, { clearProps: 'transform' });
+        delete tr.dataset.pinned;
       };
     });
 
@@ -94,9 +102,20 @@ export function Testimonials() {
           Wischbereich mit Einrastpunkten.
         */}
         <div className="wrap">
+          {/*
+            Die Bahn ist IMMER von Hand scrollbar. Vorher stand hier
+            `md:overflow-x-visible`: ab 768px verschwand der Scrollbereich und
+            die Bahn war nur noch über GSAP erreichbar. Bei `prefers-reduced-
+            motion` läuft GSAP aber gar nicht erst an — sieben der elf Zitate
+            waren dann hinter dem `overflow-hidden` der Bühne eingesperrt, ohne
+            Scrollbalken, ohne Ziehen, ohne Pfeile.
+
+            Jetzt schaltet erst der laufende Effekt den Scrollbereich ab, per
+            `data-pinned` aus dem matchMedia-Block. Kein Effekt, kein Abschalten.
+          */}
           <ul
             ref={track}
-            className="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 md:overflow-x-visible md:pb-0"
+            className="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 data-[pinned=true]:overflow-x-visible data-[pinned=true]:pb-0"
           >
             {testimonials.map((c) => (
               <li key={c.id} className="w-[min(84vw,25rem)] shrink-0 snap-start">
