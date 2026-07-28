@@ -30,9 +30,22 @@ export function Products() {
           trägt jetzt ihre eigene Haarlinie, dann ist die Lücke unsichtbar,
           egal wie viele Produkte dazukommen.
         */}
-        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {/*
+          Nahtlos, ohne den Behälter zu färben.
+
+          Der alte Kniff `gap-px bg-hairline` sah bündig aus, machte aber jede
+          unvollständige Reihe zu einem grauen Block, weil man dann den
+          eingefärbten Behälter sieht. Getrennte Karten mit Abstand lösten das,
+          kosteten aber genau die Bündigkeit, die die Sektion getragen hat.
+
+          Jetzt kollabieren die Ränder: `gap-0` und jede Karte einen Pixel nach
+          oben und links gezogen, sodass aus zwei aneinanderstoßenden 1px-Rändern
+          eine einzige Linie wird. Sieht aus wie eine Tabelle, und eine leere
+          Zelle zeichnet schlicht nichts.
+        */}
+<ul className="grid sm:grid-cols-2 lg:grid-cols-3">
           {products.map((p, i) => (
-            <Reveal as="li" key={p.id} delay={(i % 3) * 0.06} className="border border-hairline bg-bg">
+            <Reveal as="li" key={p.id} delay={(i % 3) * 0.06} className="border border-hairline -mt-px -ml-px bg-bg transition-[background-color] duration-300 ease-out hover:bg-bg-raised">
               <figure className="flex h-full flex-col">
                 <div className="relative aspect-[4/3] overflow-hidden bg-white">
                   <Image

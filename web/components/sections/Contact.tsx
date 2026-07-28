@@ -25,9 +25,9 @@ export function Contact() {
               Bei vier Filialen geht das Raster auf, bei fuenf stuenden
               drei graue Zellen da. Haarlinie an der Karte statt am
               Behaelter macht das unmoeglich. */}
-          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="grid sm:grid-cols-2 lg:grid-cols-4">
             {branches.map((b) => (
-              <li key={b.id} className="border border-hairline bg-bg-raised">
+              <li key={b.id} className="border border-hairline -mt-px -ml-px bg-bg-raised">
                 <a
                   href={`tel:${b.phone}`}
                   className="group flex h-full flex-col justify-between gap-6 p-7 transition-[background-color] duration-200 hover:bg-bg"

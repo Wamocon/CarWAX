@@ -73,13 +73,13 @@ export function Services() {
                 Haarlinie und die Lücke ist einfach unsichtbar, unabhängig
                 davon, wie viele Leistungen später dazukommen.
               */}
-              <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <ul className="grid sm:grid-cols-2 lg:grid-cols-3">
                 {items.map((s, i) => (
                   <Reveal
                     as="li"
                     key={s.id}
                     delay={(i % 3) * 0.06}
-                    className="group border border-hairline bg-bg transition-transform duration-300 ease-out motion-safe:hover:-translate-y-1"
+                    className="group border border-hairline -mt-px -ml-px bg-bg transition-[background-color] duration-300 ease-out hover:bg-bg-raised"
                   >
                     <Tilt className="h-full">
                       <article className="flex h-full flex-col">
