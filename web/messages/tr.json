@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "CarWAX Antalya · Seramik Kaplama, PPF ve Detaylı Araç Bakımı",
-    "description": "1989'dan beri araç bakımı. Antalya'da dört noktada seramik kaplama, PPF boya koruma, detaylı iç temizlik ve yat bakımı."
+    "description": "1989’dan beri araç bakımı. Antalya’da dört noktada seramik kaplama, PPF boya koruma, detaylı iç temizlik ve yat bakımı."
   },
   "nav": {
     "services": "Hizmetler",
@@ -26,7 +26,7 @@
       "l2": "ilk günkü gibi",
       "l3": "parlamalı."
     },
-    "sub": "Antalya'da dört noktadayız. Aracınızı bırakın, siz alışverişinizi yapın; biz ilgilenelim. Teknenize de aynı özenle bakıyoruz.",
+    "sub": "Antalya’da dört noktadayız. Aracınızı bırakın, siz alışverişinizi yapın; biz ilgilenelim. Teknenize de aynı özenle bakıyoruz.",
     "ctaPrimary": "Bizi Arayın",
     "ctaSecondary": "Neler Yapıyoruz",
     "scroll": "Kaydır"
@@ -35,7 +35,7 @@
     "label": "Neden CarWAX",
     "since": {
       "label": "Tecrübe",
-      "value": "1989'dan beri bu işi yapıyoruz"
+      "value": "1989’dan beri bu işi yapıyoruz"
     },
     "stations": {
       "label": "Yaygınlık",
@@ -166,7 +166,7 @@
   },
   "branches": {
     "title": "Size en yakın olanı seçin.",
-    "lead": "Muratpaşa ve Kepez'de dört noktadayız. Hepsi alışveriş merkezi içinde; aracınızı bırakıp işinize bakabilirsiniz.",
+    "lead": "Muratpaşa ve Kepez’de dört noktadayız. Hepsi alışveriş merkezi içinde; aracınızı bırakıp işinize bakabilirsiniz.",
     "premium": "Premium Şube",
     "route": "Yol Tarifi",
     "call": "Ara",
@@ -331,7 +331,7 @@
     "cta": "WhatsApp’tan yaz",
     "message": "Merhaba, {branch} şubesi için bilgi almak istiyorum.",
     "note": "TerraCity şubesi sabit hat kullandığı için WhatsApp listesinde yer almıyor. O şubeyi telefonla arayabilirsiniz.",
-    "fabLabel": "{branch} şubesine WhatsApp'tan yaz"
+    "fabLabel": "{branch} şubesine WhatsApp’tan yaz"
   },
   "map": {
     "route": "Yol Tarifi",

@@ -27,6 +27,26 @@ export function Concierge() {
     if (open) field.current?.focus();
   }, [open]);
 
+  /*
+    Meldet den Zustand am <html>, damit der WhatsApp-Knopf darauf reagieren
+    kann. Beide schweben auf derselben Position (bottom-24 right-5); die
+    geöffnete Tafel liegt mit z-60 exakt über dem Knopf mit z-59 und verdeckt
+    ihn vollständig. Verdeckt heißt aber nicht weg: er blieb anklickbar und
+    stand weiter in der Tab-Reihenfolge, ein Ziel, das niemand sieht.
+
+    Über ein Attribut statt über einen gemeinsamen Provider, weil die beiden
+    Komponenten sonst nur wegen dieser einen Kleinigkeit aneinandergebunden
+    wären. Siehe `.wa-fab` in globals.css.
+  */
+  useEffect(() => {
+    const root = document.documentElement;
+    if (open) root.dataset.concierge = 'open';
+    else delete root.dataset.concierge;
+    return () => {
+      delete root.dataset.concierge;
+    };
+  }, [open]);
+
   // Escape schließt, und der Fokus darf nicht hinter dem Panel verschwinden.
   useEffect(() => {
     if (!open) return;

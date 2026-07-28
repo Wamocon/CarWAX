@@ -26,7 +26,7 @@
       "l2": "look like",
       "l3": "day one."
     },
-    "sub": "Four locations across Antalya. Drop the car off, go do your shopping, and we'll take care of it. We look after boats with the same attention.",
+    "sub": "Four locations across Antalya. Drop the car off, go do your shopping, and we’ll take care of it. We look after boats with the same attention.",
     "ctaPrimary": "Call Us",
     "ctaSecondary": "What We Do",
     "scroll": "Scroll"
@@ -60,7 +60,7 @@
   },
   "gloss": {
     "title": "See the difference yourself.",
-    "lead": "Same car, same photo. Drag the line left and right: untreated paint on the left, ceramic coating on the right. And it doesn't stop at looks. A coated surface washes off easier and stays new for longer.",
+    "lead": "Same car, same photo. Drag the line left and right: untreated paint on the left, ceramic coating on the right. And it doesn’t stop at looks. A coated surface washes off easier and stays new for longer.",
     "sliderLabel": "Drag the comparison line left or right",
     "before": "Before",
     "after": "After CarWAX",
@@ -70,7 +70,7 @@
   },
   "services": {
     "title": "Whatever your car needs.",
-    "lead": "From a small scratch to full paint protection. Not sure what you need? Call us. We'll look at the car and tell you honestly.",
+    "lead": "From a small scratch to full paint protection. Not sure what you need? Call us. We’ll look at the car and tell you honestly.",
     "seramik": {
       "title": "Ceramic Coating",
       "text": "A thin, hard protective layer over the paint. Colour deepens, dirt struggles to stick."
@@ -97,7 +97,7 @@
     },
     "icTemizlik": {
       "title": "Deep Interior Cleaning",
-      "text": "Seats, carpets, headliner, dashboard. You get in like it's the first day again."
+      "text": "Seats, carpets, headliner, dashboard. You get in like it’s the first day again."
     },
     "antibakteriyel": {
       "title": "Antibacterial Cleaning",
@@ -116,8 +116,8 @@
       "text": "Lasting shine on wheels, chrome and metal trim, with a surface that resists staining."
     },
     "helpEyebrow": "Not sure?",
-    "helpTitle": "Let's work out what you actually need.",
-    "helpText": "We won't quote a price without seeing the car. Call us, tell us what's going on, and we won't sell you what you don't need.",
+    "helpTitle": "Let’s work out what you actually need.",
+    "helpText": "We won’t quote a price without seeing the car. Call us, tell us what’s going on, and we won’t sell you what you don’t need.",
     "ceramicWax": {
       "title": "Ceramic Wax",
       "text": "Ceramic-based protection, applied fast. The shine is there the same day."
@@ -150,7 +150,7 @@
   },
   "marine": {
     "title": "Not only cars.",
-    "lead": "Antalya is a sea city. From gelcoat to teak deck, from propeller to hull, it's the same team and the same care.",
+    "lead": "Antalya is a sea city. From gelcoat to teak deck, from propeller to hull, it’s the same team and the same care.",
     "jelcoat": "Gelcoat Care",
     "pastaCila": "Compound & Polish",
     "tik": "Teak Deck Care",
@@ -176,10 +176,10 @@
     "everyday": "Every day"
   },
   "contact": {
-    "title": "We're one phone call away.",
-    "lead": "Got a question? Want to know a price? Call your nearest branch. We're happy to talk it through.",
+    "title": "We’re one phone call away.",
+    "lead": "Got a question? Want to know a price? Call your nearest branch. We’re happy to talk it through.",
     "call": "Call",
-    "note": "Prices depend on the condition of your car and the treatment you choose. We'd rather hear from you on the phone so we can give you a straight answer."
+    "note": "Prices depend on the condition of your car and the treatment you choose. We’d rather hear from you on the phone so we can give you a straight answer."
   },
   "footer": {
     "socialLabel": "Social media",
@@ -193,14 +193,14 @@
   "concierge": {
     "eyebrow": "CarWAX Assistant",
     "title": "Have a question?",
-    "greeting": "Hello. Ask me about our services, our branches, or what would suit your car. For prices and appointments I'll point you to the branch.",
+    "greeting": "Hello. Ask me about our services, our branches, or what would suit your car. For prices and appointments I’ll point you to the branch.",
     "placeholder": "Type your question…",
     "inputLabel": "Your message to the assistant",
     "send": "Send",
     "open": "Open assistant",
     "close": "Close assistant",
     "thinking": "Typing…",
-    "offline": "I can't answer right now. Please call your nearest branch.",
+    "offline": "I can’t answer right now. Please call your nearest branch.",
     "disclaimer": "For prices and appointments please call the branch: {phone}"
   },
   "packages": {
@@ -330,7 +330,7 @@
     "lead": "Send a photo of your car and we’ll tell you what it needs. You reach the branch directly on WhatsApp.",
     "cta": "Message on WhatsApp",
     "message": "Hello, I’d like some information about the {branch} branch.",
-    "note": "TerraCity uses a landline and therefore isn't on WhatsApp. Please call that branch instead.",
+    "note": "TerraCity uses a landline and therefore isn’t on WhatsApp. Please call that branch instead.",
     "fabLabel": "Message the {branch} branch on WhatsApp"
   },
   "map": {
@@ -339,9 +339,9 @@
   },
   "rating": {
     "proudTitle": "This is how our customers rate us.",
-    "proudLead": "We try to earn this score again every day. If you'd share your experience, we'd be glad.",
+    "proudLead": "We try to earn this score again every day. If you’d share your experience, we’d be glad.",
     "honestTitle": "We show our rating as it is.",
-    "honestLead": "Our Google score isn't where we want it to be. Rather than hide that, we'll say it plainly: we read every review and we're fixing what's going wrong, one thing at a time. Write yours, good or bad. That's what helps us most.",
+    "honestLead": "Our Google score isn’t where we want it to be. Rather than hide that, we’ll say it plainly: we read every review and we’re fixing what’s going wrong, one thing at a time. Write yours, good or bad. That’s what helps us most.",
     "cta": "Review us on Google",
     "count": "{count, plural, one {# review} other {# reviews}}",
     "starsLabel": "{value} out of 5 stars",

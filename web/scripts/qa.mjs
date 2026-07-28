@@ -128,8 +128,46 @@ for (const locale of LOCALES) {
       const heroBox = heroLine && heroLine.getBoundingClientRect();
       const h1Box = document.querySelector('h1.display')?.getBoundingClientRect();
 
+      /*
+        Bemalte Rasterbehälter mit unvollständiger letzter Reihe.
+
+        `gap-px bg-hairline` lässt die Karten sich aus einer gefärbten Fläche
+        ausstanzen. Geht das Raster auf, sieht es aus wie eine Tabelle. Bleibt
+        eine Zelle leer, sieht der Besucher keine Lücke, sondern den Behälter:
+        einen grauen Block. Genau so ist es bei den Leistungen und bei den
+        Produkten passiert, und es fiel keiner Prüfung auf, weil die Seite
+        technisch fehlerfrei war.
+
+        Spannen werden mitgezählt, sonst meldet die Marine-Strecke mit ihrer
+        doppelt breiten Kachel einen Fehlalarm.
+      */
+      const paintedGaps = [];
+      for (const grid of document.querySelectorAll('main ul, main ol, main div')) {
+        const g = getComputedStyle(grid);
+        if (g.display !== 'grid') continue;
+        const cols = g.gridTemplateColumns.split(' ').filter(Boolean).length;
+        if (cols < 2) continue;
+        if (g.backgroundColor === 'rgba(0, 0, 0, 0)' || g.backgroundColor === 'transparent')
+          continue;
+
+        let units = 0;
+        for (const c of grid.children) {
+          if (getComputedStyle(c).display === 'none') continue;
+          const m = getComputedStyle(c).gridColumn.match(/span (\d+)/);
+          units += m ? Number(m[1]) : 1;
+        }
+        const empty = (cols - (units % cols)) % cols;
+        if (empty > 0) {
+          const sec = grid.closest('section');
+          paintedGaps.push(
+            `${sec?.id || '?'}: ${units}/${cols} -> ${empty} leer`,
+          );
+        }
+      }
+
       return {
         spill,
+        paintedGaps,
         hydrated: de.className.includes('lenis'),
         heroTextVisible: Boolean(
           heroLine &&
@@ -167,6 +205,8 @@ for (const locale of LOCALES) {
     if (failed.length) problems.push(`REQ: ${failed.slice(0, 3).join(' | ')}`);
     if (checks.spill.length)
       problems.push(`AUS DEM BILD: ${checks.spill.join(' | ')}`);
+    if (checks.paintedGaps.length)
+      problems.push('GRAUE LEERZELLE: ' + checks.paintedGaps.join(' | '));
     if (!checks.hydrated) problems.push('NOT HYDRATED');
     if (!checks.heroTextVisible) problems.push('HERO TEXT STUCK AT initial');
     if (checks.missingSections.length)

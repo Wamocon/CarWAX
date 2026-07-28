@@ -56,6 +56,20 @@ export function Counters() {
         {t('title')}
       </h2>
 
+      {/*
+        ⚠️ INVARIANTE: `counters` muss durch 2 UND durch 4 teilbar bleiben.
+
+        Der eingefärbte Behälter erzeugt die Trennlinien, indem sich die Zellen
+        aus ihm ausstanzen. Das ist genau dann richtig, wenn jede Reihe voll
+        wird. Bleibt eine Zelle leer, sieht man nicht eine Lücke, sondern den
+        Behälter: einen grauen Block. Bei vier Zahlen in zwei bzw. vier Spalten
+        kann das nicht passieren.
+
+        Wer hier eine fünfte Zahl einträgt, muss auf Karten mit eigener
+        Haarlinie umstellen, so wie es Leistungen, Produkte und Kontakt tun.
+        Der Kunde führt auf seiner Startseite sechs Kennzahlen, das ist also
+        kein theoretischer Fall.
+      */}
       <div
         ref={ref}
         className="grid gap-px bg-hairline sm:grid-cols-2 lg:grid-cols-4"

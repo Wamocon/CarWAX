@@ -33,7 +33,7 @@ export function WhatsAppFab() {
       rel="noopener noreferrer"
       aria-label={t('fabLabel', { branch: target.name })}
       className={[
-        'fixed bottom-24 right-5 z-[59] grid h-14 w-14 place-items-center rounded-full',
+        'wa-fab fixed bottom-24 right-5 z-[59] grid h-14 w-14 place-items-center rounded-full',
         'text-white shadow-lg',
         'transition-[transform,opacity] duration-300 ease-out',
         'motion-safe:hover:scale-[1.06] active:scale-[0.97]',

@@ -21,9 +21,18 @@ export function Products() {
           lead={t('lead')}
         />
 
-        <ul className="grid gap-px bg-hairline sm:grid-cols-2 lg:grid-cols-3">
+        {/*
+          Rasterbehälter NICHT einfärben. Bei `gap-px bg-hairline` stanzen
+          sich die Karten aus einer gefärbten Fläche aus; sobald eine
+          Reihe nicht voll wird, ist die leere Zelle keine Lücke, sondern
+          der Behälter selbst und damit ein grauer Block. Genau das stand
+          bei zehn Produkten in drei Spalten zweimal am Ende. Jede Karte
+          trägt jetzt ihre eigene Haarlinie, dann ist die Lücke unsichtbar,
+          egal wie viele Produkte dazukommen.
+        */}
+        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {products.map((p, i) => (
-            <Reveal as="li" key={p.id} delay={(i % 3) * 0.06} className="bg-bg">
+            <Reveal as="li" key={p.id} delay={(i % 3) * 0.06} className="border border-hairline bg-bg">
               <figure className="flex h-full flex-col">
                 <div className="relative aspect-[4/3] overflow-hidden bg-white">
                   <Image

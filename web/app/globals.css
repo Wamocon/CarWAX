@@ -537,6 +537,29 @@
     display: block;
   }
 
+  /* Bei geöffnetem Assistenten weicht der WhatsApp-Knopf.
+
+     Beide schweben auf `bottom-24 right-5`. Die Tafel liegt mit z-60 exakt
+     über dem Knopf mit z-59 und verdeckt ihn auf dem Telefon vollständig.
+     Verdeckt ist aber nicht weg: er blieb anklickbar und stand weiter in der
+     Tab-Reihenfolge. Ein Ziel, das niemand sieht, ist schlimmer als keines.
+
+     `visibility` statt nur `opacity`, weil das den Knopf auch aus der
+     Tab-Reihenfolge und dem Bedienbaum nimmt. `allow-discrete` lässt ihn
+     trotzdem sanft aus- und wieder einblenden statt zu springen. */
+  .wa-fab {
+    transition:
+      transform 300ms var(--ease-out),
+      opacity 300ms var(--ease-out),
+      visibility 300ms var(--ease-out) allow-discrete;
+  }
+
+  :root[data-concierge='open'] .wa-fab {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
   /* Aufklappen ohne JavaScript und ohne Höhenmessung.
      `interpolate-size` erlaubt dem Browser, von 0 auf `auto` zu animieren —
      genau das, wofür es sonst eine Höhenmessung in JS braucht. Wo der Browser

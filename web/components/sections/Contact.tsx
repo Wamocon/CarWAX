@@ -21,9 +21,13 @@ export function Contact() {
         />
 
         <Reveal>
-          <ul className="grid gap-px bg-hairline sm:grid-cols-2 lg:grid-cols-4">
+          {/* Nicht bemalt: die Zahl der Karten ist `branches.length`.
+              Bei vier Filialen geht das Raster auf, bei fuenf stuenden
+              drei graue Zellen da. Haarlinie an der Karte statt am
+              Behaelter macht das unmoeglich. */}
+          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {branches.map((b) => (
-              <li key={b.id} className="bg-bg-raised">
+              <li key={b.id} className="border border-hairline bg-bg-raised">
                 <a
                   href={`tel:${b.phone}`}
                   className="group flex h-full flex-col justify-between gap-6 p-7 transition-[background-color] duration-200 hover:bg-bg"
